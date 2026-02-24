@@ -1,0 +1,347 @@
+/* FEI Art History Journey — styles.css */
+/* Keep scoped under #fei-art-system to avoid messing up the rest of Webflow */
+
+#fei-art-system {
+  --c-bg-grad: linear-gradient(90deg, #E2D1F9 0%, #9BEBEB 100%);
+  --c-text: #1a1a1a;
+  --font-ui: 'Montserrat', sans-serif;
+  --font-head: 'Playfair Display', serif;
+  position: relative;
+  width: 100%;
+  height: 850px;
+  background: var(--c-bg-grad);
+  font-family: var(--font-ui);
+  color: var(--c-text);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+}
+
+.fei-hidden { display: none !important; }
+
+.fei-fullscreen {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 100;
+  background: var(--c-bg-grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fei-login-card {
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.fei-brand-tag {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #666;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.fei-login-card h1 {
+  font-family: var(--font-head);
+  font-size: 32px;
+  margin: 0 0 10px 0;
+}
+
+.fei-login-form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.fei-btn-black {
+  background: #000;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.fei-btn-black:hover { background: #333; }
+
+.fei-header {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  z-index: 10;
+}
+
+.fei-user-badge { display: flex; align-items: center; gap: 10px; }
+
+.fei-avatar {
+  width: 35px; height: 35px;
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.fei-user-text { display: flex; flex-direction: column; }
+
+#display-name { font-weight: 700; font-size: 13px; color: #000; }
+
+.fei-progress-pill { font-size: 10px; color: #555; }
+
+.fei-link-reset {
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: #000;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.fei-map-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-top: 90px;
+}
+
+.fei-path-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+#path-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fei-node-row {
+  width: 100%;
+  display: flex;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.fei-node-row:nth-child(odd) { justify-content: flex-start; padding-left: 15%; }
+.fei-node-row:nth-child(even) { justify-content: flex-end; padding-right: 15%; }
+
+.fei-node-card {
+  width: 180px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #fff;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  border-radius: 8px;
+}
+
+.fei-node-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+.fei-node-num {
+  position: absolute;
+  top: -15px; left: -15px;
+  width: 30px; height: 30px;
+  background: #000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.fei-node-card h4 { margin: 10px 0 5px 0; font-size: 13px; font-weight: 700; color: #000; }
+.fei-node-card p { margin: 0; font-size: 10px; color: #666; text-transform: uppercase; }
+
+.fei-node-card.locked { opacity: 0.5; pointer-events: none; }
+.fei-node-card.unlocked { border-left: 5px solid #000; }
+.fei-node-card.completed { border-left: 5px solid #27AE60; background: #fff; }
+.fei-node-card.completed .fei-node-num { background: #27AE60; }
+.fei-node-card.completed::after {
+  content: '✓';
+  position: absolute;
+  top: 10px; right: 10px;
+  color: #27AE60;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.fei-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fei-modal-window {
+  width: 90%;
+  max-width: 800px;
+  height: 90%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.fei-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: #f5f5f5;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #000;
+}
+
+.fei-modal-top { padding: 30px 30px 10px 30px; border-bottom: 1px solid #f5f5f5; }
+.fei-era-tag { font-size: 11px; color: #999; font-weight: 700; text-transform: uppercase; }
+
+.fei-modal-top h2 {
+  font-family: var(--font-head);
+  margin: 5px 0 15px 0;
+  font-size: 28px;
+  color: #000;
+}
+
+.fei-tabs { display: flex; border-bottom: 1px solid #eee; padding: 0 30px; gap: 20px; }
+
+.fei-tab {
+  background: none;
+  border: none;
+  padding: 15px 5px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.fei-tab.active { color: #000; border-bottom-color: #000; }
+
+.fei-tab-body { flex: 1; overflow-y: auto; padding: 40px; background: #fff; }
+.fei-view { display: none; }
+.fei-view.active { display: block; }
+
+.fei-notebook { font-size: 15px; line-height: 1.8; color: #444; max-width: 650px; margin: 0 auto; }
+
+.fei-video-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.fei-sub-heading {
+  font-family: var(--font-head);
+  font-size: 18px;
+  color: #000;
+  margin-top: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.fei-resource-list { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+
+.fei-resource-link {
+  display: block;
+  padding: 12px 20px;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.fei-resource-link:hover { background: #000; color: #fff; border-color: #000; }
+
+.fei-think-box { background: #E8F8F5; border: 1px solid #A2D9CE; padding: 25px; border-radius: 8px; margin-bottom: 25px; }
+.fei-think-box h3 { margin-top: 0; color: #117A65; font-size: 16px; }
+
+.fei-mission-paper { background: #fff; border: 1px solid #eee; padding: 30px; border-radius: 8px; border-left: 4px solid #000; }
+
+.fei-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+
+.fei-img-box { aspect-ratio: 4/3; background: #f9f9f9; border-radius: 6px; overflow: hidden; }
+.fei-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.fei-quiz-intro { text-align: center; font-size: 13px; color: #666; margin-bottom: 20px; font-style: italic; }
+.fei-quiz-item { margin-bottom: 25px; border-bottom: 1px solid #f9f9f9; padding-bottom: 20px; }
+.fei-quiz-item p { font-weight: 700; margin-bottom: 12px; font-size: 15px; color: #000; }
+
+.fei-quiz-opt {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 8px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-ui);
+  color: #333;
+}
+
+.fei-quiz-opt:hover { border-color: #000; background: #fafafa; }
+.fei-quiz-opt.selected { background: #000; color: white; border-color: #000; }
+.fei-quiz-opt.correct { background: #27AE60; color: white; border-color: #27AE60; }
+.fei-quiz-opt.wrong { background: #C0392B; color: white; border-color: #C0392B; }
