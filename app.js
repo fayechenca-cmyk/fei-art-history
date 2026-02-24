@@ -828,4 +828,58 @@ function switchTab(tabName) {
 function closeModal() { document.getElementById('fei-modal').classList.add('fei-hidden'); document.getElementById('m-video-box').innerHTML = ""; }
 
 // Initialization
-init();
+function handleSubmit() {
+  const data = CURRICULUM.find(l => l.id === currentLevelId);
+  if (!data) return;
+
+  const items = document.querySelectorAll('.fei-quiz-item');
+  let correct = 0, answered = 0;
+
+  items.forEach((item, i) => {
+    const selected = item.querySelector('.selected');
+    if (selected) {
+      answered++;
+      const picked = Number(selected.dataset.idx);
+      if (picked === data.quiz[i].ans) {
+        correct++;
+        selected.classList.add('correct');
+      } else {
+        selected.classList.add('wrong');
+      }
+    }
+  });
+
+  if (answered < data.quiz.length) return alert("Please answer all questions.");
+
+  const fb = document.getElementById('m-feedback');
+  if (correct >= 4) {
+    fb.innerHTML = `<div style="background:#E8F8F5; color:#27AE60; padding:15px; border-radius:6px; margin-top:20px; font-weight:bold;">Passed! Credit Earned.</div>`;
+
+    if (!state.completed.includes(currentLevelId)) {
+      state.completed.push(currentLevelId);
+
+      const total = CURRICULUM.length;
+      state.unlocked = Math.max(state.unlocked, Math.min(total, currentLevelId + 1));
+
+      saveState();
+      renderMap();
+      setTimeout(closeModal, 800);
+    }
+  } else {
+    fb.innerHTML = `<div style="background:#FDEDEC; color:#C0392B; padding:15px; border-radius:6px; margin-top:20px; font-weight:bold;">Score: ${correct}/${data.quiz.length}. Try again.</div>`;
+  }
+}
+function init() {
+  const saved = localStorage.getItem(KEY);
+  if (saved) { state = JSON.parse(saved); if (state.name) showMap(); }
+
+  document.getElementById('btn-start').onclick = startApp;
+  document.getElementById('btn-reset').onclick = resetApp;
+  document.getElementById('btn-close').onclick = closeModal;
+
+  const submitBtn = document.getElementById('btn-submit');
+  if (submitBtn) submitBtn.onclick = handleSubmit;
+
+  document.querySelectorAll('.fei-tab').forEach(btn => btn.onclick = () => switchTab(btn.dataset.tab));
+  renderMap();
+};
