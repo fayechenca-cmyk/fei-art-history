@@ -1,7 +1,7 @@
-/* FEI Art History Journey — styles.css (Wheel + Tracks) */
-/* Keep scoped under #fei-art-system to avoid messing up the rest of Webflow */
+/* FEI Art History Journey — styles.css */
+/* Keep scoped under #fei-art-system */
 
-#fei-art-system {
+#fei-art-system{
   --c-bg-grad: linear-gradient(90deg, #E2D1F9 0%, #9BEBEB 100%);
   --c-text: #1a1a1a;
   --font-ui: 'Montserrat', sans-serif;
@@ -18,125 +18,135 @@
   box-shadow: 0 10px 50px rgba(0,0,0,0.1);
 }
 
-.fei-hidden { display: none !important; }
+#fei-art-system *{ box-sizing: border-box; }
 
-/* ===========================
-   COVER (with background image)
-   =========================== */
+.fei-hidden{ display:none !important; }
 
+/* ---------- fullscreen layers */
+.fei-fullscreen{
+  position:absolute;
+  inset:0;
+  z-index:100;
+  background: var(--c-bg-grad);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* COVER background (replace url if needed) */
 #fei-cover.fei-fullscreen{
   background:
-    linear-gradient(90deg, rgba(226,209,249,0.75) 0%, rgba(155,235,235,0.75) 100%),
-    /* 这里换成你想用的封面图 URL（Webflow 或 GitHub 都行） */
-    url("https://cdn.prod.website-files.com/67b17a6580f358f0c7dd29f4/699f6c04fb970aa3b1e0b6f8_Voyage%20a%CC%80%20travers%20l%27art%20histoire.png") center/cover no-repeat;
+    linear-gradient(90deg, rgba(226,209,249,0.78) 0%, rgba(155,235,235,0.78) 100%),
+    url("https://cdn.prod.website-files.com/67b17a6580f358f0c7dd29f4/699f5c6b1b0802987e7968b0_ChatGPT%20Image%20Feb%2025%2C%202026%2C%2012_32_12%20PM.png")
+    center/cover no-repeat;
 }
 
-.fei-fullscreen {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.fei-login-card {
-  position: relative;
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 44px;
+.fei-login-card{
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(255,255,255,0.85);
+  padding: 46px;
   border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  text-align: center;
-  max-width: 420px;
-  width: 92%;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+  text-align:center;
+  width: min(420px, 92%);
   backdrop-filter: blur(10px);
 }
 
-.fei-brand-tag {
+.fei-brand-tag{
   font-size: 11px;
   letter-spacing: 2px;
-  color: #666;
+  color:#666;
   font-weight: 800;
   margin-bottom: 10px;
 }
 
-.fei-login-card h1 {
+.fei-login-card h1{
   font-family: var(--font-head);
-  font-size: 32px;
+  font-size: 34px;
   margin: 0 0 10px 0;
   color:#000;
 }
 
-.fei-login-card p{
-  margin: 0 0 10px 0;
-  color:#555;
-  font-size: 13px;
-}
-
-.fei-login-form{
-  margin-top: 14px;
+.fei-cover-sub{
+  margin:0 0 18px 0;
+  font-size: 12px;
+  color:#666;
 }
 
 .fei-login-form label{
   display:block;
   text-align:left;
   font-size: 12px;
-  color:#444;
   font-weight: 700;
-  margin-bottom: 8px;
+  color:#111;
+  margin: 12px 0 8px;
 }
 
-.fei-login-form input {
-  width: 100%;
+.fei-login-form input{
+  width:100%;
   padding: 14px;
-  margin-bottom: 12px;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  font-family: var(--font-ui);
+  border-radius: 8px;
   font-size: 14px;
-  box-sizing: border-box;
-  outline: none;
+  font-family: var(--font-ui);
 }
 
-.fei-login-form input:focus{
-  border-color:#000;
-}
-
-.fei-btn-black {
-  background: #000;
-  color: white;
-  border: none;
-  width: 100%;
-  padding: 15px;
+.fei-btn-black{
+  background:#000;
+  color:#fff;
+  border:none;
+  width:100%;
+  padding: 14px 15px;
   font-weight: 800;
-  cursor: pointer;
+  cursor:pointer;
   border-radius: 10px;
   font-size: 12px;
   letter-spacing: 1px;
+  margin-top: 12px;
+}
+.fei-btn-black:hover{ background:#333; }
+.fei-btn-black.full{ width:100%; }
+
+/* ---------- Track select */
+.fei-track-panel{
+  width: min(760px, 92%);
+  background: rgba(255,255,255,0.90);
+  border: 1px solid rgba(255,255,255,0.9);
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+  padding: 28px;
+  backdrop-filter: blur(12px);
 }
 
-.fei-btn-black:hover { background: #333; }
+.fei-track-title{
+  font-family: var(--font-head);
+  font-size: 26px;
+  margin: 6px 0 8px;
+  color:#000;
+}
 
-/* Track picker (目录按钮) */
+.fei-track-desc{
+  margin: 0 0 14px;
+  color:#666;
+  font-size: 12px;
+}
+
 .fei-track-grid{
   display:grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 10px;
-  text-align:left;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .fei-track-card{
   text-align:left;
-  padding: 14px 14px;
+  padding: 16px;
   border-radius: 12px;
   border: 1px solid #eee;
-  background: #fff;
-  cursor: pointer;
-  transition: .18s;
+  background:#fff;
+  cursor:pointer;
+  transition: .2s;
 }
 
 .fei-track-card:hover{
@@ -144,372 +154,421 @@
   transform: translateY(-2px);
 }
 
-.fei-track-card.selected{
-  background:#000;
-  border-color:#000;
-}
-
 .fei-track-card .t{
   font-weight: 900;
   font-size: 13px;
   color:#000;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
-.fei-track-card.selected .t{ color:#fff; }
 
 .fei-track-card .s{
   font-size: 11px;
   color:#666;
+  line-height: 1.4;
 }
-.fei-track-card.selected .s{ color:#d9d9d9; }
 
-.fei-track-hint{
-  margin-top: 8px;
+.fei-track-card .mini{
+  margin-top: 10px;
   font-size: 11px;
-  color:#666;
-  text-align:left;
+  font-weight: 800;
+  color:#111;
+  opacity: .75;
 }
 
-/* ===========================
-   HEADER
-   =========================== */
+.fei-link-reset{
+  background:none;
+  border:none;
+  font-size: 11px;
+  color:#000;
+  cursor:pointer;
+  text-decoration: underline;
+  margin-top: 14px;
+}
 
-.fei-header {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 70px;
-  background: rgba(255,255,255,0.84);
-  backdrop-filter: blur(6px);
+/* ---------- Header */
+.fei-header{
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height: 74px;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.35);
-  display: flex;
+  display:flex;
   justify-content: space-between;
-  align-items: center;
+  align-items:center;
   padding: 0 18px;
   z-index: 10;
 }
 
-.fei-user-badge { display: flex; align-items: center; gap: 10px; }
-.fei-avatar {
-  width: 35px; height: 35px;
-  background: #000;
-  color: white;
+.fei-user-badge{ display:flex; align-items:center; gap:10px; }
+
+.fei-avatar{
+  width: 36px; height: 36px;
+  background:#000;
+  color:#fff;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-size: 10px;
   font-weight: 900;
 }
 
-.fei-user-text { display: flex; flex-direction: column; gap:2px; }
-#display-name { font-weight: 900; font-size: 13px; color: #000; }
-.fei-progress-pill { font-size: 10px; color: #555; }
+.fei-user-text{ display:flex; flex-direction: column; gap:2px; }
 
-.fei-link-reset {
-  background: none;
-  border: none;
-  font-size: 11px;
-  color: #000;
-  cursor: pointer;
-  text-decoration: underline;
+#display-name{ font-weight: 900; font-size: 13px; color:#000; }
+.fei-progress-pill{ font-size: 10px; color:#555; }
+
+.fei-track-pill{
+  display:inline-block;
+  width: fit-content;
+  font-size: 10px;
+  font-weight: 800;
+  color:#111;
+  opacity: .75;
 }
 
-/* ===========================
-   MAP VIEW — WHEEL (NO SCROLL)
-   =========================== */
+.fei-header-actions{ display:flex; gap:10px; align-items:center; }
 
+/* ---------- Map board (NO SCROLL, auto scale) */
 .fei-map-scroll{
-  width: 100%;
-  height: 100%;
-  overflow: hidden !important;       /* 关键：不滚动 */
-  padding-top: 90px;
-}
-
-.fei-path-container{
-  position: relative;
-  width: 100%;
-  height: calc(100% - 110px);
-  max-width: 920px;
-  margin: 0 auto;
-}
-
-#map-container{
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-#path-svg{
-  position:absolute;
-  inset:0;
   width:100%;
   height:100%;
-  pointer-events:none;
-  z-index:0;
+  padding-top: 86px;
+  overflow: hidden; /* no scroll */
 }
 
-.fei-wheel-center{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width: 280px;
-  padding: 18px 18px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.88);
-  border: 1px solid rgba(255,255,255,0.95);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.09);
-  text-align:center;
-  z-index:2;
+.fei-board-viewport{
+  height: calc(100% - 0px);
+  padding: 14px 14px 18px;
 }
 
-.fei-wheel-center .title{
-  font-family: var(--font-head);
-  font-size: 20px;
-  color:#000;
-  margin: 4px 0 6px;
+.fei-board-wrap{
+  transform-origin: top center;
+  width: 100%;
+  display:flex;
+  justify-content:center;
 }
 
-.fei-wheel-center .sub{
-  font-size: 12px;
-  color:#666;
-  line-height: 1.45;
-  margin: 0;
+.fei-board{
+  width: min(980px, 100%);
+  display:grid;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 14px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
 }
 
-.fei-wheel-center .pill{
-  display:inline-block;
-  margin-top:10px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid #eee;
-  font-size: 11px;
-  font-weight: 900;
-  color:#000;
-  background:#fff;
+/* responsive columns */
+@media (max-width: 900px){
+  .fei-board{ grid-template-columns: repeat(4, minmax(150px, 1fr)); }
+}
+@media (max-width: 640px){
+  .fei-track-grid{ grid-template-columns: 1fr; }
+  .fei-board{ grid-template-columns: repeat(3, minmax(140px, 1fr)); }
 }
 
-.fei-wheel-node{
-  position:absolute;
-  transform: translate(-50%,-50%);
-  width: 170px;
-  min-height: 78px;
-  padding: 14px 14px 12px;
-  border-radius: 14px;
+.fei-node-card{
   background: rgba(255,255,255,0.92);
   border: 1px solid rgba(255,255,255,0.95);
+  border-radius: 12px;
+  padding: 14px 14px 12px;
   box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-  cursor:pointer;
-  text-align:left;
-  z-index:1;
-  transition: transform .2s, box-shadow .2s, background .2s;
+  cursor: pointer;
+  position: relative;
+  transition: transform .2s, box-shadow .2s;
+  min-height: 92px;
 }
 
-.fei-wheel-node:hover{
-  transform: translate(-50%,-50%) scale(1.03);
-  box-shadow: 0 16px 34px rgba(0,0,0,0.10);
+.fei-node-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.10);
 }
 
-.fei-wheel-node h4{
-  margin: 6px 0 4px;
+.fei-node-num{
+  position:absolute;
+  top:-14px; left:-14px;
+  width:30px; height:30px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+  color:#fff;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.fei-node-card h4{
+  margin: 6px 0 6px;
   font-size: 12px;
   font-weight: 900;
   color:#000;
+  line-height: 1.25;
 }
 
-.fei-wheel-node p{
+.fei-node-card p{
   margin:0;
   font-size: 10px;
   color:#666;
   text-transform: uppercase;
 }
 
-.fei-wheel-node.locked{ opacity: .45; cursor: default; }
-.fei-wheel-node.unlocked{ border-left: 5px solid #000; }
-.fei-wheel-node.completed{ border-left: 5px solid #27AE60; background:#fff; }
-.fei-wheel-node.completed::after{
+/* states */
+.fei-node-card.locked{ opacity:.45; pointer-events:none; cursor: default; }
+.fei-node-card.unlocked{ border-left: 5px solid #000; }
+.fei-node-card.completed{ border-left: 5px solid #27AE60; background:#fff; }
+.fei-node-card.completed .fei-node-num{ background:#27AE60; }
+.fei-node-card.completed::after{
   content:'✓';
   position:absolute;
-  top:10px;
-  right:12px;
-  font-weight:900;
+  top: 10px;
+  right: 12px;
   color:#27AE60;
-  font-size:18px;
+  font-weight: 900;
+  font-size: 18px;
 }
 
-.fei-wheel-node .fei-node-num{
+/* empty track */
+.fei-empty{
+  grid-column: 1 / -1;
+  padding: 22px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid #eee;
+  text-align:center;
+}
+.fei-empty-title{
+  font-family: var(--font-head);
+  font-size: 20px;
+  color:#000;
+  margin-bottom: 6px;
+}
+.fei-empty-sub{
+  font-size: 12px;
+  color:#666;
+}
+
+/* ---------- Modal */
+.fei-overlay{
   position:absolute;
-  top:-14px;
-  left:-14px;
-  width:30px;height:30px;
-  border-radius:50%;
+  inset:0;
+  background: rgba(255,255,255,0.62);
+  backdrop-filter: blur(10px);
+  z-index: 200;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#000;
-  color:#fff;
-  font-weight:900;
-  font-size:12px;
-}
-.fei-wheel-node.completed .fei-node-num{ background:#27AE60; }
-
-/* ring classes (如果课程 > 20，会自动用双环，内环更小一点) */
-.fei-wheel-node.ring-2{ width: 158px; }
-.fei-wheel-node.ring-3{ width: 146px; }
-
-@media (max-width: 768px){
-  #fei-art-system{ height: 820px; }
-  .fei-wheel-center{ width: 250px; }
-  .fei-wheel-node{ width: 156px; }
-  .fei-wheel-node.ring-2{ width: 146px; }
-}
-@media (max-width: 480px){
-  #fei-art-system{ height: 820px; }
-  .fei-login-card{ padding: 36px; }
-  .fei-wheel-center{ width: 230px; }
-  .fei-wheel-node{ width: 142px; padding: 12px; }
-  .fei-wheel-node.ring-2{ width: 132px; }
 }
 
-/* ===========================
-   MODAL / TABS / CONTENT (unchanged from your style)
-   =========================== */
-
-.fei-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fei-modal-window {
-  width: 90%;
-  max-width: 800px;
+.fei-modal-window{
+  width: 92%;
+  max-width: 860px;
   height: 90%;
-  background: #fff;
-  display: flex;
+  background:#fff;
+  display:flex;
   flex-direction: column;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.16);
+  overflow:hidden;
   border: 1px solid #eee;
+  position: relative;
 }
 
-.fei-close {
-  position: absolute;
-  top: 20px; right: 20px;
-  background: #f5f5f5;
-  width: 32px; height: 32px;
+.fei-close{
+  position:absolute;
+  top: 18px;
+  right: 18px;
+  background:#f5f5f5;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  border: none;
+  border:none;
   font-size: 18px;
-  cursor: pointer;
-  color: #000;
+  cursor:pointer;
+  color:#000;
 }
 
-.fei-modal-top { padding: 30px 30px 10px 30px; border-bottom: 1px solid #f5f5f5; }
-.fei-era-tag { font-size: 11px; color: #999; font-weight: 900; text-transform: uppercase; }
-
-.fei-modal-top h2 {
+.fei-modal-top{
+  padding: 28px 28px 12px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.fei-era-tag{
+  font-size: 11px;
+  color:#999;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.fei-modal-top h2{
   font-family: var(--font-head);
-  margin: 5px 0 15px 0;
+  margin: 6px 0 10px;
   font-size: 28px;
-  color: #000;
+  color:#000;
 }
 
-.fei-tabs { display: flex; border-bottom: 1px solid #eee; padding: 0 30px; gap: 20px; }
+.fei-tabs{
+  display:flex;
+  gap: 18px;
+  padding: 0 28px;
+  border-bottom: 1px solid #eee;
+}
 
-.fei-tab {
-  background: none;
-  border: none;
-  padding: 15px 5px;
+.fei-tab{
+  background:none;
+  border:none;
+  padding: 14px 6px;
   font-family: var(--font-ui);
   font-weight: 800;
   font-size: 12px;
-  color: #999;
-  cursor: pointer;
+  color:#999;
+  cursor:pointer;
   border-bottom: 2px solid transparent;
 }
+.fei-tab.active{ color:#000; border-bottom-color:#000; }
 
-.fei-tab.active { color: #000; border-bottom-color: #000; }
-
-.fei-tab-body { flex: 1; overflow-y: auto; padding: 40px; background: #fff; }
-.fei-view { display: none; }
-.fei-view.active { display: block; }
-
-.fei-notebook { font-size: 15px; line-height: 1.8; color: #444; max-width: 650px; margin: 0 auto; }
-
-.fei-video-container {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #000;
-  border-radius: 10px;
-  margin-bottom: 25px;
-  overflow: hidden;
+.fei-tab-body{
+  flex:1;
+  overflow-y:auto;
+  padding: 30px 28px 34px;
 }
 
-.fei-sub-heading {
+.fei-view{ display:none; }
+.fei-view.active{ display:block; }
+
+.fei-notebook{
+  font-size: 15px;
+  line-height: 1.85;
+  color:#444;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.fei-video-container{
+  width:100%;
+  aspect-ratio: 16/9;
+  background:#000;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  overflow:hidden;
+}
+
+.fei-gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.fei-img-box{
+  aspect-ratio: 4/3;
+  background:#f6f6f6;
+  border-radius: 10px;
+  overflow:hidden;
+}
+.fei-img-box img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+.fei-sub-heading{
   font-family: var(--font-head);
   font-size: 18px;
-  color: #000;
-  margin-top: 30px;
+  color:#000;
+  margin-top: 24px;
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
 }
 
-.fei-resource-list { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+.fei-resource-list{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
 
-.fei-resource-link {
-  display: block;
-  padding: 12px 18px;
-  background: #f9f9f9;
+.fei-resource-link{
+  display:block;
+  padding: 12px 14px;
+  background:#f9f9f9;
   border: 1px solid #eee;
   border-radius: 10px;
-  color: #000;
-  text-decoration: none;
+  color:#000;
+  text-decoration:none;
   font-weight: 800;
   font-size: 13px;
-  transition: 0.2s;
+  transition: .2s;
+}
+.fei-resource-link:hover{
+  background:#000;
+  color:#fff;
+  border-color:#000;
 }
 
-.fei-resource-link:hover { background: #000; color: #fff; border-color: #000; }
+.fei-think-box{
+  background:#E8F8F5;
+  border: 1px solid #A2D9CE;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.fei-think-box h3{ margin:0 0 8px; color:#117A65; font-size: 16px; }
 
-.fei-think-box { background: #E8F8F5; border: 1px solid #A2D9CE; padding: 25px; border-radius: 12px; margin-bottom: 25px; }
-.fei-think-box h3 { margin-top: 0; color: #117A65; font-size: 16px; }
+.fei-mission-paper{
+  background:#fff;
+  border:1px solid #eee;
+  padding: 18px;
+  border-radius: 12px;
+  border-left: 4px solid #000;
+}
 
-.fei-mission-paper { background: #fff; border: 1px solid #eee; padding: 30px; border-radius: 12px; border-left: 4px solid #000; }
+.fei-quiz-intro{
+  text-align:center;
+  font-size: 13px;
+  color:#666;
+  margin-bottom: 16px;
+  font-style: italic;
+}
 
-.fei-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+.fei-quiz-item{
+  margin-bottom: 22px;
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 18px;
+}
 
-.fei-img-box { aspect-ratio: 4/3; background: #f9f9f9; border-radius: 10px; overflow: hidden; }
-.fei-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.fei-quiz-item p{
+  font-weight: 900;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color:#000;
+}
 
-.fei-quiz-intro { text-align: center; font-size: 13px; color: #666; margin-bottom: 20px; font-style: italic; }
-.fei-quiz-item { margin-bottom: 25px; border-bottom: 1px solid #f9f9f9; padding-bottom: 20px; }
-.fei-quiz-item p { font-weight: 900; margin-bottom: 12px; font-size: 15px; color: #000; }
-
-.fei-quiz-opt {
-  display: block;
-  width: 100%;
-  padding: 14px;
+.fei-quiz-opt{
+  display:block;
+  width:100%;
+  padding: 12px 12px;
   margin-bottom: 8px;
-  background: white;
+  background:#fff;
   border: 1px solid #eee;
   border-radius: 10px;
-  text-align: left;
-  cursor: pointer;
+  text-align:left;
+  cursor:pointer;
   font-size: 13px;
   font-family: var(--font-ui);
-  color: #333;
+  color:#333;
 }
+.fei-quiz-opt:hover{ border-color:#000; background:#fafafa; }
+.fei-quiz-opt.selected{ background:#000; color:#fff; border-color:#000; }
+.fei-quiz-opt.correct{ background:#27AE60; color:#fff; border-color:#27AE60; }
+.fei-quiz-opt.wrong{ background:#C0392B; color:#fff; border-color:#C0392B; }
 
-.fei-quiz-opt:hover { border-color: #000; background: #fafafa; }
-.fei-quiz-opt.selected { background: #000; color: white; border-color: #000; }
-.fei-quiz-opt.correct { background: #27AE60; color: white; border-color: #27AE60; }
-.fei-quiz-opt.wrong { background: #C0392B; color: white; border-color: #C0392B; }
+.fei-feedback{
+  padding: 14px 14px;
+  border-radius: 12px;
+  margin-top: 16px;
+  font-weight: 900;
+}
+.fei-feedback.good{ background:#E8F8F5; color:#27AE60; }
+.fei-feedback.bad{ background:#FDEDEC; color:#C0392B; }
