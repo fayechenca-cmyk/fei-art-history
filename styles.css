@@ -352,7 +352,7 @@
 #fei-cover.fei-fullscreen{
   background:
     linear-gradient(90deg, rgba(226,209,249,0.75) 0%, rgba(155,235,235,0.75) 100%),
-    url("https://cdn.jsdelivr.net/gh/fayechenca-cmyk/fei-art-history@main/assets/cover.jpg") center/cover no-repeat;
+    url("https://cdn.prod.website-files.com/67b17a6580f358f0c7dd29f4/699f5c6b1b0802987e7968b0_ChatGPT%20Image%20Feb%2025%2C%202026%2C%2012_32_12%20PM.png") center/cover no-repeat;
 }
 
 /* 让登录卡更“高级”一点 */
