@@ -1,13 +1,17 @@
-/* app.js — FEI Art History Journey (Fresh, stable, Webflow-friendly)
-   - loads curriculum from window.FEI_ART_HISTORY_CURRICULUM (curriculum.js)
-   - injects all HTML into #fei-art-history (so Webflow embed stays tiny)
-   - uses localStorage (fresh key), no old-version headaches
+/* app.js — FEI Art History Journey (Tracks-enabled, stable, Webflow-friendly)
+   - supports Track picker (Western / China) via window.FEI_ART_HISTORY_TRACKS
+   - keeps your original UI + modal + map, only adds a tiny catalog on cover
+   - saves progress per track (no mixing)
 */
 (function () {
   "use strict";
 
   const ROOT_ID = "fei-art-history";
-  const KEY = "fei_art_history_fresh_2026";
+
+  // Base storage key (do NOT change unless you want to reset everyone)
+  const KEY_BASE = "fei_art_history_fresh_2026";
+  const KEY_NAME = KEY_BASE + ":name";
+  const KEY_TRACK = KEY_BASE + ":track";
   const PASS_SCORE = 4;
 
   const root = document.getElementById(ROOT_ID);
@@ -17,56 +21,136 @@
   if (root.dataset.feiInit === "1") return;
   root.dataset.feiInit = "1";
 
-  const CURRICULUM = Array.isArray(window.FEI_ART_HISTORY_CURRICULUM)
-    ? window.FEI_ART_HISTORY_CURRICULUM
-    : [];
+  // ----- tracks + curriculum source
+  const TRACKS =
+    (window.FEI_ART_HISTORY_TRACKS && typeof window.FEI_ART_HISTORY_TRACKS === "object")
+      ? window.FEI_ART_HISTORY_TRACKS
+      : null;
 
-  const TOTAL = CURRICULUM.length || 20;
+  const trackIds = TRACKS ? Object.keys(TRACKS) : [];
+
+  function getDefaultTrackId() {
+    if (TRACKS && trackIds.length) return trackIds.includes("western") ? "western" : trackIds[0];
+    return "default";
+  }
+
+  let currentTrackId = localStorage.getItem(KEY_TRACK) || getDefaultTrackId();
+
+  function getCurriculumFor(trackId) {
+    // New multi-track mode
+    if (TRACKS && TRACKS[trackId] && Array.isArray(TRACKS[trackId].lessons)) {
+      return TRACKS[trackId].lessons;
+    }
+    // Fallback old single curriculum mode
+    if (Array.isArray(window.FEI_ART_HISTORY_CURRICULUM)) {
+      return window.FEI_ART_HISTORY_CURRICULUM;
+    }
+    return [];
+  }
+
+  let CURRICULUM = getCurriculumFor(currentTrackId);
+
+  function total() {
+    return CURRICULUM.length || 20;
+  }
+
+  function stateKeyFor(trackId) {
+    return KEY_BASE + ":" + trackId;
+  }
 
   // ----- state
   let state = { name: "", unlocked: 1, completed: [] };
   let currentLevelId = null;
 
+  function saveName(name) {
+    localStorage.setItem(KEY_NAME, name);
+  }
+
+  function loadName() {
+    const n = localStorage.getItem(KEY_NAME);
+    return typeof n === "string" ? n : "";
+  }
+
   function saveState() {
-    localStorage.setItem(KEY, JSON.stringify(state));
+    localStorage.setItem(stateKeyFor(currentTrackId), JSON.stringify(state));
   }
 
   function loadState() {
     try {
-      const raw = localStorage.getItem(KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw);
+      const raw = localStorage.getItem(stateKeyFor(currentTrackId));
+      let parsed = null;
+      if (raw) parsed = JSON.parse(raw);
+
+      const savedName = loadName();
+
       state = {
-        name: typeof parsed.name === "string" ? parsed.name : "",
-        unlocked: Math.max(1, Number(parsed.unlocked) || 1),
-        completed: Array.isArray(parsed.completed)
-          ? parsed.completed.map((n) => Number(n)).filter(Number.isFinite)
+        name:
+          (parsed && typeof parsed.name === "string" && parsed.name) ||
+          savedName ||
+          "",
+        unlocked: Math.max(1, Math.min(total(), Number(parsed && parsed.unlocked) || 1)),
+        completed: Array.isArray(parsed && parsed.completed)
+          ? parsed.completed
+              .map((n) => Number(n))
+              .filter(Number.isFinite)
+              .filter((n) => n >= 1 && n <= total())
           : [],
       };
     } catch (e) {
-      state = { name: "", unlocked: 1, completed: [] };
+      const savedName = loadName();
+      state = { name: savedName || "", unlocked: 1, completed: [] };
     }
   }
 
   function resetApp() {
     if (!confirm("Reset your Art History Journey?")) return;
-    localStorage.removeItem(KEY);
+    // wipe everything (name + track selection + all track states)
+    localStorage.removeItem(KEY_NAME);
+    localStorage.removeItem(KEY_TRACK);
+    if (TRACKS && trackIds.length) {
+      trackIds.forEach((tid) => localStorage.removeItem(stateKeyFor(tid)));
+    } else {
+      localStorage.removeItem(stateKeyFor(currentTrackId));
+    }
     location.reload();
   }
 
   // ----- HTML skeleton (injected)
+  // NOTE: we only add a small "Track Picker" block inside the cover card.
   root.innerHTML = `
   <div id="fei-art-system">
     <div id="fei-cover" class="fei-fullscreen">
       <div class="fei-login-card">
         <div class="fei-brand-tag">LFC CLASSICS</div>
         <h1>Art History Journey</h1>
-        <p>Reference-First Studio • Pre-1945</p>
+        <p id="fei-subtitle">Reference-First Studio • Pre-1945</p>
+
+        <!-- Track Picker (new, tiny) -->
+        <div id="fei-track-box" style="margin:16px 0 10px; text-align:left;">
+          <div style="font-size:11px; letter-spacing:2px; color:#666; font-weight:700; margin-bottom:10px;">
+            CHOOSE A TRACK
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <button type="button" class="fei-resource-link fei-track-btn" data-track="western">Western Art History</button>
+            <button type="button" class="fei-resource-link fei-track-btn" data-track="china">Chinese Art History</button>
+          </div>
+          <div id="fei-track-hint" style="margin-top:10px; font-size:11px; color:#666;"></div>
+        </div>
+
         <div class="fei-login-form">
           <label>Student Name</label>
           <input type="text" id="reg-name" placeholder="Enter name...">
           <button id="btn-start" class="fei-btn-black">ENTER CLASSROOM</button>
         </div>
+
+        <style>
+          /* small selection highlight, scoped inside this component */
+          #${ROOT_ID} .fei-track-btn.fei-track-selected{
+            background:#000 !important;
+            color:#fff !important;
+            border-color:#000 !important;
+          }
+        </style>
       </div>
     </div>
 
@@ -76,7 +160,7 @@
           <div class="fei-avatar">LFC</div>
           <div class="fei-user-text">
             <span id="display-name">Student</span>
-            <span class="fei-progress-pill" id="progress-display">0/${TOTAL} Credits</span>
+            <span class="fei-progress-pill" id="progress-display">0/${total()} Credits</span>
           </div>
         </div>
         <button id="btn-reset" class="fei-link-reset">Reset</button>
@@ -146,6 +230,58 @@
   const $ = (sel) => root.querySelector(sel);
   const $$ = (sel) => Array.from(root.querySelectorAll(sel));
 
+  function trackLabel(tid) {
+    if (TRACKS && TRACKS[tid] && TRACKS[tid].label) return TRACKS[tid].label;
+    return tid === "western" ? "Western Art History" : tid === "china" ? "Chinese Art History" : "Art History";
+  }
+
+  function trackDesc(tid) {
+    if (TRACKS && TRACKS[tid] && TRACKS[tid].desc) return TRACKS[tid].desc;
+    return "";
+  }
+
+  function updateTrackUI() {
+    const hint = $("#fei-track-hint");
+    const buttons = $$(".fei-track-btn");
+
+    buttons.forEach((b) => {
+      b.classList.toggle("fei-track-selected", b.dataset.track === currentTrackId);
+      // If labels exist in TRACKS, use them
+      const tid = b.dataset.track;
+      if (TRACKS && TRACKS[tid] && TRACKS[tid].label) b.textContent = TRACKS[tid].label;
+    });
+
+    if (hint) {
+      hint.textContent = `Selected: ${trackLabel(currentTrackId)}${trackDesc(currentTrackId) ? " · " + trackDesc(currentTrackId) : ""}`;
+    }
+
+    // If no tracks provided, hide the picker entirely
+    const box = $("#fei-track-box");
+    if (box) {
+      const multi = !!(TRACKS && trackIds.length >= 2);
+      box.style.display = multi ? "block" : "none";
+    }
+  }
+
+  function setTrack(tid) {
+    if (TRACKS && !TRACKS[tid]) return;
+    currentTrackId = tid;
+    localStorage.setItem(KEY_TRACK, tid);
+
+    CURRICULUM = getCurriculumFor(currentTrackId);
+    loadState(); // load state for this track
+    updateTrackUI();
+
+    // Update progress text immediately
+    $("#progress-display").textContent = `${state.completed.length}/${total()} Credits`;
+
+    // If already inside map, rerender
+    if (!$("#fei-map-view").classList.contains("fei-hidden")) {
+      $("#display-name").textContent = state.name || "Student";
+      renderMap();
+    }
+  }
+
   function showMap() {
     $("#fei-cover").classList.add("fei-hidden");
     $("#fei-map-view").classList.remove("fei-hidden");
@@ -157,6 +293,7 @@
     const name = ($("#reg-name").value || "").trim();
     if (!name) return alert("Please enter your name.");
     state.name = name;
+    saveName(name);
     saveState();
     showMap();
   }
@@ -165,7 +302,7 @@
     const container = $("#map-container");
     container.querySelectorAll(".fei-node-row").forEach((n) => n.remove());
 
-    $("#progress-display").textContent = `${state.completed.length}/${TOTAL} Credits`;
+    $("#progress-display").textContent = `${state.completed.length}/${total()} Credits`;
 
     if (!CURRICULUM.length) {
       const row = document.createElement("div");
@@ -230,8 +367,8 @@
   function switchTab(tabName) {
     $$(".fei-tab").forEach((t) => t.classList.remove("active"));
     $$(".fei-view").forEach((v) => v.classList.remove("active"));
-    root.querySelector(`.fei-tab[data-tab="${tabName}"]`)?.classList.add("active");
-    $(`#tab-${tabName}`)?.classList.add("active");
+    root.querySelector(\`.fei-tab[data-tab="\${tabName}"]\`)?.classList.add("active");
+    $(\`#tab-\${tabName}\`)?.classList.add("active");
   }
 
   function closeModal() {
@@ -287,7 +424,7 @@
 
     // critical + mission
     $("#m-critical-text").textContent = level.criticalThinking || "";
-    $("#m-mission-text").innerHTML = level.mission || ""; // important: keeps <strong>
+    $("#m-mission-text").innerHTML = level.mission || ""; // keeps <strong>
     renderQuiz(level);
   }
 
@@ -347,7 +484,7 @@
 
       if (!state.completed.includes(currentLevelId)) {
         state.completed.push(currentLevelId);
-        state.unlocked = Math.max(state.unlocked, Math.min(TOTAL, currentLevelId + 1));
+        state.unlocked = Math.max(state.unlocked, Math.min(total(), currentLevelId + 1));
         saveState();
         renderMap();
         setTimeout(closeModal, 700);
@@ -364,6 +501,16 @@
     $("#btn-submit").addEventListener("click", handleSubmit);
 
     $$(".fei-tab").forEach((btn) => btn.addEventListener("click", () => switchTab(btn.dataset.tab)));
+
+    // Track selection
+    $$(".fei-track-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tid = btn.dataset.track;
+        // If in single curriculum mode, ignore track switching
+        if (!TRACKS) return;
+        setTrack(tid);
+      });
+    });
 
     // click outside modal to close
     $("#fei-modal").addEventListener("click", (e) => {
@@ -383,7 +530,19 @@
 
   // ----- init
   loadState();
+
+  // preload name into input
+  const savedName = loadName();
+  const nameInput = $("#reg-name");
+  if (nameInput && savedName && !nameInput.value) nameInput.value = savedName;
+
+  // Track UI
+  updateTrackUI();
+
   bind();
-  if (state.name) showMap();
+
+  // Only auto-enter map if user has a name AND has previously selected a track (in track mode)
+  const hasTrackSelection = !!localStorage.getItem(KEY_TRACK);
+  if (state.name && (!TRACKS || hasTrackSelection)) showMap();
   renderMap();
 })();
