@@ -1,5 +1,5 @@
 // ====== Curriculum (20 Sessions) ======
-    const CURRICULUM = [
+    const FEI_ART_HISTORY_CURRICULUM = [
       /* ===========================
          20 sessions content (as you provided)
          =========================== */
