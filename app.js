@@ -1,14 +1,13 @@
-/* app.js — FEI Art History Journey (Tracks-enabled, stable, Webflow-friendly)
-   - supports Track picker (Western / China) via window.FEI_ART_HISTORY_TRACKS
-   - keeps your original UI + modal + map, only adds a tiny catalog on cover
-   - saves progress per track (no mixing)
+/* app.js — FEI Art History Journey (Wheel + Tracks, stable, Webflow-friendly)
+   - loads tracks from window.FEI_ART_HISTORY_TRACKS (curriculum.js)
+   - injects all HTML into #fei-art-history
+   - shows ALL lesson themes at once (wheel map, no scroll)
+   - saves per-track progress in localStorage
 */
 (function () {
   "use strict";
 
   const ROOT_ID = "fei-art-history";
-
-  // Base storage key (do NOT change unless you want to reset everyone)
   const KEY_BASE = "fei_art_history_fresh_2026";
   const KEY_NAME = KEY_BASE + ":name";
   const KEY_TRACK = KEY_BASE + ":track";
@@ -17,59 +16,41 @@
   const root = document.getElementById(ROOT_ID);
   if (!root) return;
 
-  // prevent double init if script injected twice
   if (root.dataset.feiInit === "1") return;
   root.dataset.feiInit = "1";
 
-  // ----- tracks + curriculum source
+  // ----- tracks
   const TRACKS =
     (window.FEI_ART_HISTORY_TRACKS && typeof window.FEI_ART_HISTORY_TRACKS === "object")
       ? window.FEI_ART_HISTORY_TRACKS
       : null;
 
   const trackIds = TRACKS ? Object.keys(TRACKS) : [];
+  const defaultTrackId = TRACKS ? (trackIds.includes("western") ? "western" : trackIds[0]) : "default";
 
-  function getDefaultTrackId() {
-    if (TRACKS && trackIds.length) return trackIds.includes("western") ? "western" : trackIds[0];
-    return "default";
-  }
+  let currentTrackId = localStorage.getItem(KEY_TRACK) || defaultTrackId;
 
-  let currentTrackId = localStorage.getItem(KEY_TRACK) || getDefaultTrackId();
+  function stateKeyFor(trackId) { return KEY_BASE + ":" + trackId; }
 
   function getCurriculumFor(trackId) {
-    // New multi-track mode
-    if (TRACKS && TRACKS[trackId] && Array.isArray(TRACKS[trackId].lessons)) {
-      return TRACKS[trackId].lessons;
-    }
-    // Fallback old single curriculum mode
-    if (Array.isArray(window.FEI_ART_HISTORY_CURRICULUM)) {
-      return window.FEI_ART_HISTORY_CURRICULUM;
-    }
+    if (TRACKS && TRACKS[trackId] && Array.isArray(TRACKS[trackId].lessons)) return TRACKS[trackId].lessons;
+    // fallback old single mode
+    if (Array.isArray(window.FEI_ART_HISTORY_CURRICULUM)) return window.FEI_ART_HISTORY_CURRICULUM;
     return [];
   }
 
   let CURRICULUM = getCurriculumFor(currentTrackId);
+  const total = () => (CURRICULUM.length || 20);
 
-  function total() {
-    return CURRICULUM.length || 20;
-  }
-
-  function stateKeyFor(trackId) {
-    return KEY_BASE + ":" + trackId;
-  }
+  const trackLabel = (tid) => (TRACKS && TRACKS[tid] && TRACKS[tid].label) ? TRACKS[tid].label : (tid === "china" ? "Chinese Art History" : "Western Art History");
+  const trackDesc  = (tid) => (TRACKS && TRACKS[tid] && TRACKS[tid].desc) ? TRACKS[tid].desc : "";
 
   // ----- state
   let state = { name: "", unlocked: 1, completed: [] };
   let currentLevelId = null;
 
-  function saveName(name) {
-    localStorage.setItem(KEY_NAME, name);
-  }
-
-  function loadName() {
-    const n = localStorage.getItem(KEY_NAME);
-    return typeof n === "string" ? n : "";
-  }
+  function saveName(name){ localStorage.setItem(KEY_NAME, name); }
+  function loadName(){ const n = localStorage.getItem(KEY_NAME); return typeof n === "string" ? n : ""; }
 
   function saveState() {
     localStorage.setItem(stateKeyFor(currentTrackId), JSON.stringify(state));
@@ -78,63 +59,51 @@
   function loadState() {
     try {
       const raw = localStorage.getItem(stateKeyFor(currentTrackId));
-      let parsed = null;
-      if (raw) parsed = JSON.parse(raw);
-
+      const parsed = raw ? JSON.parse(raw) : null;
       const savedName = loadName();
 
       state = {
-        name:
-          (parsed && typeof parsed.name === "string" && parsed.name) ||
-          savedName ||
-          "",
+        name: (parsed && typeof parsed.name === "string" && parsed.name) || savedName || "",
         unlocked: Math.max(1, Math.min(total(), Number(parsed && parsed.unlocked) || 1)),
         completed: Array.isArray(parsed && parsed.completed)
-          ? parsed.completed
-              .map((n) => Number(n))
-              .filter(Number.isFinite)
-              .filter((n) => n >= 1 && n <= total())
+          ? parsed.completed.map(Number).filter(Number.isFinite).filter(n => n >= 1 && n <= total())
           : [],
       };
     } catch (e) {
-      const savedName = loadName();
-      state = { name: savedName || "", unlocked: 1, completed: [] };
+      state = { name: loadName() || "", unlocked: 1, completed: [] };
     }
   }
 
   function resetApp() {
     if (!confirm("Reset your Art History Journey?")) return;
-    // wipe everything (name + track selection + all track states)
     localStorage.removeItem(KEY_NAME);
     localStorage.removeItem(KEY_TRACK);
-    if (TRACKS && trackIds.length) {
-      trackIds.forEach((tid) => localStorage.removeItem(stateKeyFor(tid)));
-    } else {
-      localStorage.removeItem(stateKeyFor(currentTrackId));
-    }
+    if (TRACKS && trackIds.length) trackIds.forEach(tid => localStorage.removeItem(stateKeyFor(tid)));
+    else localStorage.removeItem(stateKeyFor(currentTrackId));
     location.reload();
   }
 
-  // ----- HTML skeleton (injected)
-  // NOTE: we only add a small "Track Picker" block inside the cover card.
+  // ----- HTML (injected)
   root.innerHTML = `
   <div id="fei-art-system">
     <div id="fei-cover" class="fei-fullscreen">
       <div class="fei-login-card">
         <div class="fei-brand-tag">LFC CLASSICS</div>
         <h1>Art History Journey</h1>
-        <p id="fei-subtitle">Reference-First Studio • Pre-1945</p>
+        <p id="fei-subtitle">Choose a track, then enter.</p>
 
-        <!-- Track Picker (new, tiny) -->
-        <div id="fei-track-box" style="margin:16px 0 10px; text-align:left;">
-          <div style="font-size:11px; letter-spacing:2px; color:#666; font-weight:700; margin-bottom:10px;">
-            CHOOSE A TRACK
+        <div id="fei-track-box">
+          <div class="fei-track-grid">
+            <button type="button" class="fei-track-card fei-track-btn" data-track="western">
+              <div class="t">Western Art History</div>
+              <div class="s">Prehistoric → Contemporary</div>
+            </button>
+            <button type="button" class="fei-track-card fei-track-btn" data-track="china">
+              <div class="t">Chinese Art History</div>
+              <div class="s">Ritual → Ink → Contemporary</div>
+            </button>
           </div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <button type="button" class="fei-resource-link fei-track-btn" data-track="western">Western Art History</button>
-            <button type="button" class="fei-resource-link fei-track-btn" data-track="china">Chinese Art History</button>
-          </div>
-          <div id="fei-track-hint" style="margin-top:10px; font-size:11px; color:#666;"></div>
+          <div class="fei-track-hint" id="fei-track-hint"></div>
         </div>
 
         <div class="fei-login-form">
@@ -142,15 +111,6 @@
           <input type="text" id="reg-name" placeholder="Enter name...">
           <button id="btn-start" class="fei-btn-black">ENTER CLASSROOM</button>
         </div>
-
-        <style>
-          /* small selection highlight, scoped inside this component */
-          #${ROOT_ID} .fei-track-btn.fei-track-selected{
-            background:#000 !important;
-            color:#fff !important;
-            border-color:#000 !important;
-          }
-        </style>
       </div>
     </div>
 
@@ -167,10 +127,11 @@
       </div>
 
       <div class="fei-map-scroll">
-        <div class="fei-path-container" id="map-container">
-          <svg id="path-svg"></svg>
+        <div class="fei-path-container">
+          <div id="map-container">
+            <svg id="path-svg"></svg>
+          </div>
         </div>
-        <div class="fei-footer-spacer"></div>
       </div>
     </div>
 
@@ -226,60 +187,41 @@
   </div>
   `;
 
-  // ----- helpers scoped inside root
   const $ = (sel) => root.querySelector(sel);
   const $$ = (sel) => Array.from(root.querySelectorAll(sel));
 
-  function trackLabel(tid) {
-    if (TRACKS && TRACKS[tid] && TRACKS[tid].label) return TRACKS[tid].label;
-    return tid === "western" ? "Western Art History" : tid === "china" ? "Chinese Art History" : "Art History";
-  }
+  function updateTrackUI(){
+    const box = $("#fei-track-box");
+    if (!box) return;
 
-  function trackDesc(tid) {
-    if (TRACKS && TRACKS[tid] && TRACKS[tid].desc) return TRACKS[tid].desc;
-    return "";
-  }
+    // 如果没提供 TRACKS，就隐藏目录（兼容旧模式）
+    if (!TRACKS || trackIds.length < 2){
+      box.style.display = "none";
+      return;
+    }
 
-  function updateTrackUI() {
-    const hint = $("#fei-track-hint");
-    const buttons = $$(".fei-track-btn");
+    // 更新按钮文字
+    $$(".fei-track-btn").forEach(btn => {
+      const tid = btn.dataset.track;
+      const t = btn.querySelector(".t");
+      const s = btn.querySelector(".s");
+      if (t) t.textContent = trackLabel(tid);
+      if (s) s.textContent = trackDesc(tid) || (tid === "china" ? "Ritual → Ink → Contemporary" : "Prehistoric → Contemporary");
 
-    buttons.forEach((b) => {
-      b.classList.toggle("fei-track-selected", b.dataset.track === currentTrackId);
-      // If labels exist in TRACKS, use them
-      const tid = b.dataset.track;
-      if (TRACKS && TRACKS[tid] && TRACKS[tid].label) b.textContent = TRACKS[tid].label;
+      btn.classList.toggle("selected", tid === currentTrackId);
     });
 
-    if (hint) {
-      hint.textContent = `Selected: ${trackLabel(currentTrackId)}${trackDesc(currentTrackId) ? " · " + trackDesc(currentTrackId) : ""}`;
-    }
-
-    // If no tracks provided, hide the picker entirely
-    const box = $("#fei-track-box");
-    if (box) {
-      const multi = !!(TRACKS && trackIds.length >= 2);
-      box.style.display = multi ? "block" : "none";
-    }
+    const hint = $("#fei-track-hint");
+    if (hint) hint.textContent = `Selected: ${trackLabel(currentTrackId)}`;
   }
 
-  function setTrack(tid) {
+  function setTrack(tid){
     if (TRACKS && !TRACKS[tid]) return;
     currentTrackId = tid;
     localStorage.setItem(KEY_TRACK, tid);
-
     CURRICULUM = getCurriculumFor(currentTrackId);
-    loadState(); // load state for this track
+    loadState();
     updateTrackUI();
-
-    // Update progress text immediately
-    $("#progress-display").textContent = `${state.completed.length}/${total()} Credits`;
-
-    // If already inside map, rerender
-    if (!$("#fei-map-view").classList.contains("fei-hidden")) {
-      $("#display-name").textContent = state.name || "Student";
-      renderMap();
-    }
   }
 
   function showMap() {
@@ -298,77 +240,118 @@
     showMap();
   }
 
+  // ------- WHEEL MAP (no scroll)
+  function ringPlan(n){
+    if (n <= 20) return [n];
+    if (n <= 36) return [20, n - 20];
+    // 如果你未来疯到 50+，也能撑一下：三环
+    return [20, 16, n - 36];
+  }
+
   function renderMap() {
     const container = $("#map-container");
-    container.querySelectorAll(".fei-node-row").forEach((n) => n.remove());
+    const svg = $("#path-svg");
+
+    // 清空旧节点/中心块（保留 svg）
+    container.querySelectorAll(".fei-wheel-node, .fei-wheel-center").forEach(el => el.remove());
+    svg.innerHTML = "";
 
     $("#progress-display").textContent = `${state.completed.length}/${total()} Credits`;
 
     if (!CURRICULUM.length) {
-      const row = document.createElement("div");
-      row.className = "fei-node-row";
-      row.innerHTML = `<div class="fei-node-card unlocked">
-        <div class="fei-node-num">!</div>
-        <h4>Curriculum Not Loaded</h4>
-        <p>Please check curriculum.js</p>
-      </div>`;
-      container.appendChild(row);
+      const c = document.createElement("div");
+      c.className = "fei-wheel-center";
+      c.innerHTML = `
+        <div class="title">Curriculum Not Loaded</div>
+        <p class="sub">Please check curriculum.js</p>
+        <div class="pill">0/0</div>
+      `;
+      container.appendChild(c);
       return;
     }
 
-    CURRICULUM.forEach((level) => {
-      const row = document.createElement("div");
-      row.className = "fei-node-row";
+    // center card
+    const center = document.createElement("div");
+    center.className = "fei-wheel-center";
+    center.innerHTML = `
+      <div class="title">${trackLabel(currentTrackId)}</div>
+      <p class="sub">${trackDesc(currentTrackId) || ""}</p>
+      <div class="pill">${state.completed.length}/${total()} Credits</div>
+    `;
+    container.appendChild(center);
 
-      const card = document.createElement("div");
-      card.className = "fei-node-card";
+    // layout geometry
+    const rect = container.getBoundingClientRect();
+    const w = rect.width || 900;
+    const h = rect.height || 650;
+    const cx = w / 2;
+    const cy = h / 2;
 
-      const isUnlocked = level.id <= state.unlocked;
-      const isDone = state.completed.includes(level.id);
+    const plan = ringPlan(total());
+    const radii = [];
 
-      if (isDone) card.classList.add("completed");
-      else if (isUnlocked) card.classList.add("unlocked");
-      else card.classList.add("locked");
+    // outer ring radius
+    const outer = Math.min(w, h) * 0.38;
+    radii.push(outer);
 
-      card.innerHTML = `<div class="fei-node-num">${level.id}</div><h4>${level.title}</h4><p>${level.era}</p>`;
-      card.addEventListener("click", () => {
-        if (isUnlocked) openLevel(level);
-      });
+    if (plan.length >= 2) radii.push(Math.min(w, h) * 0.26);
+    if (plan.length >= 3) radii.push(Math.min(w, h) * 0.18);
 
-      row.appendChild(card);
-      container.appendChild(row);
+    // draw ring guides
+    radii.forEach((r) => {
+      svg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="#000" stroke-width="1" stroke-dasharray="4,4" fill="none" opacity="0.10" />`;
     });
 
-    setTimeout(drawPath, 120);
-  }
+    // place nodes
+    let idx = 0;
+    plan.forEach((count, ringIdx) => {
+      const r = radii[ringIdx] || radii[0];
+      const startAngle = -90; // start at top
 
-  function drawPath() {
-    const svg = $("#path-svg");
-    const container = $("#map-container");
-    const cards = container.querySelectorAll(".fei-node-card");
-    if (!cards.length) return;
+      for (let i = 0; i < count; i++) {
+        const lesson = CURRICULUM[idx];
+        if (!lesson) break;
 
-    const cRect = container.getBoundingClientRect();
-    const h = container.scrollHeight || cRect.height;
-    svg.setAttribute("height", String(h));
-    svg.style.height = h + "px";
+        const angle = (startAngle + (360 / count) * i) * (Math.PI / 180);
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
 
-    let d = "";
-    cards.forEach((card, i) => {
-      const rect = card.getBoundingClientRect();
-      const x = rect.left + rect.width / 2 - cRect.left;
-      const y = rect.top + rect.height / 2 - cRect.top + container.scrollTop;
-      d += i === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`;
+        const node = document.createElement("div");
+        node.className = `fei-wheel-node ring-${ringIdx + 1}`;
+
+        const isUnlocked = lesson.id <= state.unlocked;
+        const isDone = state.completed.includes(lesson.id);
+
+        if (isDone) node.classList.add("completed");
+        else if (isUnlocked) node.classList.add("unlocked");
+        else node.classList.add("locked");
+
+        node.style.left = x + "px";
+        node.style.top = y + "px";
+
+        node.innerHTML = `
+          <div class="fei-node-num">${lesson.id}</div>
+          <h4>${lesson.title || ""}</h4>
+          <p>${lesson.era || ""}</p>
+        `;
+
+        node.addEventListener("click", () => {
+          if (!isUnlocked) return;
+          openLevel(lesson);
+        });
+
+        container.appendChild(node);
+        idx++;
+      }
     });
-
-    svg.innerHTML = `<path d="${d}" stroke="#000" stroke-width="1" stroke-dasharray="4,4" fill="none" opacity="0.2" />`;
   }
 
+  // ------- modal / tabs (keep your logic)
   function switchTab(tabName) {
     $$(".fei-tab").forEach((t) => t.classList.remove("active"));
     $$(".fei-view").forEach((v) => v.classList.remove("active"));
-    root.querySelector(\`.fei-tab[data-tab="\${tabName}"]\`)?.classList.add("active");
-    $(\`#tab-\${tabName}\`)?.classList.add("active");
+    root.querySelector(`.fei-tab[data-tab="${tabName}"]`)?.classList.add("active");
+    $(`#tab-${tabName}`)?.classList.add("active");
   }
 
   function closeModal() {
@@ -385,7 +368,6 @@
     $("#m-title").textContent = level.title || "";
     $("#m-era").textContent = level.era || "";
 
-    // video
     const videoBox = $("#m-video-box");
     if (level.videoUrl) {
       videoBox.innerHTML = `
@@ -401,30 +383,19 @@
       videoBox.style.display = "none";
     }
 
-    // lecture
     $("#m-lecture-content").innerHTML = level.lecture || "";
 
-    // images
     $("#m-images").innerHTML = (level.images || [])
-      .map(
-        (src) => `<div class="fei-img-box">
-          <img src="${src}" loading="lazy" referrerpolicy="no-referrer"
-          onerror="this.style.opacity='0.2';" />
-        </div>`
-      )
-      .join("");
+      .map((src) => `<div class="fei-img-box">
+        <img src="${src}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.opacity='0.2';" />
+      </div>`).join("");
 
-    // resources
     $("#m-resources").innerHTML = (level.resources || [])
-      .map(
-        (r) =>
-          `<a href="${r.url}" target="_blank" rel="noopener" class="fei-resource-link">📚 ${r.name} ➔</a>`
-      )
+      .map((r) => `<a href="${r.url}" target="_blank" rel="noopener" class="fei-resource-link">📚 ${r.name} ➔</a>`)
       .join("");
 
-    // critical + mission
     $("#m-critical-text").textContent = level.criticalThinking || "";
-    $("#m-mission-text").innerHTML = level.mission || ""; // keeps <strong>
+    $("#m-mission-text").innerHTML = level.mission || "";
     renderQuiz(level);
   }
 
@@ -480,7 +451,7 @@
 
     const fb = $("#m-feedback");
     if (correct >= PASS_SCORE) {
-      fb.innerHTML = `<div style="background:#E8F8F5; color:#27AE60; padding:15px; border-radius:8px; margin-top:20px; font-weight:bold;">Passed! Credit Earned.</div>`;
+      fb.innerHTML = `<div style="background:#E8F8F5; color:#27AE60; padding:15px; border-radius:10px; margin-top:20px; font-weight:900;">Passed! Credit Earned.</div>`;
 
       if (!state.completed.includes(currentLevelId)) {
         state.completed.push(currentLevelId);
@@ -490,7 +461,7 @@
         setTimeout(closeModal, 700);
       }
     } else {
-      fb.innerHTML = `<div style="background:#FDEDEC; color:#C0392B; padding:15px; border-radius:8px; margin-top:20px; font-weight:bold;">Score: ${correct}/${(level.quiz || []).length}. Try again.</div>`;
+      fb.innerHTML = `<div style="background:#FDEDEC; color:#C0392B; padding:15px; border-radius:10px; margin-top:20px; font-weight:900;">Score: ${correct}/${(level.quiz || []).length}. Try again.</div>`;
     }
   }
 
@@ -499,20 +470,17 @@
     $("#btn-reset").addEventListener("click", resetApp);
     $("#btn-close").addEventListener("click", closeModal);
     $("#btn-submit").addEventListener("click", handleSubmit);
-
     $$(".fei-tab").forEach((btn) => btn.addEventListener("click", () => switchTab(btn.dataset.tab)));
 
     // Track selection
     $$(".fei-track-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const tid = btn.dataset.track;
-        // If in single curriculum mode, ignore track switching
         if (!TRACKS) return;
-        setTrack(tid);
+        setTrack(btn.dataset.track);
       });
     });
 
-    // click outside modal to close
+    // click outside modal
     $("#fei-modal").addEventListener("click", (e) => {
       if (e.target === $("#fei-modal")) closeModal();
     });
@@ -524,25 +492,21 @@
       }
     });
 
-    window.addEventListener("resize", () => setTimeout(drawPath, 120));
-    root.querySelector(".fei-map-scroll")?.addEventListener("scroll", () => drawPath(), { passive: true });
+    window.addEventListener("resize", () => setTimeout(renderMap, 120));
   }
 
   // ----- init
   loadState();
+  updateTrackUI();
 
-  // preload name into input
   const savedName = loadName();
   const nameInput = $("#reg-name");
   if (nameInput && savedName && !nameInput.value) nameInput.value = savedName;
 
-  // Track UI
-  updateTrackUI();
-
   bind();
 
-  // Only auto-enter map if user has a name AND has previously selected a track (in track mode)
+  // 如果用户之前选过 track 且有名字，就直接进地图
   const hasTrackSelection = !!localStorage.getItem(KEY_TRACK);
   if (state.name && (!TRACKS || hasTrackSelection)) showMap();
-  renderMap();
+  else renderMap(); // 预渲染一次（不进地图也没事）
 })();
