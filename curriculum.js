@@ -484,17 +484,19 @@ window.FEI_ART_HISTORY_TRACKS = {
       { q: "Brushstrokes?", opts: ["Smooth", "Splatter", "Quick dabs"], ans: 2 },
       { q: "Cubism?", opts: ["Ideal", "Realist", "Shattered geometry"], ans: 2 },
       { q: "What is important?", opts: ["Idea/Concept", "Price", "Politics"], ans: 0 }
-    ]
-  }，
-      china: {
+    ],
+  },
+      
+  china: {
     label: "Chinese Art History",
     desc: "From Prehistoric ritual to Contemporary ink & concept",
     lessons: [
       // ✅ 先放 1–5 节也行，后面再加到 20+
       // { id: 1, title: "...", ... },
-    ]
-  }    
+    ],
+  },  
 };
 
 // （可选）兼容旧 app.js：如果你还在用“只读一个数组”的旧版本，才打开下面这行
-// window.FEI_ART_HISTORY_CURRICULUM = window.FEI_ART_HISTORY_TRACKS.western.lessons;
+ window.FEI_ART_HISTORY_CURRICULUM = window.FEI_ART_HISTORY_TRACKS.western.lessons;
+})();
