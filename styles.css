@@ -28,7 +28,7 @@
   background:
     linear-gradient(90deg, rgba(226,209,249,0.75) 0%, rgba(155,235,235,0.75) 100%),
     /* 这里换成你想用的封面图 URL（Webflow 或 GitHub 都行） */
-    url("https://cdn.prod.website-files.com/67b17a6580f358f0c7dd29f4/699f5c6b1b0802987e7968b0_ChatGPT%20Image%20Feb%2025%2C%202026%2C%2012_32_12%20PM.png") center/cover no-repeat;
+    url("https://cdn.prod.website-files.com/67b17a6580f358f0c7dd29f4/699f6c04fb970aa3b1e0b6f8_Voyage%20a%CC%80%20travers%20l%27art%20histoire.png") center/cover no-repeat;
 }
 
 .fei-fullscreen {
