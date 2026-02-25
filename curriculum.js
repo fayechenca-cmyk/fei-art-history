@@ -4,9 +4,8 @@ window.FEI_ART_HISTORY_TRACKS = {
     label: "Western Art History",
     desc: "From Prehistoric to Contemporary (global influence track)",
     lessons: [
-      /* ===========================
-         20 sessions content (as you provided)
-         =========================== */
+      // 你现有的 1–20 课内容粘在这里（保持每个对象之间用英文逗号 , 分隔）
+      // 
       {
         id: 1, title: "The Dawn of Art (Prehistoric)", era: "30,000 BCE - 2,000 BCE",
         videoUrl: "https://www.youtube.com/embed/ZjejoT1gFOc",
@@ -497,5 +496,5 @@ window.FEI_ART_HISTORY_TRACKS = {
   }    
 };
 
-// ✅ 关键：你当前的 app.js 只认这个数组
-window.FEI_ART_HISTORY_CURRICULUM = window.FEI_ART_HISTORY_TRACKS.western.lessons;
+// （可选）兼容旧 app.js：如果你还在用“只读一个数组”的旧版本，才打开下面这行
+// window.FEI_ART_HISTORY_CURRICULUM = window.FEI_ART_HISTORY_TRACKS.western.lessons;
