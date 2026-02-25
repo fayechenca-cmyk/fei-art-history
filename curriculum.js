@@ -1,5 +1,9 @@
-// ====== Curriculum (20 Sessions) ======
-    window.FEI_ART_HISTORY_CURRICULUM = [
+// curriculum.js
+window.FEI_ART_HISTORY_TRACKS = {
+  western: {
+    label: "Western Art History",
+    desc: "From Prehistoric to Contemporary (global influence track)",
+    lessons: [
       /* ===========================
          20 sessions content (as you provided)
          =========================== */
@@ -79,7 +83,7 @@
     id: 4, 
     title: "Ancient Greece: The Ideal Human", 
     era: "900 BCE - 30 BCE",
-    videoUrl: "https://www.youtube.com/embed/gt-hQkE2Tus", 
+    videoUrl: "https://www.youtube.com/embed/o5gGeZ--TGo", 
     lecture: "<h3>Man is the Measure of All Things</h3><p>Unlike the Egyptians who focused on the afterlife and gods, the Ancient Greeks focused on humanity. They believed that studying human beings and the natural world was the path to understanding the divine. This philosophy is called <strong>Humanism</strong>.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Mathematical Beauty:</strong> The Greeks believed that beauty was not subjective; it was based on strict mathematical ratios and proportions (like the Golden Ratio). This is visible in both their perfect statues and the architecture of temples like the <em>Parthenon</em>.</li><li><strong>The Invention of Contrapposto:</strong> In the Classical period, artists figured out how to make statues look truly alive. Instead of standing stiff and straight, statues were carved with their weight shifted onto one leg. This creates a relaxed, natural 'S-curve' in the spine and hips called <em>Contrapposto</em> (counter-pose).</li><li><strong>Evolution of Style:</strong> Greek art evolved rapidly. It started stiff and geometric (Archaic period), moved to perfect and calm ideal beauty (Classical period), and ended with highly emotional, dramatic, and realistic action (Hellenistic period).</li><li><strong>Pottery as Canvas:</strong> Because most Greek wall paintings were destroyed over time, we study their painting techniques through their pottery, specifically the intricate 'Black-Figure' and 'Red-Figure' vases.</li></ul>",
     criticalThinking: "For centuries, people believed Greek statues were made of pure, elegant white marble, and modern museums display them that way. However, scientists have recently proven that the Greeks actually painted their statues in bright, loud, almost cartoonish colors—the paint just wore off over 2,000 years. How does knowing this change your perception of 'classical elegance'?",
     mission: "<strong>The Contrapposto Line Study:</strong> Stand in front of a mirror with your feet together and your weight perfectly balanced. Notice how straight your spine is. Now, shift all your weight onto your right leg and let your left knee bend. Look at what happens to your shoulders and hips—they tilt! On a piece of paper, draw two stick figures: one standing stiff, and one showing the tilted shoulders and 'S' curve spine of the Contrapposto pose.",
@@ -103,7 +107,7 @@
     id: 5, 
     title: "Ancient Rome: Engineering the Empire", 
     era: "509 BCE - 476 CE",
-    videoUrl: "https://www.youtube.com/embed/JUoE4GIO2M0", 
+    videoUrl: "https://www.youtube.com/watch?v=BbcJh3uvax0", 
     lecture: "<h3>Practical Power</h3><p>While the Greeks were philosophers and poets seeking perfect beauty, the Romans were engineers, soldiers, and politicians. They conquered the known world, and their art and architecture were designed to organize, control, and display that massive power.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>The Arch and Concrete:</strong> The Greeks used a 'post-and-lintel' system (straight columns holding up a flat roof). The Romans perfected the <strong>rounded arch</strong> and invented <strong>concrete</strong>. This allowed them to build massive, open interior spaces like the <em>Pantheon</em> and enormous public arenas like the <em>Colosseum</em>.</li><li><strong>Verism (Hyper-Realism):</strong> In the Roman Republic, politicians wanted to look wise, experienced, and hard-working. Roman sculptors used a style called <strong>Verism</strong>—they emphasized every wrinkle, bald spot, and wart to show that the person had worked a long, hard life for the Republic.</li><li><strong>Art as Propaganda:</strong> Emperors like Augustus used art as mass media. Statues of Augustus were sent to every corner of the empire to show him as a forever-young, god-like leader, reminding citizens who was in charge.</li><li><strong>Public Works:</strong> Roman art wasn't just for temples; it was highly practical. They built sprawling aqueducts to carry fresh water, public bathhouses, and paved roads that connected the empire.</li></ul>",
     criticalThinking: "Look at a 'Veristic' portrait of a Roman Senator and compare it to a modern political campaign poster. Why did Roman politicians want to look old and exhausted, while modern politicians use Photoshop to look young and flawless?",
     mission: "<strong>The Arch Architecture Challenge:</strong> Find a set of rectangular building blocks (or use thick hardcover books). Try to stack the blocks in a curved arch shape. Notice how the pieces push against each other, locking together to hold the weight. This is the secret to Roman engineering.",
@@ -127,7 +131,7 @@
     id: 6, 
     title: "Byzantine: Heaven on Earth", 
     era: "330 CE - 1453 CE",
-    videoUrl: "https://www.youtube.com/embed/It3i-dKGZVU", 
+    videoUrl: "https://www.youtube.com/watch?v=0leET9HyUjI", 
     lecture: "<h3>The Spiritual Realm</h3><p>When the Roman Empire split, the eastern half headquartered in Constantinople survived for another thousand years. Here, artists completely abandoned the realism of the Greeks and Romans. Art was about the spiritual, eternal world of Heaven.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Rejection of Realism:</strong> Byzantine figures don't look like real people. They are intentionally drawn as flat, elongated, and stiff, with tiny feet that point downward so they appear to be floating.</li><li><strong>The Gold Background:</strong> Instead of painting landscapes, artists placed figures against solid gold backgrounds. This removed the figures from earthly time and space, placing them in a timeless, divine realm.</li><li><strong>Mosaics as Light:</strong> The primary medium was the <strong>Mosaic</strong>. Artists used millions of tiny glass and gold tiles (called <em>tesserae</em>). When placed on the curved walls of churches, the uneven glass caught the candlelight, making the entire wall sparkle.</li><li><strong>Icons and Iconoclasm:</strong> Small painted wood panels of holy figures (Icons) were used for personal prayer. This led to a period of 'Iconoclasm' where thousands of artworks were destroyed because people feared they were being worshipped as idols.</li></ul>",
     criticalThinking: "Look closely at the mosaic of Emperor Justinian. He is the ruler of the empire, but he is depicted with a halo (like a saint) and standing in a blank, golden void. What does this image tell you about the Emperor's authority compared to God's authority?",
     mission: "<strong>The Tesserae Mosaic Study:</strong> Tear colored paper into small, relatively equal squares (your tesserae). Sketch a simple shape (like a star) on a blank page. Now, glue your paper squares down to fill the shape. Leave a tiny gap between each square so the background peeks through.",
@@ -151,7 +155,7 @@
     id: 7, 
     title: "Islamic Art: The Infinite Pattern", 
     era: "7th Century CE - 17th Century CE",
-    videoUrl: "https://www.youtube.com/embed/qia1z_lO8Hw", 
+    videoUrl: "https://www.youtube.com/watch?v=hVdaXZTFiII", 
     lecture: "<h3>Geometry, Plants, and the Word</h3><p>Islamic art developed a totally unique visual language driven by religious philosophy.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Aniconism (No Figures):</strong> To prevent the worship of idols, religious Islamic art generally avoids drawing human or animal figures. Instead, artists focused on abstract and non-representational art.</li><li><strong>Calligraphy as the Highest Art:</strong> Because the Quran is considered the literal word of God, writing it beautifully became the most sacred of all art forms.</li><li><strong>Complex Geometry:</strong> Islamic artists created incredibly complex, infinitely repeating geometric patterns. These symbolize the infinite, orderly, and unified nature of God and the universe.</li><li><strong>The Arabesque:</strong> Alongside hard geometry, artists used flowing, intertwining, leafy plant motifs called 'Arabesques.' These represent the abundance of nature and paradise.</li></ul>",
     criticalThinking: "In Islamic art, the highest form is Calligraphy. How does focusing on the written word rather than the human body change how a person experiences a religious space?",
     mission: "<strong>The Sacred Geometry Study:</strong> Using a compass (or tracing a cup), draw a circle. Now, draw six more circles of the same size around it, placing the edge of each new circle in the center of the first. Notice how the overlapping curves create flower petals.",
@@ -175,7 +179,7 @@
     id: 8, 
     title: "Romanesque: The Fortress of God", 
     era: "1000 CE - 1150 CE",
-    videoUrl: "https://www.youtube.com/embed/A8M5hIqO8S0", 
+    videoUrl: "https://www.youtube.com/watch?v=6_UvBLmdBMU", 
     lecture: "<h3>Pilgrimages and Heavy Stone</h3><p>As Europe stabilized around the year 1000, architects built huge new stone churches to accommodate massive crowds visiting sacred relics.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Roman-like Architecture:</strong> This style uses the Roman <strong>rounded arch</strong> and heavy stone masonry.</li><li><strong>The Fortress Look:</strong> To support heavy stone roofs, walls were massive and thick. Windows were tiny so the walls wouldn't collapse, making interiors dark.</li><li><strong>The Tympanum:</strong> Above the main doors was a semi-circular space called a tympanum. Artists carved terrifying relief sculptures here—usually the 'Last Judgment'—to remind the illiterate to behave.</li><li><strong>Reliquaries:</strong> Sacred relics were kept in ornate, jewel-encrusted gold containers called reliquaries.</li></ul>",
     criticalThinking: "Imagine you are a medieval farmer who cannot read. You stand before a massive stone church with a carving of demons eating sinners right above the door. How does this control your beliefs?",
     mission: "<strong>The Heavy Architecture Sketch:</strong> Sketch a church using thick, solid lines. Make the walls look wide, the windows tiny, and use rounded arches at the top.",
@@ -199,7 +203,7 @@
     id: 9, 
     title: "Gothic: Height and Light", 
     era: "1150 CE - 1450 CE",
-    videoUrl: "https://www.youtube.com/embed/nKSSBvB-eXg", 
+    videoUrl: "https://www.youtube.com/watch?v=5UT889YeCuo", 
     lecture: "<h3>Reaching for the Heavens</h3><p>Gothic was about stretching stone as high as possible and flooding the interior with divine light (<em>Lux Nova</em>).</p><p><strong>Key Concepts:</strong></p><ul><li><strong>The Pointed Arch:</strong> Pushes weight more directly downwards, allowing for taller ceilings.</li><li><strong>The Flying Buttress:</strong> Stone arms that stand outside the building and push back against the walls to hold them up.</li><li><strong>Skeletal Structure:</strong> Walls no longer needed to be thick stone; the building became a lightweight 'skeleton' of stone ribs.</li><li><strong>Stained Glass:</strong> Architects replaced solid stone with massive walls of stained glass, turning the church into a glowing jewel box.</li></ul>",
     criticalThinking: "If you were a medieval person stepping into the dazzling light of a Gothic cathedral for the first time, how would the architecture itself serve as a religious experience?",
     mission: "<strong>The Stained Glass Symmetry Study:</strong> Draw a large circle. Divide it into 8 equal slices. Draw a shape in one slice and mirror it perfectly into the other 7 to create a 'Rose Window.'",
@@ -223,7 +227,7 @@
     id: 10, 
     title: "Proto-Renaissance: The Awakening", 
     era: "1200 CE - 1400 CE",
-    videoUrl: "https://www.youtube.com/embed/1ofEwZ8Y3W8", 
+    videoUrl: "https://www.youtube.com/watch?v=Iirq69IBfCQ", 
     lecture: "<h3>Weight, Emotion, and Blue Skies</h3><p>Giotto di Bondone brought art back down to earth, planting the seeds for the Renaissance.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>End of Gold:</strong> Giotto painted a rich <strong>blue sky</strong>, moving stories into the real world.</li><li><strong>Gravity:</strong> Figures have heavy, bulky bodies modeled using early <strong>chiaroscuro</strong> (light and shadow).</li><li><strong>Human Emotion:</strong> Giotto painted angels screaming in agony and faces twisted in genuine, raw human grief.</li><li><strong>Fresco:</strong> Paintings done directly onto wet plaster walls so they literally become part of the wall.</li></ul>",
     criticalThinking: "How would seeing holy figures experiencing real human pain change how an average person connected with religion?",
     mission: "<strong>The Raw Emotion Study:</strong> Draw three simple faces. Try to make the first look mildly sad, the second heartbroken, and the third completely devastated just by the tilt of eyebrows and mouth.",
@@ -247,7 +251,7 @@
     id: 11, 
     title: "Early Renaissance: Discovery of Space", 
     era: "1400 CE - 1490 CE",
-    videoUrl: "https://www.youtube.com/embed/bkNMM8uiMww", 
+    videoUrl: "https://www.youtube.com/watch?v=IDCIXr17d-E", 
     lecture: "<h3>The Rebirth in Florence</h3><p>Renaissance means rebirth. This era brought back <strong>Humanism</strong>—the belief that the human experience is worth studying.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Linear Perspective:</strong> Mathematical system to create the illusion of 3D depth on a flat surface using a vanishing point.</li><li><strong>Masaccio:</strong> First to perfectly use linear perspective in a fresco.</li><li><strong>Donatello:</strong> Sculpted the first life-sized, free-standing nude statue (David) since Roman times.</li><li><strong>Brunelleschi:</strong> Engineered a revolutionary double-shell brick dome for the Florence Cathedral.</li></ul>",
     criticalThinking: "How does linear perspective silently make the human being the absolute center of the universe?",
     mission: "<strong>The 1-Point Perspective Room:</strong> Draw a vanishing point in the center of your page and use a ruler to draw a perfect 3D hallway.",
@@ -271,7 +275,7 @@
     id: 12, 
     title: "High Renaissance: The Masters", 
     era: "1490 CE - 1527 CE",
-    videoUrl: "https://www.youtube.com/embed/p_Fia6H3I0M", 
+    videoUrl: "https://www.youtube.com/watch?v=2oSpTXgPkQc", 
     lecture: "<h3>The Golden Age of Genius</h3><p>This era is defined by the 'holy trinity' of Leonardo, Michelangelo, and Raphael.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Universal Genius:</strong> Leonardo elevated art to a science, dissecting corpses to understand musculature.</li><li><strong>Pyramid Composition:</strong> Grouping subjects into a triangle shape for balance.</li><li><strong>Sfumato:</strong> Smoky, hazy transitions between light and shadow invented by Leonardo.</li><li><strong>Michelangelo's David:</strong> Perfectly combined Greek proportion with intense human psychology.</li></ul>",
     criticalThinking: "In the High Renaissance, artists were treated like celebrities. What does this tell us about how society's values changed?",
     mission: "<strong>The Sfumato Shading Study:</strong> Use your finger to smudge graphite to make a smooth, smoky transition on a drawing.",
@@ -295,7 +299,7 @@
     id: 13, 
     title: "Northern Renaissance: Oil and Detail", 
     era: "1400 CE - 1600 CE",
-    videoUrl: "https://www.youtube.com/embed/1_f-Bf0GDBs", 
+    videoUrl: "https://www.youtube.com/watch?v=EuzAbE-kPkM", 
     lecture: "<h3>The Magic of Oil Paint</h3><p>Northern artists were obsessed with microscopic detail and incredible textures, made possible by <strong>Oil Paint</strong>.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Translucent Glazes:</strong> Oil allowed artists to paint in dozens of see-through layers, creating colors that glowed.</li><li><strong>Detail vs. Proportion:</strong> Northern artists wanted to paint every single hair and every wrinkle exactly as it looked.</li><li><strong>Disguised Symbolism:</strong> Hiding religious messages inside everyday objects, like a dog symbolizing loyalty.</li><li><strong>Printmaking:</strong> Albrecht Dürer used woodblocks to make art affordable for the middle class.</li></ul>",
     criticalThinking: "How does the private setting of Northern art (homes) change how an artist paints compared to public churches?",
     mission: "<strong>The Texture Study:</strong> Draw just the 'highlight' of three different objects (metal, fabric, wood) to see how light reflects differently.",
@@ -319,7 +323,7 @@
     id: 14, 
     title: "Mannerism: Breaking the Rules", 
     era: "1520 CE - 1600 CE",
-    videoUrl: "https://www.youtube.com/embed/3M85g-D9YgI", 
+    videoUrl: "https://www.youtube.com/watch?v=BOKXbOyTYCk", 
     lecture: "<h3>The Art of Artifice</h3><p>Mannerists decided to be intentionally weird, elegant, and unnatural.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Artificiality:</strong> Mannerist art was meant to look highly constructed and artificial.</li><li><strong>Distorted Proportion:</strong> Necks and fingers were strangely long, twisted into <strong>figura serpentinata</strong>.</li><li><strong>Compressed Space:</strong> Chaotic, flattened spaces where figures are stacked on top of each other.</li><li><strong>Acidic Colors:</strong> Use of jarring, 'sour' colors like icy blues and neon pinks to create tension.</li></ul>",
     criticalThinking: "If the public already considers High Renaissance work 'perfect,' why might breaking the rules be a smart career move for a young artist?",
     mission: "<strong>The Spoon Distortion Study:</strong> Look at your reflection in a shiny spoon and sketch the distorted 'Mannerist' version of your face.",
@@ -343,7 +347,7 @@
     id: 15, 
     title: "Baroque: The Theater of Light", 
     era: "1600 CE - 1750 CE",
-    videoUrl: "https://www.youtube.com/embed/lA8sJm811zE", 
+    videoUrl: "https://www.youtube.com/watch?v=EFHPAbHaoqk&t=383s", 
     lecture: "<h3>Cinematic Drama</h3><p>The Baroque period was like an action movie, designed by the Catholic Church to emotionally overwhelm viewers.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Tenebrism:</strong> Pitch black backgrounds illuminated by a single, harsh spotlight.</li><li><strong>Dynamic Diagonals:</strong> Sharp diagonal lines used to create a feeling of violent motion.</li><li><strong>Frozen Action:</strong> Statues and paintings capture the exact split-second of intense action.</li><li><strong>Viewer Involved:</strong> Action seems to spill out of the canvas into your personal space.</li></ul>",
     criticalThinking: "Which strategy is more effective to convince a crowd: a written book or a massive, dramatic painting?",
     mission: "<strong>The Tenebrism Studio Study:</strong> Use a flashlight in a dark room to create deep shadows on your face and sketch the dramatic result.",
@@ -367,7 +371,7 @@
     id: 16, 
     title: "Rococo: Pastel Play", 
     era: "1715 CE - 1789 CE",
-    videoUrl: "https://www.youtube.com/embed/3Rbb_H098q8", 
+    videoUrl: "https://www.youtube.com/watch?v=GTmQEYCJrjY", 
     lecture: "<h3>The Bubble of Luxury</h3><p>Rococo was the light, carefree style of the French aristocracy right before the revolution.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Pastels:</strong> Soft pinks, baby blues, and mint greens with gold leaf.</li><li><strong>Fête Galante:</strong> Paintings of outdoor parties where aristocrats flirted in lush gardens.</li><li><strong>Frivolity:</strong> Art designed purely for pleasure, not moral lessons.</li><li><strong>The Brewing Storm:</strong> This carefree art existed while common people were starving, leading to the revolution.</li></ul>",
     criticalThinking: "Do you see parallels between Rococo 'fête galante' and how influencers curate their lives today?",
     mission: "<strong>The Pastel Atmosphere Study:</strong> Draw a garden using soft, scribbly motions instead of hard lines to create fluffy foliage.",
@@ -391,7 +395,7 @@
     id: 17, 
     title: "Neoclassicism: Reason", 
     era: "1750 CE - 1850 CE",
-    videoUrl: "https://www.youtube.com/embed/vO-lU65wO70", 
+    videoUrl: "https://www.youtube.com/watch?v=0_7BDc6vSHM", 
     lecture: "<h3>Duty to the State</h3><p>Neoclassicism brought a return to the strict logic of Ancient Rome and Greece to inspire citizens for the revolution.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Civic Duty:</strong> Art taught moral lessons about sacrificing personal life for the state.</li><li><strong>Invisible Brushstrokes:</strong> Perfectly smooth, razor-sharp outlines representing pure reason.</li><li><strong>Stage Sets:</strong> Staging paintings like Roman plays with severe architectural backgrounds.</li><li><strong>Architecture of Democracy:</strong> Linking new nations (like the US) to democratic ideals of the past.</li></ul>",
     criticalThinking: "Why would a political artist try to make a modern politician look like a religious martyr?",
     mission: "<strong>The Geometric Pose Study:</strong> Draw a human figure using only perfectly straight lines and sharp angles. No curves allowed.",
@@ -415,7 +419,7 @@
     id: 18, 
     title: "Romanticism: The Sublime", 
     era: "1780 CE - 1850 CE",
-    videoUrl: "https://www.youtube.com/embed/0X7eQyAty6E", 
+    videoUrl: "https://www.youtube.com/watch?v=pBiGVlTLO6Q", 
     lecture: "<h3>Feeling Over Logic</h3><p>Romanticism celebrated raw emotion and the overwhelming, terrifying power of nature.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>The Sublime:</strong> The feeling of awe mixed with terror when facing something larger than yourself (storms, oceans).</li><li><strong>Reaction to Industry:</strong> A longing for the untamed natural world away from dirty factories.</li><li><strong>Injustice:</strong> Painting the horrific, bloody realities of modern war and execution.</li><li><strong>Expressive Brushstrokes:</strong> Thick, swirling explosions of paint used to convey emotion.</li></ul>",
     criticalThinking: "Do you see similarities between Romantic fears of factory machines and modern fears of AI?",
     mission: "<strong>The Scale Study:</strong> Draw a massive ocean wave and a tiny stick-figure human to create a feeling of awe.",
@@ -439,7 +443,7 @@
     id: 19, 
     title: "Realism: Truth", 
     era: "1840 CE - 1880 CE",
-    videoUrl: "https://www.youtube.com/embed/Z0oD_xUj-aY", 
+    videoUrl: "https://www.youtube.com/watch?v=Os6i6fneV-E", 
     lecture: "<h3>Show Me an Angel</h3><p>Realists wanted to paint the brutal, honest, everyday reality of modern life.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Visible Truth:</strong> If an artist cannot see it (like an angel), they won't paint it.</li><li><strong>Working Class Heroes:</strong> Painting dirty, anonymous peasants on massive canvases reserved for kings.</li><li><strong>Political Danger:</strong> Elevating the poor in art was a threat to the wealthy elite.</li><li><strong>Earthy Palette:</strong> Muddy browns and dull greens reflecting the dirt and grit of reality.</li></ul>",
     criticalThinking: "Why would a wealthy Parisian find a massive painting of a poor laborer threatening?",
     mission: "<strong>The Unflattering Truth:</strong> Draw the ugliest, most worn-out object in your house exactly as it is without making it look 'nice.'",
@@ -482,5 +486,13 @@
       { q: "Cubism?", opts: ["Ideal", "Realist", "Shattered geometry"], ans: 2 },
       { q: "What is important?", opts: ["Idea/Concept", "Price", "Politics"], ans: 0 }
     ]
-  }
+  }，
+      china: {
+    label: "Chinese Art History",
+    desc: "From Prehistoric ritual to Contemporary ink & concept",
+    lessons: [
+      // ✅ 先放 1–5 节也行，后面再加到 20+
+      // { id: 1, title: "...", ... },
+    ]
+  }    
 ];
