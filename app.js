@@ -1,143 +1,167 @@
-/* app.js — FEI Art History Journey (Wheel + Tracks, stable, Webflow-friendly)
+/* app.js — FEI Art History Journey (Tracks + No-scroll board)
    - loads tracks from window.FEI_ART_HISTORY_TRACKS (curriculum.js)
-   - injects all HTML into #fei-art-history
-   - shows ALL lesson themes at once (wheel map, no scroll)
-   - saves per-track progress in localStorage
+   - injects UI into #fei-art-history (Webflow embed stays tiny)
+   - per-track progress in localStorage
 */
 (function () {
   "use strict";
 
   const ROOT_ID = "fei-art-history";
-  const KEY_BASE = "fei_art_history_fresh_2026";
-  const KEY_NAME = KEY_BASE + ":name";
-  const KEY_TRACK = KEY_BASE + ":track";
+  const KEY = "fei_art_history_tracks_2026";
   const PASS_SCORE = 4;
 
   const root = document.getElementById(ROOT_ID);
   if (!root) return;
 
+  // prevent double init
   if (root.dataset.feiInit === "1") return;
   root.dataset.feiInit = "1";
 
-  // ----- tracks
-  const TRACKS =
-    (window.FEI_ART_HISTORY_TRACKS && typeof window.FEI_ART_HISTORY_TRACKS === "object")
-      ? window.FEI_ART_HISTORY_TRACKS
-      : null;
+  // ---------- data
+  const TRACKS = (window.FEI_ART_HISTORY_TRACKS && typeof window.FEI_ART_HISTORY_TRACKS === "object")
+    ? window.FEI_ART_HISTORY_TRACKS
+    : null;
 
-  const trackIds = TRACKS ? Object.keys(TRACKS) : [];
-  const defaultTrackId = TRACKS ? (trackIds.includes("western") ? "western" : trackIds[0]) : "default";
+  const FALLBACK = Array.isArray(window.FEI_ART_HISTORY_CURRICULUM) ? window.FEI_ART_HISTORY_CURRICULUM : [];
 
-  let currentTrackId = localStorage.getItem(KEY_TRACK) || defaultTrackId;
+  const trackKeys = TRACKS ? Object.keys(TRACKS).filter(k => TRACKS[k] && Array.isArray(TRACKS[k].lessons)) : [];
+  const hasTracks = TRACKS && trackKeys.length > 0;
 
-  function stateKeyFor(trackId) { return KEY_BASE + ":" + trackId; }
+  // ---------- state
+  // progress per track: { unlocked, completed[] }
+  let state = {
+    name: "",
+    activeTrack: hasTracks ? trackKeys[0] : "western",
+    progress: {}
+  };
 
-  function getCurriculumFor(trackId) {
-    if (TRACKS && TRACKS[trackId] && Array.isArray(TRACKS[trackId].lessons)) return TRACKS[trackId].lessons;
-    // fallback old single mode
-    if (Array.isArray(window.FEI_ART_HISTORY_CURRICULUM)) return window.FEI_ART_HISTORY_CURRICULUM;
-    return [];
-  }
-
-  let CURRICULUM = getCurriculumFor(currentTrackId);
-  const total = () => (CURRICULUM.length || 20);
-
-  const trackLabel = (tid) => (TRACKS && TRACKS[tid] && TRACKS[tid].label) ? TRACKS[tid].label : (tid === "china" ? "Chinese Art History" : "Western Art History");
-  const trackDesc  = (tid) => (TRACKS && TRACKS[tid] && TRACKS[tid].desc) ? TRACKS[tid].desc : "";
-
-  // ----- state
-  let state = { name: "", unlocked: 1, completed: [] };
   let currentLevelId = null;
 
-  function saveName(name){ localStorage.setItem(KEY_NAME, name); }
-  function loadName(){ const n = localStorage.getItem(KEY_NAME); return typeof n === "string" ? n : ""; }
+  function safeNum(n, fallback) {
+    const x = Number(n);
+    return Number.isFinite(x) ? x : fallback;
+  }
+
+  function normalizeProgress(p, total) {
+    const unlocked = Math.max(1, Math.min(total || 1, safeNum(p?.unlocked, 1)));
+    const completed = Array.isArray(p?.completed)
+      ? p.completed.map(Number).filter(Number.isFinite)
+      : [];
+    return { unlocked, completed };
+  }
+
+  function getLessons(trackKey) {
+    if (hasTracks) return TRACKS[trackKey]?.lessons || [];
+    return FALLBACK;
+  }
+
+  function getTrackMeta(trackKey) {
+    if (!hasTracks) return { label: "Art History Journey", desc: "Curriculum" };
+    return {
+      label: TRACKS[trackKey]?.label || trackKey,
+      desc: TRACKS[trackKey]?.desc || ""
+    };
+  }
+
+  function totalLessons(trackKey) {
+    return getLessons(trackKey).length;
+  }
+
+  function ensureProgress(trackKey) {
+    const total = totalLessons(trackKey);
+    if (!state.progress[trackKey]) state.progress[trackKey] = { unlocked: 1, completed: [] };
+    state.progress[trackKey] = normalizeProgress(state.progress[trackKey], total);
+  }
 
   function saveState() {
-    localStorage.setItem(stateKeyFor(currentTrackId), JSON.stringify(state));
+    localStorage.setItem(KEY, JSON.stringify(state));
   }
 
   function loadState() {
     try {
-      const raw = localStorage.getItem(stateKeyFor(currentTrackId));
-      const parsed = raw ? JSON.parse(raw) : null;
-      const savedName = loadName();
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return;
 
-      state = {
-        name: (parsed && typeof parsed.name === "string" && parsed.name) || savedName || "",
-        unlocked: Math.max(1, Math.min(total(), Number(parsed && parsed.unlocked) || 1)),
-        completed: Array.isArray(parsed && parsed.completed)
-          ? parsed.completed.map(Number).filter(Number.isFinite).filter(n => n >= 1 && n <= total())
-          : [],
-      };
+      const parsed = JSON.parse(raw);
+      state.name = (typeof parsed.name === "string") ? parsed.name : "";
+      state.activeTrack = (typeof parsed.activeTrack === "string") ? parsed.activeTrack : state.activeTrack;
+      state.progress = (parsed && typeof parsed.progress === "object") ? parsed.progress : {};
+
     } catch (e) {
-      state = { name: loadName() || "", unlocked: 1, completed: [] };
+      // ignore
     }
+
+    // validate tracks/progress
+    if (hasTracks && !trackKeys.includes(state.activeTrack)) state.activeTrack = trackKeys[0];
+    if (hasTracks) trackKeys.forEach(k => ensureProgress(k));
+    else ensureProgress(state.activeTrack);
   }
 
   function resetApp() {
     if (!confirm("Reset your Art History Journey?")) return;
-    localStorage.removeItem(KEY_NAME);
-    localStorage.removeItem(KEY_TRACK);
-    if (TRACKS && trackIds.length) trackIds.forEach(tid => localStorage.removeItem(stateKeyFor(tid)));
-    else localStorage.removeItem(stateKeyFor(currentTrackId));
+    localStorage.removeItem(KEY);
     location.reload();
   }
 
-  // ----- HTML (injected)
+  // ---------- HTML (injected)
   root.innerHTML = `
   <div id="fei-art-system">
+    <!-- LOGIN COVER -->
     <div id="fei-cover" class="fei-fullscreen">
       <div class="fei-login-card">
         <div class="fei-brand-tag">LFC CLASSICS</div>
         <h1>Art History Journey</h1>
-        <p id="fei-subtitle">Choose a track, then enter.</p>
-
-        <div id="fei-track-box">
-          <div class="fei-track-grid">
-            <button type="button" class="fei-track-card fei-track-btn" data-track="western">
-              <div class="t">Western Art History</div>
-              <div class="s">Prehistoric → Contemporary</div>
-            </button>
-            <button type="button" class="fei-track-card fei-track-btn" data-track="china">
-              <div class="t">Chinese Art History</div>
-              <div class="s">Ritual → Ink → Contemporary</div>
-            </button>
-          </div>
-          <div class="fei-track-hint" id="fei-track-hint"></div>
-        </div>
-
+        <p class="fei-cover-sub">Choose a track • Learn step-by-step</p>
         <div class="fei-login-form">
           <label>Student Name</label>
           <input type="text" id="reg-name" placeholder="Enter name...">
-          <button id="btn-start" class="fei-btn-black">ENTER CLASSROOM</button>
+          <button id="btn-start" class="fei-btn-black">ENTER</button>
         </div>
       </div>
     </div>
 
+    <!-- TRACK SELECT -->
+    <div id="fei-track-view" class="fei-fullscreen fei-hidden">
+      <div class="fei-track-panel">
+        <div class="fei-brand-tag">SELECT A TRACK</div>
+        <h2 class="fei-track-title">Welcome, <span id="track-student">Student</span></h2>
+        <p class="fei-track-desc">Pick your learning path.</p>
+        <div class="fei-track-grid" id="track-grid"></div>
+        <button id="btn-back-login" class="fei-link-reset">Change name</button>
+      </div>
+    </div>
+
+    <!-- MAP VIEW -->
     <div id="fei-map-view" class="fei-hidden">
       <div class="fei-header">
         <div class="fei-user-badge">
           <div class="fei-avatar">LFC</div>
           <div class="fei-user-text">
             <span id="display-name">Student</span>
-            <span class="fei-progress-pill" id="progress-display">0/${total()} Credits</span>
+            <span class="fei-progress-pill" id="progress-display">0/0 Credits</span>
+            <span class="fei-track-pill" id="track-pill">Track</span>
           </div>
         </div>
-        <button id="btn-reset" class="fei-link-reset">Reset</button>
+        <div class="fei-header-actions">
+          <button id="btn-switch-track" class="fei-link-reset">Tracks</button>
+          <button id="btn-reset" class="fei-link-reset">Reset</button>
+        </div>
       </div>
 
       <div class="fei-map-scroll">
-        <div class="fei-path-container">
-          <div id="map-container">
-            <svg id="path-svg"></svg>
+        <div class="fei-board-viewport">
+          <div class="fei-board-wrap" id="board-wrap">
+            <div class="fei-board" id="map-container"></div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- MODAL -->
     <div id="fei-modal" class="fei-overlay fei-hidden">
       <div class="fei-modal-window">
         <button class="fei-close" id="btn-close" aria-label="Close">×</button>
+
         <div class="fei-modal-top">
           <div class="fei-era-tag" id="m-era">ERA</div>
           <h2 id="m-title">Title</h2>
@@ -187,192 +211,200 @@
   </div>
   `;
 
+  // ---------- helpers (scoped)
   const $ = (sel) => root.querySelector(sel);
   const $$ = (sel) => Array.from(root.querySelectorAll(sel));
 
-  function updateTrackUI(){
-    const box = $("#fei-track-box");
-    if (!box) return;
+  function show(el) { el.classList.remove("fei-hidden"); }
+  function hide(el) { el.classList.add("fei-hidden"); }
 
-    // 如果没提供 TRACKS，就隐藏目录（兼容旧模式）
-    if (!TRACKS || trackIds.length < 2){
-      box.style.display = "none";
-      return;
-    }
-
-    // 更新按钮文字
-    $$(".fei-track-btn").forEach(btn => {
-      const tid = btn.dataset.track;
-      const t = btn.querySelector(".t");
-      const s = btn.querySelector(".s");
-      if (t) t.textContent = trackLabel(tid);
-      if (s) s.textContent = trackDesc(tid) || (tid === "china" ? "Ritual → Ink → Contemporary" : "Prehistoric → Contemporary");
-
-      btn.classList.toggle("selected", tid === currentTrackId);
-    });
-
-    const hint = $("#fei-track-hint");
-    if (hint) hint.textContent = `Selected: ${trackLabel(currentTrackId)}`;
-  }
-
-  function setTrack(tid){
-    if (TRACKS && !TRACKS[tid]) return;
-    currentTrackId = tid;
-    localStorage.setItem(KEY_TRACK, tid);
-    CURRICULUM = getCurriculumFor(currentTrackId);
-    loadState();
-    updateTrackUI();
-  }
-
-  function showMap() {
-    $("#fei-cover").classList.add("fei-hidden");
-    $("#fei-map-view").classList.remove("fei-hidden");
-    $("#display-name").textContent = state.name || "Student";
-    renderMap();
-  }
-
-  function startApp() {
-    const name = ($("#reg-name").value || "").trim();
-    if (!name) return alert("Please enter your name.");
-    state.name = name;
-    saveName(name);
-    saveState();
-    showMap();
-  }
-
-  // ------- WHEEL MAP (no scroll)
-  function ringPlan(n){
-    if (n <= 20) return [n];
-    if (n <= 36) return [20, n - 20];
-    // 如果你未来疯到 50+，也能撑一下：三环
-    return [20, 16, n - 36];
-  }
-
-  function renderMap() {
-    const container = $("#map-container");
-    const svg = $("#path-svg");
-
-    // 清空旧节点/中心块（保留 svg）
-    container.querySelectorAll(".fei-wheel-node, .fei-wheel-center").forEach(el => el.remove());
-    svg.innerHTML = "";
-
-    $("#progress-display").textContent = `${state.completed.length}/${total()} Credits`;
-
-    if (!CURRICULUM.length) {
-      const c = document.createElement("div");
-      c.className = "fei-wheel-center";
-      c.innerHTML = `
-        <div class="title">Curriculum Not Loaded</div>
-        <p class="sub">Please check curriculum.js</p>
-        <div class="pill">0/0</div>
-      `;
-      container.appendChild(c);
-      return;
-    }
-
-    // center card
-    const center = document.createElement("div");
-    center.className = "fei-wheel-center";
-    center.innerHTML = `
-      <div class="title">${trackLabel(currentTrackId)}</div>
-      <p class="sub">${trackDesc(currentTrackId) || ""}</p>
-      <div class="pill">${state.completed.length}/${total()} Credits</div>
-    `;
-    container.appendChild(center);
-
-    // layout geometry
-    const rect = container.getBoundingClientRect();
-    const w = rect.width || 900;
-    const h = rect.height || 650;
-    const cx = w / 2;
-    const cy = h / 2;
-
-    const plan = ringPlan(total());
-    const radii = [];
-
-    // outer ring radius
-    const outer = Math.min(w, h) * 0.38;
-    radii.push(outer);
-
-    if (plan.length >= 2) radii.push(Math.min(w, h) * 0.26);
-    if (plan.length >= 3) radii.push(Math.min(w, h) * 0.18);
-
-    // draw ring guides
-    radii.forEach((r) => {
-      svg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="#000" stroke-width="1" stroke-dasharray="4,4" fill="none" opacity="0.10" />`;
-    });
-
-    // place nodes
-    let idx = 0;
-    plan.forEach((count, ringIdx) => {
-      const r = radii[ringIdx] || radii[0];
-      const startAngle = -90; // start at top
-
-      for (let i = 0; i < count; i++) {
-        const lesson = CURRICULUM[idx];
-        if (!lesson) break;
-
-        const angle = (startAngle + (360 / count) * i) * (Math.PI / 180);
-        const x = cx + r * Math.cos(angle);
-        const y = cy + r * Math.sin(angle);
-
-        const node = document.createElement("div");
-        node.className = `fei-wheel-node ring-${ringIdx + 1}`;
-
-        const isUnlocked = lesson.id <= state.unlocked;
-        const isDone = state.completed.includes(lesson.id);
-
-        if (isDone) node.classList.add("completed");
-        else if (isUnlocked) node.classList.add("unlocked");
-        else node.classList.add("locked");
-
-        node.style.left = x + "px";
-        node.style.top = y + "px";
-
-        node.innerHTML = `
-          <div class="fei-node-num">${lesson.id}</div>
-          <h4>${lesson.title || ""}</h4>
-          <p>${lesson.era || ""}</p>
-        `;
-
-        node.addEventListener("click", () => {
-          if (!isUnlocked) return;
-          openLevel(lesson);
-        });
-
-        container.appendChild(node);
-        idx++;
-      }
-    });
-  }
-
-  // ------- modal / tabs (keep your logic)
   function switchTab(tabName) {
-    $$(".fei-tab").forEach((t) => t.classList.remove("active"));
-    $$(".fei-view").forEach((v) => v.classList.remove("active"));
+    $$(".fei-tab").forEach(t => t.classList.remove("active"));
+    $$(".fei-view").forEach(v => v.classList.remove("active"));
     root.querySelector(`.fei-tab[data-tab="${tabName}"]`)?.classList.add("active");
     $(`#tab-${tabName}`)?.classList.add("active");
   }
 
+  // ---------- YouTube normalizer (so you can paste watch?v= links)
+  function parseYouTubeId(url) {
+    try {
+      const u = new URL(url);
+      if (u.hostname.includes("youtu.be")) {
+        return u.pathname.replace("/", "").trim();
+      }
+      if (u.hostname.includes("youtube.com")) {
+        if (u.pathname.startsWith("/embed/")) return u.pathname.split("/embed/")[1].split("/")[0];
+        if (u.pathname === "/watch") return u.searchParams.get("v");
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function normalizeVideoUrl(url) {
+    if (!url) return "";
+    const id = parseYouTubeId(url);
+    if (!id) return url; // might be another provider
+    return `https://www.youtube.com/embed/${id}`;
+  }
+
+  // ---------- views
+  function showLogin() {
+    show($("#fei-cover"));
+    hide($("#fei-track-view"));
+    hide($("#fei-map-view"));
+  }
+
+  function showTrackSelect() {
+    hide($("#fei-cover"));
+    show($("#fei-track-view"));
+    hide($("#fei-map-view"));
+
+    $("#track-student").textContent = state.name || "Student";
+
+    const grid = $("#track-grid");
+    grid.innerHTML = "";
+
+    if (!hasTracks) {
+      // fallback single track
+      const btn = document.createElement("div");
+      btn.className = "fei-track-card";
+      btn.innerHTML = `<div class="t">Art History Journey</div><div class="s">Curriculum</div>`;
+      btn.addEventListener("click", () => {
+        state.activeTrack = "western";
+        ensureProgress(state.activeTrack);
+        saveState();
+        showMap();
+      });
+      grid.appendChild(btn);
+      return;
+    }
+
+    trackKeys.forEach((k) => {
+      const meta = getTrackMeta(k);
+      const total = totalLessons(k);
+      const p = state.progress[k] || { unlocked: 1, completed: [] };
+
+      const card = document.createElement("div");
+      card.className = "fei-track-card";
+      card.innerHTML = `
+        <div class="t">${meta.label}</div>
+        <div class="s">${meta.desc}</div>
+        <div class="mini">${p.completed.length}/${total} completed</div>
+      `;
+      card.addEventListener("click", () => {
+        state.activeTrack = k;
+        ensureProgress(k);
+        saveState();
+        showMap();
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  function showMap() {
+    hide($("#fei-cover"));
+    hide($("#fei-track-view"));
+    show($("#fei-map-view"));
+
+    const meta = getTrackMeta(state.activeTrack);
+    $("#display-name").textContent = state.name || "Student";
+    $("#track-pill").textContent = meta.label;
+
+    renderMap();
+  }
+
+  // ---------- map render (NO SCROLL: auto scale to fit)
+  function fitBoard() {
+    const viewport = root.querySelector(".fei-board-viewport");
+    const wrap = $("#board-wrap");
+    const board = $("#map-container");
+    if (!viewport || !wrap || !board) return;
+
+    // reset
+    wrap.style.transform = "scale(1)";
+    wrap.dataset.scale = "1";
+
+    const availH = viewport.clientHeight - 10;
+    const contentH = board.scrollHeight;
+
+    if (contentH <= 0) return;
+
+    const scale = Math.max(0.55, Math.min(1, availH / contentH)); // don't shrink to unreadable dot
+    wrap.style.transform = `scale(${scale})`;
+    wrap.dataset.scale = String(scale);
+  }
+
+  function renderMap() {
+    const lessons = getLessons(state.activeTrack);
+    const total = lessons.length;
+
+    ensureProgress(state.activeTrack);
+    const prog = state.progress[state.activeTrack];
+
+    $("#progress-display").textContent = `${prog.completed.length}/${total || 0} Credits`;
+
+    const container = $("#map-container");
+    container.innerHTML = "";
+
+    if (!lessons.length) {
+      const box = document.createElement("div");
+      box.className = "fei-empty";
+      box.innerHTML = `<div class="fei-empty-title">No lessons yet</div><div class="fei-empty-sub">This track is coming soon.</div>`;
+      container.appendChild(box);
+      requestAnimationFrame(fitBoard);
+      return;
+    }
+
+    lessons.forEach((lesson) => {
+      const id = safeNum(lesson.id, 0);
+      const isUnlocked = id <= prog.unlocked;
+      const isDone = prog.completed.includes(id);
+
+      const card = document.createElement("div");
+      card.className = "fei-node-card";
+      if (isDone) card.classList.add("completed");
+      else if (isUnlocked) card.classList.add("unlocked");
+      else card.classList.add("locked");
+
+      card.innerHTML = `
+        <div class="fei-node-num">${id}</div>
+        <h4>${lesson.title || "Untitled"}</h4>
+        <p>${lesson.era || ""}</p>
+      `;
+
+      if (isUnlocked) {
+        card.addEventListener("click", () => openLevel(lesson));
+      }
+
+      container.appendChild(card);
+    });
+
+    // scale to fit
+    setTimeout(fitBoard, 50);
+  }
+
+  // ---------- modal
   function closeModal() {
-    $("#fei-modal").classList.add("fei-hidden");
+    hide($("#fei-modal"));
     $("#m-video-box").innerHTML = "";
     $("#m-feedback").innerHTML = "";
   }
 
-  function openLevel(level) {
-    currentLevelId = level.id;
-    $("#fei-modal").classList.remove("fei-hidden");
+  function openLevel(lesson) {
+    currentLevelId = safeNum(lesson.id, 0);
+    show($("#fei-modal"));
     switchTab("study");
 
-    $("#m-title").textContent = level.title || "";
-    $("#m-era").textContent = level.era || "";
+    $("#m-title").textContent = lesson.title || "";
+    $("#m-era").textContent = lesson.era || "";
 
+    // video
     const videoBox = $("#m-video-box");
-    if (level.videoUrl) {
+    const v = normalizeVideoUrl(lesson.videoUrl || "");
+    if (v) {
       videoBox.innerHTML = `
         <iframe width="100%" height="100%"
-          src="${level.videoUrl}"
+          src="${v}"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -383,39 +415,47 @@
       videoBox.style.display = "none";
     }
 
-    $("#m-lecture-content").innerHTML = level.lecture || "";
+    // lecture
+    $("#m-lecture-content").innerHTML = lesson.lecture || "";
 
-    $("#m-images").innerHTML = (level.images || [])
-      .map((src) => `<div class="fei-img-box">
-        <img src="${src}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.opacity='0.2';" />
-      </div>`).join("");
+    // images
+    $("#m-images").innerHTML = (lesson.images || [])
+      .map(src => `
+        <div class="fei-img-box">
+          <img src="${src}" loading="lazy" referrerpolicy="no-referrer"
+               onerror="this.style.opacity='0.2';" />
+        </div>
+      `).join("");
 
-    $("#m-resources").innerHTML = (level.resources || [])
-      .map((r) => `<a href="${r.url}" target="_blank" rel="noopener" class="fei-resource-link">📚 ${r.name} ➔</a>`)
+    // resources
+    $("#m-resources").innerHTML = (lesson.resources || [])
+      .map(r => `<a href="${r.url}" target="_blank" rel="noopener" class="fei-resource-link">📚 ${r.name} ➔</a>`)
       .join("");
 
-    $("#m-critical-text").textContent = level.criticalThinking || "";
-    $("#m-mission-text").innerHTML = level.mission || "";
-    renderQuiz(level);
+    // critical + mission
+    $("#m-critical-text").textContent = lesson.criticalThinking || "";
+    $("#m-mission-text").innerHTML = lesson.mission || "";
+
+    renderQuiz(lesson);
   }
 
-  function renderQuiz(level) {
+  function renderQuiz(lesson) {
     const qList = $("#m-quiz-list");
     qList.innerHTML = "";
     $("#m-feedback").innerHTML = "";
 
-    (level.quiz || []).forEach((q, i) => {
+    (lesson.quiz || []).forEach((q, i) => {
       const item = document.createElement("div");
       item.className = "fei-quiz-item";
       item.innerHTML = `<p>${i + 1}. ${q.q}</p>`;
 
-      q.opts.forEach((opt, oIdx) => {
+      (q.opts || []).forEach((opt, oIdx) => {
         const btn = document.createElement("button");
         btn.className = "fei-quiz-opt";
         btn.textContent = opt;
         btn.dataset.idx = String(oIdx);
         btn.addEventListener("click", () => {
-          item.querySelectorAll(".fei-quiz-opt").forEach((b) => b.classList.remove("selected"));
+          item.querySelectorAll(".fei-quiz-opt").forEach(b => b.classList.remove("selected"));
           btn.classList.add("selected");
         });
         item.appendChild(btn);
@@ -426,9 +466,11 @@
   }
 
   function handleSubmit() {
-    const level = CURRICULUM.find((l) => l.id === currentLevelId);
-    if (!level) return;
+    const lessons = getLessons(state.activeTrack);
+    const lesson = lessons.find(l => safeNum(l.id, 0) === currentLevelId);
+    if (!lesson) return;
 
+    const quiz = lesson.quiz || [];
     const items = $$(".fei-quiz-item");
     let correct = 0;
     let answered = 0;
@@ -439,7 +481,7 @@
       answered++;
 
       const picked = Number(selected.dataset.idx);
-      if (picked === level.quiz[i].ans) {
+      if (picked === quiz[i]?.ans) {
         correct++;
         selected.classList.add("correct");
       } else {
@@ -447,66 +489,69 @@
       }
     });
 
-    if (answered < (level.quiz || []).length) return alert("Please answer all questions.");
+    if (answered < quiz.length) return alert("Please answer all questions.");
 
     const fb = $("#m-feedback");
     if (correct >= PASS_SCORE) {
-      fb.innerHTML = `<div style="background:#E8F8F5; color:#27AE60; padding:15px; border-radius:10px; margin-top:20px; font-weight:900;">Passed! Credit Earned.</div>`;
+      fb.innerHTML = `<div class="fei-feedback good">Passed! Credit Earned.</div>`;
 
-      if (!state.completed.includes(currentLevelId)) {
-        state.completed.push(currentLevelId);
-        state.unlocked = Math.max(state.unlocked, Math.min(total(), currentLevelId + 1));
+      ensureProgress(state.activeTrack);
+      const prog = state.progress[state.activeTrack];
+      const total = totalLessons(state.activeTrack);
+
+      if (!prog.completed.includes(currentLevelId)) {
+        prog.completed.push(currentLevelId);
+        prog.unlocked = Math.max(prog.unlocked, Math.min(total, currentLevelId + 1));
+        state.progress[state.activeTrack] = prog;
         saveState();
         renderMap();
-        setTimeout(closeModal, 700);
+        setTimeout(closeModal, 650);
       }
     } else {
-      fb.innerHTML = `<div style="background:#FDEDEC; color:#C0392B; padding:15px; border-radius:10px; margin-top:20px; font-weight:900;">Score: ${correct}/${(level.quiz || []).length}. Try again.</div>`;
+      fb.innerHTML = `<div class="fei-feedback bad">Score: ${correct}/${quiz.length}. Try again.</div>`;
     }
   }
 
+  // ---------- bind
   function bind() {
-    $("#btn-start").addEventListener("click", startApp);
+    $("#btn-start").addEventListener("click", () => {
+      const name = ($("#reg-name").value || "").trim();
+      if (!name) return alert("Please enter your name.");
+      state.name = name;
+      saveState();
+      showTrackSelect();
+    });
+
+    $("#btn-back-login").addEventListener("click", () => {
+      showLogin();
+    });
+
+    $("#btn-switch-track").addEventListener("click", () => {
+      showTrackSelect();
+    });
+
     $("#btn-reset").addEventListener("click", resetApp);
     $("#btn-close").addEventListener("click", closeModal);
     $("#btn-submit").addEventListener("click", handleSubmit);
-    $$(".fei-tab").forEach((btn) => btn.addEventListener("click", () => switchTab(btn.dataset.tab)));
 
-    // Track selection
-    $$(".fei-track-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (!TRACKS) return;
-        setTrack(btn.dataset.track);
-      });
-    });
+    $$(".fei-tab").forEach(btn => btn.addEventListener("click", () => switchTab(btn.dataset.tab)));
 
-    // click outside modal
     $("#fei-modal").addEventListener("click", (e) => {
       if (e.target === $("#fei-modal")) closeModal();
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        const overlay = $("#fei-modal");
-        if (!overlay.classList.contains("fei-hidden")) closeModal();
-      }
+      if (e.key === "Escape" && !$("#fei-modal").classList.contains("fei-hidden")) closeModal();
     });
 
-    window.addEventListener("resize", () => setTimeout(renderMap, 120));
+    window.addEventListener("resize", () => setTimeout(fitBoard, 80));
   }
 
-  // ----- init
+  // ---------- init
   loadState();
-  updateTrackUI();
-
-  const savedName = loadName();
-  const nameInput = $("#reg-name");
-  if (nameInput && savedName && !nameInput.value) nameInput.value = savedName;
-
   bind();
 
-  // 如果用户之前选过 track 且有名字，就直接进地图
-  const hasTrackSelection = !!localStorage.getItem(KEY_TRACK);
-  if (state.name && (!TRACKS || hasTrackSelection)) showMap();
-  else renderMap(); // 预渲染一次（不进地图也没事）
+  if (!state.name) showLogin();
+  else showTrackSelect();
+
 })();
