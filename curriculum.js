@@ -495,4 +495,7 @@ window.FEI_ART_HISTORY_TRACKS = {
       // { id: 1, title: "...", ... },
     ]
   }    
-];
+};
+
+// ✅ 关键：你当前的 app.js 只认这个数组
+window.FEI_ART_HISTORY_CURRICULUM = window.FEI_ART_HISTORY_TRACKS.western.lessons;
