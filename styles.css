@@ -345,3 +345,158 @@
 .fei-quiz-opt.selected { background: #000; color: white; border-color: #000; }
 .fei-quiz-opt.correct { background: #27AE60; color: white; border-color: #27AE60; }
 .fei-quiz-opt.wrong { background: #C0392B; color: white; border-color: #C0392B; }
+/* ===========================
+   COVER UPGRADE
+   =========================== */
+
+#fei-cover.fei-fullscreen{
+  background:
+    linear-gradient(90deg, rgba(226,209,249,0.75) 0%, rgba(155,235,235,0.75) 100%),
+    url("https://cdn.jsdelivr.net/gh/fayechenca-cmyk/fei-art-history@main/assets/cover.jpg") center/cover no-repeat;
+}
+
+/* 让登录卡更“高级”一点 */
+.fei-login-card{
+  backdrop-filter: blur(10px);
+}
+
+/* ===========================
+   MAP = WHEEL (NO VERTICAL SCROLL)
+   =========================== */
+
+/* 关闭竖向滚动，地图一屏展示 */
+.fei-map-scroll{
+  overflow: hidden !important;
+  height: 100%;
+}
+
+/* 地图容器给固定高度 */
+#map-container{
+  position: relative;
+  height: 720px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* 路径 svg 覆盖整个区域 */
+#path-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* 中心信息 */
+.fei-wheel-center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width: 260px;
+  padding: 18px 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.86);
+  border: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  text-align:center;
+  z-index:2;
+}
+
+.fei-wheel-center .title{
+  font-family: var(--font-head);
+  font-size: 20px;
+  color:#000;
+  margin: 6px 0 8px;
+}
+.fei-wheel-center .sub{
+  font-size: 12px;
+  color:#666;
+  line-height: 1.5;
+}
+.fei-wheel-center .pill{
+  display:inline-block;
+  margin-top:10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #eee;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* 节点按钮（圆盘上的关卡） */
+.fei-wheel-node{
+  position:absolute;
+  width: 168px;
+  min-height: 78px;
+  padding: 14px 14px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(255,255,255,0.95);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  cursor:pointer;
+  text-align:left;
+  z-index:1;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.fei-wheel-node:hover{
+  transform: translate(-50%,-50%) scale(1.03);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.10);
+}
+
+.fei-wheel-node h4{
+  margin: 6px 0 4px;
+  font-size: 12px;
+  font-weight: 800;
+  color:#000;
+}
+.fei-wheel-node p{
+  margin:0;
+  font-size: 10px;
+  color:#666;
+  text-transform: uppercase;
+}
+
+/* 延用你原来的状态样式 */
+.fei-wheel-node.locked{ opacity: .45; cursor: default; }
+.fei-wheel-node.unlocked{ border-left: 5px solid #000; }
+.fei-wheel-node.completed{ border-left: 5px solid #27AE60; background:#fff; }
+.fei-wheel-node.completed::after{
+  content:'✓';
+  position:absolute;
+  top:10px;
+  right:12px;
+  font-weight:900;
+  color:#27AE60;
+  font-size:18px;
+}
+
+/* 小圆数字 */
+.fei-wheel-node .fei-node-num{
+  position:absolute;
+  top:-14px;
+  left:-14px;
+  width:30px;height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+  color:#fff;
+  font-weight:900;
+  font-size:12px;
+}
+.fei-wheel-node.completed .fei-node-num{ background:#27AE60; }
+
+/* 小屏缩小 */
+@media (max-width: 768px){
+  #map-container{ height: 640px; max-width: 720px; }
+  .fei-wheel-node{ width: 150px; }
+  .fei-wheel-center{ width: 230px; }
+}
+@media (max-width: 480px){
+  #map-container{ height: 620px; }
+  .fei-wheel-node{ width: 138px; padding: 12px; }
+}
