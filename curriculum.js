@@ -926,9 +926,534 @@ window.FEI_ART_HISTORY_TRACKS = {
     desc: "From Prehistoric ritual to Contemporary ink & concept",
     lessons: [
       // ✅ 先放 1–5 节也行，后面再加到 20+
-      // { id: 1, title: "...", ... },
-    ]
-  } 
+      // { // ====== China Track (20 Sessions, English) ======
+{
+  label: "Chinese Art History",
+  desc: "From Neolithic ritual objects to Contemporary ink & conceptual art",
+  lessons: [
+    {
+      id: 1,
+      title: "Origins: Neolithic Art & Ritual Objects",
+      era: "c. 7000 BCE – 2000 BCE",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Neolithic%20China%20art%20Banpo%20Liangzhu%20jade",
+      lecture: "<h3>Before Dynasties: Pattern, Pottery, and Power</h3><p>Long before written history, Neolithic communities in China produced art that was deeply tied to daily life, identity, and early ritual systems. Pottery painting, jade carving, and village planning reveal how visual culture formed social order.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Painted Pottery:</strong> Cultures like Banpo used geometric motifs to mark identity and belief.</li><li><strong>Jade as Ritual Power:</strong> Liangzhu jades (cong and bi) suggest elite authority and cosmology.</li><li><strong>Craft = Knowledge:</strong> Materials (clay/jade) shaped style and meaning.</li><li><strong>Pattern as Language:</strong> Repetition became a visual system before writing.</li></ul>",
+      criticalThinking: "Why would a society invest huge labor into carving jade objects that are not practical tools? What kind of power does ‘ritual material’ create?",
+      mission: "<strong>Pattern-to-Meaning Study:</strong> Design a simple ‘village symbol’ using only 3 shapes (circle/triangle/square). Repeat it as a pattern on a cup/bowl drawing. Write 2 sentences about what your symbol stands for (protection? family? water?).",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Banpo%20pottery%20jar.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Liangzhu%20jade%20cong.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Liangzhu%20jade%20bi.jpg?width=1400"
+      ],
+      resources: [
+        { name: "The Met: Neolithic Art in China (search)", url: "https://www.metmuseum.org/toah/" },
+        { name: "Wikipedia: Liangzhu culture", url: "https://en.wikipedia.org/wiki/Liangzhu_culture" },
+        { name: "Wikipedia: Banpo", url: "https://en.wikipedia.org/wiki/Banpo" }
+      ],
+      quiz: [
+        { q: "Which material became a key marker of elite ritual power in late Neolithic China?", opts: ["Glass", "Jade", "Steel"], ans: 1 },
+        { q: "Liangzhu cong/bi objects are most connected to...", opts: ["Industrial factories", "Ritual and cosmology", "Oil painting"], ans: 1 },
+        { q: "Neolithic painted pottery patterns functioned as...", opts: ["Pure decoration only", "A visual language and identity marker", "Written text"], ans: 1 },
+        { q: "A major idea in early Chinese art is that craft skill equals...", opts: ["Fashion", "Knowledge and social order", "Random luck"], ans: 1 },
+        { q: "Neolithic art is important because it shows...", opts: ["The first smartphones", "The birth of visual systems before writing", "Only war scenes"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 2,
+      title: "Shang Dynasty: Bronze, Ancestors, and Authority",
+      era: "c. 1600 BCE – 1046 BCE",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Shang%20dynasty%20bronze%20taotie%20Anyang%20art",
+      lecture: "<h3>Bronze as Political Theology</h3><p>Shang bronzes were not ‘decorative.’ They were ritual machines used to communicate with ancestors and legitimize kingship. Their scale and technical complexity show how art can operate as state power.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Ritual Vessels:</strong> Ding, gui, and other forms used in ancestor offerings.</li><li><strong>Taotie Motif:</strong> Mask-like designs linked to myth, warning, or sacred presence.</li><li><strong>Piece-Mold Casting:</strong> A uniquely Chinese bronze technology enabling high detail.</li><li><strong>Art = Authority:</strong> Control of bronze production equals control of ritual legitimacy.</li></ul>",
+      criticalThinking: "If a ruler controls the ritual vessels, does that mean they control ‘truth’ and history too? Why?",
+      mission: "<strong>Mask Design Study:</strong> Create a symmetrical ‘taotie-inspired’ mask using only curves and triangles. Keep it abstract (no cute faces). Focus on balance and tension.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Shang%20bronze%20ding.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Houmu%20Ding.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Taotie%20motif%20bronze.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Shang dynasty", url: "https://en.wikipedia.org/wiki/Shang_dynasty" },
+        { name: "British Museum: Chinese bronzes (search)", url: "https://www.britishmuseum.org/collection" },
+        { name: "The Met: Chinese bronzes (search)", url: "https://www.metmuseum.org/art/collection/search" }
+      ],
+      quiz: [
+        { q: "Shang bronzes were primarily used for...", opts: ["Ritual offerings and ancestor communication", "Cooking daily meals", "Street advertising"], ans: 0 },
+        { q: "The taotie is best described as...", opts: ["A realistic portrait", "A mask-like sacred motif", "A landscape style"], ans: 1 },
+        { q: "A key bronze technique in Shang China was...", opts: ["Piece-mold casting", "3D printing", "Oil glazing"], ans: 0 },
+        { q: "Why does bronze matter politically?", opts: ["It is shiny", "It links rulers to ritual legitimacy", "It makes music louder"], ans: 1 },
+        { q: "Ritual objects often function as...", opts: ["Power symbols", "Random toys", "Private diaries only"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 3,
+      title: "Zhou & Warring States: Ritual to Philosophy",
+      era: "1046 BCE – 221 BCE",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Zhou%20dynasty%20bronze%20inscriptions%20Warring%20States%20lacquer",
+      lecture: "<h3>From Ancestral Ritual to Competing Ideas</h3><p>As political power fragmented, art diversified: bronze inscriptions expanded historical memory, lacquerware refined elite taste, and new philosophies shaped how culture justified authority.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Bronze Inscriptions:</strong> Text as commemoration and political record.</li><li><strong>Lacquer & Luxury:</strong> Complex craft, bold color, elite mobility.</li><li><strong>Regional Styles:</strong> Competing states produced distinct aesthetics.</li><li><strong>Art and Ideology:</strong> Confucian/Daoist thought reframed moral order.</li></ul>",
+      criticalThinking: "When art begins to include long inscriptions, who is ‘art’ for: the public, the ancestors, or future political legitimacy?",
+      mission: "<strong>Inscription Design:</strong> Create a ‘commemorative object label’ for an imaginary victory or life event. Use 3 lines of text (English is fine) and a simple border pattern.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Western%20Zhou%20bronze%20inscription.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Warring%20States%20lacquerware.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Warring%20States%20bronze%20mirror.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Zhou dynasty", url: "https://en.wikipedia.org/wiki/Zhou_dynasty" },
+        { name: "Wikipedia: Warring States period", url: "https://en.wikipedia.org/wiki/Warring_States_period" }
+      ],
+      quiz: [
+        { q: "A key new feature in Zhou bronzes is...", opts: ["Neon colors", "Long inscriptions", "Photographic realism"], ans: 1 },
+        { q: "Lacquerware is associated with...", opts: ["Elite craft and luxury", "Cheap mass plastic", "Marble carving only"], ans: 0 },
+        { q: "Art in Warring States becomes more...", opts: ["Uniform", "Regionally diverse", "Completely abstract"], ans: 1 },
+        { q: "Inscriptions often function as...", opts: ["Political memory", "Random decoration", "Jokes"], ans: 0 },
+        { q: "This period is defined by...", opts: ["One unified empire", "Competing states and ideas", "No philosophy"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 4,
+      title: "Qin & Han: Empire, Tombs, and the Afterlife",
+      era: "221 BCE – 220 CE",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Qin%20Han%20tomb%20art%20terracotta%20army%20Han%20painted%20silk",
+      lecture: "<h3>Art for an Eternal State</h3><p>With unification, visual culture scaled up. Tombs became miniature worlds: armies, maps, cosmology, and daily life were rebuilt for the afterlife, proving that empire extended beyond death.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Terracotta Army:</strong> Standardization + individuality in mass production.</li><li><strong>Han Tomb Art:</strong> Brick reliefs, murals, and mingqi (spirit objects).</li><li><strong>Cosmology:</strong> Heaven/Earth models; banners and diagrams.</li><li><strong>State Aesthetics:</strong> Art as an extension of imperial control.</li></ul>",
+      criticalThinking: "Why build a ‘complete world’ underground? Is it belief, propaganda, or both?",
+      mission: "<strong>Tomb World Blueprint:</strong> Draw a simple plan of an ‘afterlife room’ for an imaginary ruler. Include 5 objects that show power, daily life, and belief.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Terracotta%20Army%2C%20View%20of%20pit%201.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Han%20dynasty%20tomb%20relief.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Mawangdui%20silk%20funerary%20banner.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Terracotta Army", url: "https://en.wikipedia.org/wiki/Terracotta_Army" },
+        { name: "Wikipedia: Han dynasty art", url: "https://en.wikipedia.org/wiki/Han_dynasty_art" }
+      ],
+      quiz: [
+        { q: "The Terracotta Army demonstrates...", opts: ["Only individual handmade work", "Mass production with variation", "Purely modern technology"], ans: 1 },
+        { q: "Han tombs often contained...", opts: ["Only empty rooms", "Spirit objects and murals", "Digital screens"], ans: 1 },
+        { q: "A major theme is...", opts: ["Cosmology and afterlife worlds", "Sports trophies", "Cooking recipes"], ans: 0 },
+        { q: "Empire art often supports...", opts: ["Imperial ideology", "Random chaos", "No purpose"], ans: 0 },
+        { q: "Why include daily life objects in tombs?", opts: ["To rebuild a usable afterlife world", "To confuse thieves only", "For fashion"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 5,
+      title: "Buddhism Arrives: Six Dynasties & Cave Temples",
+      era: "220 – 589",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Longmen%20Yungang%20Dunhuang%20Buddhist%20cave%20art%20China",
+      lecture: "<h3>New Religion, New Image World</h3><p>Buddhism transformed Chinese art. Monumental caves like Yungang, Longmen, and Dunhuang became immersive visual universes where sculpture, painting, and architecture fused into spiritual technology.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Cave Temples:</strong> Carved mountains as sacred interiors.</li><li><strong>Iconography:</strong> Buddhas, bodhisattvas, guardian figures.</li><li><strong>Stylistic Shifts:</strong> From Central Asian influence to Sinicized forms.</li><li><strong>Donor Culture:</strong> Art funded by rulers, elites, and communities.</li></ul>",
+      criticalThinking: "Why does a religion need images, and why do images become powerful enough to reshape an entire culture?",
+      mission: "<strong>Halo & Gesture Study:</strong> Draw a simple seated figure. Create 3 versions by changing only the halo shape and hand gesture (mudra). Note how meaning shifts.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Longmen%20Grottoes%20Vairocana%20Buddha.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Yungang%20Grottoes%20Buddha.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Dunhuang%20Mogao%20Caves%20mural.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Longmen Grottoes", url: "https://en.wikipedia.org/wiki/Longmen_Grottoes" },
+        { name: "Wikipedia: Mogao Caves", url: "https://en.wikipedia.org/wiki/Mogao_Caves" }
+      ],
+      quiz: [
+        { q: "Cave temples are significant because they...", opts: ["Are portable paintings", "Combine sculpture, painting, and architecture into immersive spaces", "Are only outdoor gardens"], ans: 1 },
+        { q: "Dunhuang (Mogao) is famous for...", opts: ["Bronze casting only", "Murals and manuscripts", "Modern skyscrapers"], ans: 1 },
+        { q: "Buddhist art introduced...", opts: ["No images at all", "New iconography and sacred figures", "Only abstract geometry"], ans: 1 },
+        { q: "Styles changed partly because of...", opts: ["Cultural exchange along routes", "Zero travel", "Total isolation always"], ans: 0 },
+        { q: "Large religious art often depends on...", opts: ["Donor support", "Coincidence", "Secret magic only"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 6,
+      title: "Sui–Tang: Cosmopolitan Empire & Sacred Splendor",
+      era: "581 – 907",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Tang%20dynasty%20art%20Buddhist%20sculpture%20Dunhuang%20cosmopolitan",
+      lecture: "<h3>Global Tang: Luxury, Faith, and Exchange</h3><p>The Tang dynasty was a high point of cultural confidence and global contact. Art reflects cosmopolitan taste: Buddhist grandeur, court elegance, trade goods, and vivid tomb figurines that document society.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Cosmopolitan Style:</strong> Influences from Central Asia, Persia, and beyond.</li><li><strong>San Cai Ceramics:</strong> Three-color glazed tomb figurines (horses, attendants).</li><li><strong>Buddhist Peak:</strong> Mature monumental sculpture and refined icon painting.</li><li><strong>Court Culture:</strong> Fashion, music, dance recorded through objects.</li></ul>",
+      criticalThinking: "When an empire becomes ‘global,’ does art become richer or more controlled? Explain using Tang examples.",
+      mission: "<strong>San Cai Color Study:</strong> Create a 3-color palette (brown/green/cream). Paint or color a simple animal statue sketch using only those three tones.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Tang%20sancai%20horse.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Tang%20dynasty%20Buddha%20sculpture.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Tang%20dynasty%20tomb%20figurines.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Tang dynasty art", url: "https://en.wikipedia.org/wiki/Tang_dynasty_art" },
+        { name: "The Met: Tang China (search)", url: "https://www.metmuseum.org/art/collection/search" }
+      ],
+      quiz: [
+        { q: "Tang art is often described as...", opts: ["Isolated", "Cosmopolitan", "Only minimal black ink"], ans: 1 },
+        { q: "San cai refers to...", opts: ["Three-color glaze ceramics", "Three emperors", "Three musical notes"], ans: 0 },
+        { q: "A major Tang theme is...", opts: ["Global exchange", "No trade", "No religion"], ans: 0 },
+        { q: "Tomb figurines help us understand...", opts: ["Court fashion and society", "Only abstract philosophy", "Nothing historical"], ans: 0 },
+        { q: "Tang Buddhism reached...", opts: ["A mature artistic peak", "Total disappearance", "Only wooden huts"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 7,
+      title: "Song: Landscape Painting and the Philosophy of Nature",
+      era: "960 – 1279",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Song%20dynasty%20landscape%20painting%20Fan%20Kuan%20Guo%20Xi",
+      lecture: "<h3>Mountains as Moral Order</h3><p>Song landscape painting is not just scenery. It is a worldview: nature as cosmic structure, human life as small yet meaningful, and brushwork as an extension of cultivated mind.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Monumental Landscapes:</strong> Mountains, mist, layered depth.</li><li><strong>Brush as Thinking:</strong> Ink methods reflect ethics and discipline.</li><li><strong>Shifting Viewpoints:</strong> ‘Floating’ perspective across scroll space.</li><li><strong>Human Scale:</strong> Tiny figures emphasize philosophical humility.</li></ul>",
+      criticalThinking: "Why would an educated elite value a painting that makes humans look tiny and powerless?",
+      mission: "<strong>Ink Wash Depth:</strong> Paint a simple mountain using only 3 ink values: light wash (mist), mid (rocks), dark (trees). Avoid outlines. Let atmosphere do the work.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Fan%20Kuan%20-%20Travelers%20among%20Mountains%20and%20Streams.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Guo%20Xi%20Early%20Spring.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Song%20landscape%20scroll.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Chinese landscape painting", url: "https://en.wikipedia.org/wiki/Chinese_landscape_painting" },
+        { name: "Wikipedia: Song dynasty art", url: "https://en.wikipedia.org/wiki/Song_dynasty_art" }
+      ],
+      quiz: [
+        { q: "Song landscapes often communicate...", opts: ["Only tourism ads", "Cosmic order and philosophy", "No meaning"], ans: 1 },
+        { q: "A key spatial idea in scroll painting is...", opts: ["Single camera lens view only", "Shifting viewpoints across space", "No depth at all"], ans: 1 },
+        { q: "Tiny human figures usually suggest...", opts: ["Human dominance", "Humility and scale", "Comedy"], ans: 1 },
+        { q: "Ink values help create...", opts: ["Atmosphere and depth", "Plastic shine", "Neon glow"], ans: 0 },
+        { q: "Brushwork is often understood as...", opts: ["Pure accident", "A reflection of cultivated mind", "Industrial printing"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 8,
+      title: "Song Ceramics: Form, Silence, and Taste",
+      era: "960 – 1279",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Song%20ceramics%20Ru%20Guan%20Jun%20Ding%20kiln",
+      lecture: "<h3>Minimal Beauty, Maximum Precision</h3><p>Song ceramics represent refined restraint. Subtle glaze, quiet form, and technical mastery became the ideal of elite taste, where perfection hides inside understatement.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Five Great Kilns:</strong> Ru, Guan, Ge, Ding, Jun (classic categories).</li><li><strong>Glaze as Atmosphere:</strong> Crackle, translucency, soft color.</li><li><strong>Form Discipline:</strong> Shape and proportion as moral ‘taste.’</li><li><strong>Object as Philosophy:</strong> Quiet objects reflect cultivated life.</li></ul>",
+      criticalThinking: "Why would subtle, nearly ‘plain’ objects become the highest luxury? What does that say about cultural values?",
+      mission: "<strong>Silent Object Study:</strong> Draw a cup/bowl in 3 angles. Keep lines minimal. Add one ‘glaze note’ (a single texture: crackle, misty blue, or matte white).",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ru%20ware%20dish.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ding%20ware%20bowl.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Jun%20ware%20vase.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Chinese ceramics", url: "https://en.wikipedia.org/wiki/Chinese_ceramics" },
+        { name: "The Met: Chinese ceramics (search)", url: "https://www.metmuseum.org/art/collection/search" }
+      ],
+      quiz: [
+        { q: "Song ceramic aesthetics are often described as...", opts: ["Loud and flashy", "Subtle and restrained", "Only metallic"], ans: 1 },
+        { q: "Glaze can function like...", opts: ["Atmosphere", "Textbook words", "Random noise"], ans: 0 },
+        { q: "Elite taste favored...", opts: ["Understatement and precision", "Maximum decoration always", "No craft skill"], ans: 0 },
+        { q: "Ceramics matter because they show...", opts: ["Objects as philosophy", "Objects as jokes", "Only children toys"], ans: 0 },
+        { q: "A kiln tradition indicates...", opts: ["Industrial mass plastic", "Regional technical mastery", "Nothing cultural"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 9,
+      title: "Yuan Dynasty: Literati Painting & Identity",
+      era: "1271 – 1368",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Yuan%20dynasty%20literati%20painting%20Zhao%20Mengfu%20Ni%20Zan",
+      lecture: "<h3>Painting as Moral Resistance</h3><p>Under Mongol rule, many Chinese scholar-officials turned to painting and calligraphy as an inner refuge. Literati painting valued personal expression, brush character, and cultured understatement over realism.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Literati Ideals:</strong> Painting as extension of calligraphy.</li><li><strong>Brush Personality:</strong> ‘Good painting’ = good character.</li><li><strong>Deliberate Simplicity:</strong> Sparse composition as identity statement.</li><li><strong>Art as Self-Positioning:</strong> Visual choices reflect social and political stance.</li></ul>",
+      criticalThinking: "If realism is not the goal, how do we judge ‘quality’ in literati painting?",
+      mission: "<strong>Brush Character Exercise:</strong> Paint the same tree 3 times: (1) careful, (2) fast, (3) broken/dry brush. Which one feels more ‘you’?",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Zhao%20Mengfu%20-%20Autumn%20Colors%20on%20the%20Qiao%20and%20Hua%20Mountains.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ni%20Zan%20-%20Rongxi%20Studio.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Yuan%20ink%20landscape%20scroll.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Literati painting", url: "https://en.wikipedia.org/wiki/Literati_painting" },
+        { name: "Wikipedia: Yuan dynasty art", url: "https://en.wikipedia.org/wiki/Yuan_dynasty_art" }
+      ],
+      quiz: [
+        { q: "Literati painting values...", opts: ["Photographic realism", "Brush character and inner expression", "Only gold backgrounds"], ans: 1 },
+        { q: "A core idea is that painting relates to...", opts: ["Calligraphy", "Car engines", "Dance only"], ans: 0 },
+        { q: "Sparse composition can function as...", opts: ["Identity statement", "Accident always", "Pure decoration"], ans: 0 },
+        { q: "Quality is judged by...", opts: ["Only color brightness", "Cultural/brush intelligence", "Sticker price only"], ans: 1 },
+        { q: "This period is shaped by...", opts: ["Mongol rule and social shifts", "Total peace always", "No politics"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 10,
+      title: "Ming: Court Painting, Workshops, and Urban Culture",
+      era: "1368 – 1644",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Ming%20dynasty%20painting%20court%20Wu%20school%20urban%20culture",
+      lecture: "<h3>Professionalization and Pleasure</h3><p>Ming visual culture expanded: court ateliers produced grand works, literati schools flourished, and urban markets fueled prints, illustrated books, and decorative arts.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Court vs Literati:</strong> Institution style vs scholar taste.</li><li><strong>Wu School:</strong> Suzhou-based literati tradition.</li><li><strong>Print Culture:</strong> Illustrated books spread imagery to broader publics.</li><li><strong>Market & Patronage:</strong> Art becomes a profession and commodity.</li></ul>",
+      criticalThinking: "When art becomes a market product, does it lose ‘purity’ or gain new creative freedom?",
+      mission: "<strong>Illustrated Page Study:</strong> Design one page for an imaginary Ming book: small image + title + 3 lines of caption. Focus on clean layout.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ming%20dynasty%20painting%20scroll.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ming%20woodblock%20print.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ming%20garden%20Suzhou.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Ming dynasty art", url: "https://en.wikipedia.org/wiki/Ming_dynasty_art" },
+        { name: "Wikipedia: Woodblock printing in East Asia", url: "https://en.wikipedia.org/wiki/Woodblock_printing" }
+      ],
+      quiz: [
+        { q: "Ming art culture expands due to...", opts: ["No cities", "Urban markets and print culture", "Only cave temples"], ans: 1 },
+        { q: "Court painting is often linked to...", opts: ["Institutional ateliers", "Random street graffiti only", "No patrons"], ans: 0 },
+        { q: "Print culture matters because it...", opts: ["Limits access", "Spreads imagery widely", "Erases all images"], ans: 1 },
+        { q: "Art markets can create...", opts: ["New professions and audiences", "Only silence", "No change"], ans: 0 },
+        { q: "The Ming period shows...", opts: ["Art as commodity and culture", "Art as invisible", "Art with no viewers"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 11,
+      title: "Ming Porcelain: Blue-and-White and Global Trade",
+      era: "1400s – 1600s",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Ming%20blue%20and%20white%20porcelain%20Jingdezhen%20global%20trade",
+      lecture: "<h3>Jingdezhen and the World</h3><p>Blue-and-white porcelain became a global luxury. Produced at Jingdezhen, these objects prove that Chinese art history is also world history: taste, trade, and technology moved across oceans.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Cobalt Blue:</strong> Imported pigment shaped iconic style.</li><li><strong>Industrial Scale Workshops:</strong> Highly organized production system.</li><li><strong>Global Markets:</strong> Islamic world and Europe consumed and adapted Chinese forms.</li><li><strong>Pattern Systems:</strong> Dragons, florals, narrative scenes as export language.</li></ul>",
+      criticalThinking: "If a style becomes global, who ‘owns’ it: the maker, the buyer, or the culture that remixes it?",
+      mission: "<strong>Blue Pattern Design:</strong> Design a circular plate pattern using only blue pen. Use 3 zones: rim border, mid band, center scene.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ming%20blue%20and%20white%20porcelain%20vase.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Jingdezhen%20porcelain.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ming%20porcelain%20plate.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Blue-and-white pottery", url: "https://en.wikipedia.org/wiki/Blue-and-white_pottery" },
+        { name: "Wikipedia: Jingdezhen", url: "https://en.wikipedia.org/wiki/Jingdezhen" }
+      ],
+      quiz: [
+        { q: "Blue-and-white porcelain became global partly because of...", opts: ["Airplanes", "Trade networks and demand", "No buyers"], ans: 1 },
+        { q: "Jingdezhen is best known as...", opts: ["A cave temple", "A major porcelain production center", "A Roman city"], ans: 1 },
+        { q: "Cobalt pigment was often...", opts: ["Imported and influential", "Only made from plastic", "Never used"], ans: 0 },
+        { q: "Workshop systems suggest...", opts: ["Organized large-scale craft", "No planning", "Only one artist"], ans: 0 },
+        { q: "Export objects can reshape...", opts: ["Global taste", "Nothing", "Only local weather"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 12,
+      title: "Qing Painting: Court Splendor and Individual Voices",
+      era: "1644 – 1911",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Qing%20dynasty%20painting%20Kangxi%20Qianlong%20Individualist%20painters",
+      lecture: "<h3>Empire and the Artist’s Self</h3><p>Qing art includes both court grandeur and strong individualist painting traditions. The same empire that collected and classified culture also produced artists who used brushwork to assert personal identity.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Court Patronage:</strong> Large projects, archives, and imperial taste.</li><li><strong>Individualist Painters:</strong> Distinct brush voices after dynastic trauma.</li><li><strong>Collecting & Cataloging:</strong> Art history as state project.</li><li><strong>Continuity + Reinvention:</strong> Older models reinterpreted.</li></ul>",
+      criticalThinking: "When an empire controls the canon (what counts as ‘great’), how can artists still be free?",
+      mission: "<strong>Old Master Remix:</strong> Pick one historical motif (bamboo, rock, orchid). Draw it twice: (1) ‘traditional’ careful, (2) ‘personal’ exaggerated and fast.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Qing%20dynasty%20painting%20scroll.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Qianlong%20Emperor%20portrait.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Shitao%20painting.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Qing dynasty art", url: "https://en.wikipedia.org/wiki/Qing_dynasty_art" },
+        { name: "Wikipedia: Shitao", url: "https://en.wikipedia.org/wiki/Shitao" }
+      ],
+      quiz: [
+        { q: "Qing art includes...", opts: ["Only court style", "Court patronage and individualist voices", "No painting"], ans: 1 },
+        { q: "Imperial collecting often aims to...", opts: ["Destroy all art", "Define the canon", "Avoid history"], ans: 1 },
+        { q: "Individualist painters often emphasize...", opts: ["Personal brush voice", "Perfect photography", "Plastic texture"], ans: 0 },
+        { q: "Artists can respond to control by...", opts: ["Reinterpreting tradition", "Stopping all art forever", "Only copying machines"], ans: 0 },
+        { q: "Continuity + reinvention means...", opts: ["No change", "Old models are reused with new intent", "Only modern art"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 13,
+      title: "Late Qing: Encounter with the West and Visual Crisis",
+      era: "1800s – 1911",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Late%20Qing%20art%20Shanghai%20School%20photography%20China",
+      lecture: "<h3>Modernity Arrives</h3><p>Wars, trade ports, and new media transformed Chinese visual culture. Photography, newspapers, and urban markets reshaped what images were for, creating a crisis and opportunity for traditional painting.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>New Media:</strong> Photography, lithography, mass print.</li><li><strong>Shanghai School:</strong> Urban style blending tradition with modern taste.</li><li><strong>Public Image Culture:</strong> Art moves from elite circles to wider audiences.</li><li><strong>Identity Pressure:</strong> Artists negotiate ‘Chinese-ness’ and modernity.</li></ul>",
+      criticalThinking: "When new media makes images cheap and fast, what is the new ‘value’ of hand painting?",
+      mission: "<strong>Old vs New Frame:</strong> Draw one object twice: (1) ink-style brush lines, (2) ‘camera crop’ composition (cut off edges, off-center).",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Shanghai%20School%20painting.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Late%20Qing%20photograph.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Lithograph%20China%2019th%20century.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Shanghai School", url: "https://en.wikipedia.org/wiki/Shanghai_school" },
+        { name: "Wikipedia: History of photography in China", url: "https://en.wikipedia.org/wiki/Photography_in_China" }
+      ],
+      quiz: [
+        { q: "Late Qing visual change is driven by...", opts: ["No technology", "New media and global contact", "Only cave art"], ans: 1 },
+        { q: "Photography changes painting by...", opts: ["Making images fast and cheap", "Removing all images", "Ending composition"], ans: 0 },
+        { q: "Shanghai School is linked to...", opts: ["Urban market culture", "Deep desert caves only", "Roman emperors"], ans: 0 },
+        { q: "Artists face pressure of...", opts: ["Identity and modernity", "Only farming", "No audience"], ans: 0 },
+        { q: "Hand painting’s value shifts toward...", opts: ["Nothing", "Intent, skill, and personal voice", "Battery life"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 14,
+      title: "Republic Era: Art Education and New Painting Languages",
+      era: "1912 – 1949",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Republic%20of%20China%20art%20Xu%20Beihong%20Lin%20Fengmian%20modern%20painting",
+      lecture: "<h3>Reforming Tradition</h3><p>Modern art education systems, overseas study, and cultural debates reshaped Chinese painting. Artists experimented with oil painting, realism, and hybrid forms while arguing about national style.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Art Schools:</strong> Curriculum and institutional modernization.</li><li><strong>Realism & Nation:</strong> Painting used for social and political goals.</li><li><strong>Hybridity:</strong> Combining ink traditions with Western methods.</li><li><strong>Debates:</strong> ‘New’ vs ‘traditional’ as identity struggle.</li></ul>",
+      criticalThinking: "Is mixing cultures an artistic upgrade, or a loss of tradition? Who gets to decide?",
+      mission: "<strong>Hybrid Portrait:</strong> Draw a portrait outline using ink-style line economy, then add one Western-style shading area (only 1). Keep it balanced.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Xu%20Beihong%20horse%20painting.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Lin%20Fengmian%20painting.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20art%20school%201930s.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Xu Beihong", url: "https://en.wikipedia.org/wiki/Xu_Beihong" },
+        { name: "Wikipedia: Lin Fengmian", url: "https://en.wikipedia.org/wiki/Lin_Fengmian" }
+      ],
+      quiz: [
+        { q: "Republic era art change is linked to...", opts: ["Art schools and modernization", "No education", "Only bronze casting"], ans: 0 },
+        { q: "A key theme is...", opts: ["Debates about national style", "No identity questions", "Only sports"], ans: 0 },
+        { q: "Hybridity means...", opts: ["Mixing methods and traditions", "Refusing any influence", "Copying only one style"], ans: 0 },
+        { q: "Realism can be used for...", opts: ["Social/political goals", "Nothing", "Only decoration"], ans: 0 },
+        { q: "Cultural mixing is often...", opts: ["A negotiation of identity", "A math error", "A food recipe"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 15,
+      title: "1949–1976: Art, Mass Media, and Socialist Visual Culture",
+      era: "1949 – 1976",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Chinese%20socialist%20realism%20posters%20art%201949%201976",
+      lecture: "<h3>Images for Collective Life</h3><p>Visual culture became a mass system: posters, exhibitions, and realism-based painting served ideology and public education. Art functioned as communication, mobilization, and representation of collective identity.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Poster Culture:</strong> Clear symbols, bright colors, slogans.</li><li><strong>Socialist Realism:</strong> Idealized labor and revolutionary narratives.</li><li><strong>Mass Reproduction:</strong> Images circulate widely beyond elites.</li><li><strong>Art as Policy Tool:</strong> Aesthetic choices align with political goals.</li></ul>",
+      criticalThinking: "When art is made to persuade millions, what happens to ambiguity and personal expression?",
+      mission: "<strong>Poster Composition:</strong> Create a simple poster layout: big title + one central figure + 2 symbolic objects. Use strong contrast and minimal detail.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20propaganda%20poster%201960s.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20Cultural%20Revolution%20poster.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Socialist%20realism%20China%20painting.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Propaganda in China", url: "https://en.wikipedia.org/wiki/Propaganda_in_China" },
+        { name: "Wikipedia: Socialist realism", url: "https://en.wikipedia.org/wiki/Socialist_realism" }
+      ],
+      quiz: [
+        { q: "Poster culture aims for...", opts: ["Ambiguity", "Clarity and persuasion", "No audience"], ans: 1 },
+        { q: "Socialist realism often shows...", opts: ["Idealized collective life", "Only empty landscapes", "No humans"], ans: 0 },
+        { q: "Mass reproduction changes art by...", opts: ["Expanding reach dramatically", "Ending images", "Preventing meaning"], ans: 0 },
+        { q: "Policy-driven art often reduces...", opts: ["Clarity", "Ambiguity and personal freedom", "Paper"], ans: 1 },
+        { q: "In this era, art functions as...", opts: ["Communication tool", "Pure private diary only", "Random accident"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 16,
+      title: "Post-1978: New Chinese Art and Opening Up",
+      era: "1978 – 1990s",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=85%20New%20Wave%20Chinese%20contemporary%20art%20opening%20up",
+      lecture: "<h3>Experiment Returns</h3><p>After the late 1970s, artists reconnected with global art languages and began intense experiments. The ’85 New Wave’ became a symbol of artistic awakening: performance, installation, conceptual strategies, and new painting attitudes emerged.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>85 New Wave:</strong> Experimental movements across regions.</li><li><strong>Conceptual Turn:</strong> Idea becomes central.</li><li><strong>New Media & Performance:</strong> Body and space as materials.</li><li><strong>Global Dialogue:</strong> Translation, adaptation, and critique.</li></ul>",
+      criticalThinking: "When an art scene ‘opens’ to global influence, what are the risks: imitation, loss, or new power?",
+      mission: "<strong>Concept Sketch:</strong> Write a 1-sentence artwork idea about ‘memory’ or ‘identity.’ Then draw a simple diagram showing how the viewer interacts with it.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Contemporary%20art%20China%20installation.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20contemporary%20art%20museum%20exhibition.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Performance%20art%20documentation.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: '85 New Wave", url: "https://en.wikipedia.org/wiki/'85_New_Wave" },
+        { name: "Wikipedia: Contemporary art in China", url: "https://en.wikipedia.org/wiki/Contemporary_art_in_China" }
+      ],
+      quiz: [
+        { q: "The ’85 New Wave is associated with...", opts: ["Total silence in art", "Experimental movements", "Only bronze rituals"], ans: 1 },
+        { q: "A conceptual turn means...", opts: ["Idea becomes central", "Color disappears forever", "No meaning allowed"], ans: 0 },
+        { q: "New media/performance expands art into...", opts: ["Body and space", "Only frames", "Only textbooks"], ans: 0 },
+        { q: "Global dialogue can create...", opts: ["Adaptation and critique", "No change", "Only copying"], ans: 0 },
+        { q: "A major risk is...", opts: ["Negotiating identity and influence", "Too much pottery", "Too many mountains"], ans: 0 }
+      ]
+    },
+
+    {
+      id: 17,
+      title: "Contemporary Ink: Tradition as a Living System",
+      era: "1990s – Present",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Contemporary%20ink%20art%20China%20modern%20shui%20mo",
+      lecture: "<h3>Ink After Modernity</h3><p>Contemporary ink is not ‘old.’ It treats tradition as a living system: artists expand ink into abstraction, installation, performance, and conceptual critique while keeping brush logic as a cultural DNA.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Ink as Method:</strong> Brush logic, rhythm, and material behavior.</li><li><strong>Scale Expansion:</strong> From scroll to wall-sized installations.</li><li><strong>Conceptual Ink:</strong> Ink used to question identity, politics, ecology.</li><li><strong>Tradition Rewritten:</strong> Quoting the past as critique or remix.</li></ul>",
+      criticalThinking: "If an artist uses ink but rejects classical subjects (mountains/bamboo), is it still ‘Chinese ink’?",
+      mission: "<strong>Ink Material Test:</strong> Make 6 swatches: wet wash, dry brush, splatter, gradient, layered wash, and erased highlight. Use them to build one abstract composition.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ink%20wash%20painting%20contemporary.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20ink%20installation.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Abstract%20ink%20painting.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Ink wash painting", url: "https://en.wikipedia.org/wiki/Ink_wash_painting" },
+        { name: "Google Arts & Culture: Chinese ink (browse)", url: "https://artsandculture.google.com/" }
+      ],
+      quiz: [
+        { q: "Contemporary ink often treats tradition as...", opts: ["Dead rulebook", "Living system", "A banned topic"], ans: 1 },
+        { q: "Ink can function as...", opts: ["Only decoration", "Method and concept", "Only photograph"], ans: 1 },
+        { q: "Scale expansion means...", opts: ["Smaller only", "Ink moving into large installations", "No space"], ans: 1 },
+        { q: "Quoting the past can be...", opts: ["Critique or remix", "Always worship", "Always illegal"], ans: 0 },
+        { q: "Ink identity debates show...", opts: ["Art is static", "Art is negotiated", "Art is purely math"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 18,
+      title: "Contemporary China: Installation, Photography, and the City",
+      era: "1990s – Present",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Chinese%20contemporary%20art%20installation%20photography%20urbanization",
+      lecture: "<h3>New Materials, New Realities</h3><p>Rapid urbanization and global networks pushed Chinese contemporary art into photography, installation, video, and large-scale social commentary. The ‘art object’ often becomes an environment or a question.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Installation:</strong> Space as artwork.</li><li><strong>Photography:</strong> Document + staged reality.</li><li><strong>Urban Themes:</strong> Migration, demolition, consumer culture.</li><li><strong>Global Art System:</strong> Biennales, museums, markets.</li></ul>",
+      criticalThinking: "If an artwork is an ‘experience’ in a room, how do we collect it, preserve it, or teach it?",
+      mission: "<strong>Room-as-Art Plan:</strong> Draw a top-down plan of a small installation about ‘home.’ Use 5 objects and explain where the viewer walks.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Installation%20art%20exhibition.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20contemporary%20photography.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Urban%20China%20street%20photography.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Installation art", url: "https://en.wikipedia.org/wiki/Installation_art" },
+        { name: "Wikipedia: Contemporary art in China", url: "https://en.wikipedia.org/wiki/Contemporary_art_in_China" }
+      ],
+      quiz: [
+        { q: "Installation art treats ... as the artwork.", opts: ["Space", "Only frames", "Only coins"], ans: 0 },
+        { q: "Photography in contemporary art can be...", opts: ["Only documentary", "Document + staged reality", "Never used"], ans: 1 },
+        { q: "A common theme is...", opts: ["Urbanization and social change", "Only dragons", "Only caves"], ans: 0 },
+        { q: "Global art systems include...", opts: ["Biennales and museums", "Only village markets", "No exhibitions"], ans: 0 },
+        { q: "Teaching experience-based art requires...", opts: ["Ignoring context", "Explaining space and viewer interaction", "Only memorizing dates"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 19,
+      title: "Tradition Across East Asia: Shared Roots, Different Paths",
+      era: "c. 600 – 1900",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=East%20Asian%20art%20China%20Japan%20Korea%20ink%20Buddhism",
+      lecture: "<h3>China as a Cultural Engine, Not a Solo Story</h3><p>Chinese art history shaped and was reshaped by East Asia. Buddhism, writing systems, painting formats, and craft technologies traveled, transformed, and returned with new meanings.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Cultural Transmission:</strong> Ideas move via religion, diplomacy, trade.</li><li><strong>Format Migration:</strong> Scrolls, screens, calligraphy traditions.</li><li><strong>Local Innovation:</strong> Japan/Korea develop distinct aesthetics from shared roots.</li><li><strong>History as Network:</strong> ‘Influence’ is two-way over time.</li></ul>",
+      criticalThinking: "Is it accurate to say ‘China influenced others,’ or is it better to say ‘a shared visual system evolved’? Why?",
+      mission: "<strong>Format Remix:</strong> Take one subject (a branch, a bird, a rock). Sketch it in two formats: (1) vertical hanging scroll, (2) folding screen panel. Notice composition changes.",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20hanging%20scroll.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20folding%20screen.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20ink%20painting.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: East Asian cultural sphere", url: "https://en.wikipedia.org/wiki/East_Asian_cultural_sphere" },
+        { name: "Wikipedia: Chinese calligraphy", url: "https://en.wikipedia.org/wiki/Chinese_calligraphy" }
+      ],
+      quiz: [
+        { q: "East Asian art history is best understood as...", opts: ["A single isolated line", "A network of exchanges", "A random list"], ans: 1 },
+        { q: "A major transmission channel was...", opts: ["Buddhism and diplomacy", "Only video games", "No travel"], ans: 0 },
+        { q: "Shared formats include...", opts: ["Scrolls and screens", "Roman coins", "Oil pipelines"], ans: 0 },
+        { q: "Local innovation means...", opts: ["Copying only", "Developing distinct aesthetics", "Stopping art"], ans: 1 },
+        { q: "Influence is often...", opts: ["One-way forever", "Two-way over time", "Impossible"], ans: 1 }
+      ]
+    },
+
+    {
+      id: 20,
+      title: "China in Global Contemporary: From Local Language to World Questions",
+      era: "2000s – Present",
+      videoUrl: "https://www.youtube.com/embed?listType=search&list=Chinese%20contemporary%20art%20global%20biennale%20identity%20conceptual",
+      lecture: "<h3>From ‘Chinese Style’ to Global Themes</h3><p>Today, Chinese artists operate inside a global art ecology. The question is no longer only ‘Chinese tradition vs Western modernity,’ but how artists use local visual languages to address global issues: ecology, technology, memory, migration, and power.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Global Platforms:</strong> Biennales, museums, online audiences.</li><li><strong>Local Language:</strong> Ink, calligraphy, craft as conceptual tools.</li><li><strong>Global Themes:</strong> Environment, surveillance, labor, identity.</li><li><strong>Audience Shift:</strong> Art speaks to multiple cultures at once.</li></ul>",
+      criticalThinking: "If an artwork must speak to multiple cultures, what gets lost, and what becomes stronger?",
+      mission: "<strong>Concept Statement (3 lines):</strong> Write a short statement for an artwork that uses one traditional element (ink/ceramic/paper) to address one global theme (climate/AI/migration).",
+      images: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Contemporary%20art%20biennale%20installation.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Ink%20art%20contemporary%20exhibition.jpg?width=1400",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Video%20art%20installation.jpg?width=1400"
+      ],
+      resources: [
+        { name: "Wikipedia: Biennale", url: "https://en.wikipedia.org/wiki/Biennale" },
+        { name: "Wikipedia: Contemporary art", url: "https://en.wikipedia.org/wiki/Contemporary_art" },
+        { name: "Google Arts & Culture (browse)", url: "https://artsandculture.google.com/" }
+      ],
+      quiz: [
+        { q: "Contemporary global art platforms include...", opts: ["Biennales and museums", "Only tombs", "Only caves"], ans: 0 },
+        { q: "Traditional elements today can act as...", opts: ["Conceptual tools", "Only decoration", "Only antiques"], ans: 0 },
+        { q: "Common global themes include...", opts: ["Ecology and technology", "Only dragons", "Only bronze casting"], ans: 0 },
+        { q: "Audience shift means...", opts: ["Only one culture matters", "Multiple cultures interpret at once", "No viewers"], ans: 1 },
+        { q: "Cross-cultural communication can...", opts: ["Lose some context but gain reach", "Always perfect", "Always impossible"], ans: 0 }
+      ]
+    }
+  ]
 };
 
 // （可选）兼容旧 app.js：如果你还在用“只读一个数组”的旧版本，才打开下面这行
