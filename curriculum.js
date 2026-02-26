@@ -4,7 +4,6 @@ window.FEI_ART_HISTORY_TRACKS = {
     label: "Western Art History",
     desc: "From Prehistoric to Contemporary (global influence track)",
     lessons: [
-      // 你现有的 1–20 课内容粘在这里（保持每个对象之间用英文逗号 , 分隔）
       // 
       {
         id: 1, title: "The Dawn of Art (Prehistoric)", era: "30,000 BCE - 2,000 BCE",
