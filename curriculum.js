@@ -1446,7 +1446,6 @@ window.FEI_ART_HISTORY_TRACKS = {
         { q: "Cross-cultural communication can...", opts: ["Lose some context but gain reach", "Always perfect", "Always impossible"], ans: 0 }
       ]
     }
-  ]
 };
 
 // （可选）兼容旧 app.js：如果你还在用“只读一个数组”的旧版本，才打开下面这行
