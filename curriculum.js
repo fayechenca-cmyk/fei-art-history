@@ -485,7 +485,438 @@ window.FEI_ART_HISTORY_TRACKS = {
       { q: "Cubism?", opts: ["Ideal", "Realist", "Shattered geometry"], ans: 2 },
       { q: "What is important?", opts: ["Idea/Concept", "Price", "Politics"], ans: 0 }
     ]
-   }
+   }，
+     {
+  id: 21,
+  title: "Impressionism: Painting Light, Not Objects",
+  era: "1860s - 1880s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Impressionism%20art%20history",
+  lecture: "<h3>Seeing Like a Camera Before Cameras Were Everywhere</h3><p>Impressionists rejected studio rules and academic finish. They painted <strong>fleeting light</strong>, quick moments, and modern life. Instead of smooth surfaces, you see visible brush marks that record perception.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>En plein air:</strong> painting outdoors to capture changing light.</li><li><strong>Broken brushwork:</strong> small strokes that blend in the viewer’s eye.</li><li><strong>Modern subjects:</strong> cafés, streets, leisure, railways.</li><li><strong>Color & atmosphere:</strong> shadows are not black, they are colored by light.</li></ul>",
+  criticalThinking: "If Impressionism looks ‘unfinished,’ why did it feel more honest to modern life than perfect academic paintings?",
+  mission: "<strong>Light Study (10 minutes):</strong> Pick one object near a window. Draw it three times as the light changes (morning / noon / evening). Only change the shadow color and direction, not the object.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Claude_Monet_-_Impression,_soleil_levant.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Pierre-Auguste_Renoir_-_Bal_du_moulin_de_la_Galette.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Edgar_Degas_-_The_Ballet_Class.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Smarthistory: Impressionism", url: "https://smarthistory.org/a-beginners-guide-to-impressionism/" },
+    { name: "Tate: Impressionism", url: "https://www.tate.org.uk/art/art-terms/i/impressionism" },
+    { name: "The Met: Impressionism (Timeline)", url: "https://www.metmuseum.org/toah/hd/imml/hd_imml.htm" }
+  ],
+  quiz: [
+    { q: "Impressionists often painted...", opts: ["Indoors only", "Outdoors to capture light", "Only religious icons"], ans: 1 },
+    { q: "A key focus of Impressionism is...", opts: ["Perfect outlines", "Fleeting atmosphere and light", "Mythological battles"], ans: 1 },
+    { q: "Impressionist shadows are usually...", opts: ["Pure black", "Colored by surrounding light", "Never painted"], ans: 1 },
+    { q: "Typical Impressionist subject includes...", opts: ["Modern city life", "Ancient pyramids", "Medieval tympanums"], ans: 0 },
+    { q: "The visible brushstrokes suggest...", opts: ["A record of perception", "A lack of paint", "Only sculpture"], ans: 0 }
+  ]
+},
+
+{
+  id: 22,
+  title: "Post-Impressionism: Structure, Emotion, and Symbol",
+  era: "1880s - 1905",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Post-Impressionism%20art%20history",
+  lecture: "<h3>After Light: New Systems of Meaning</h3><p>Post-Impressionists admired Impressionism’s color but wanted more: <strong>structure</strong>, <strong>emotion</strong>, and <strong>symbolic meaning</strong>. They are not one style, but a set of powerful solutions to what art could do next.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Cézanne:</strong> build form with color planes; nature becomes geometry.</li><li><strong>Van Gogh:</strong> brushwork as emotion; paint becomes psychological pressure.</li><li><strong>Gauguin:</strong> symbolism, flat color, dream-like imagination.</li><li><strong>Pointillism:</strong> tiny dots of pure color (Seurat) based on optical theory.</li></ul>",
+  criticalThinking: "If color can express emotion or belief, does ‘realistic color’ even matter anymore?",
+  mission: "<strong>Color Emotion Map:</strong> Choose one memory. Draw a simple landscape from it using only 3 colors that match the feeling (not the real colors). Write one sentence explaining each color choice.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Vincent_van_Gogh_-_The_Starry_Night.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Paul_Cezanne_-_Mont_Sainte-Victoire.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Georges_Seurat_-_A_Sunday_on_La_Grande_Jatte.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Smarthistory: Post-Impressionism", url: "https://smarthistory.org/post-impressionism/" },
+    { name: "Tate: Post-Impressionism", url: "https://www.tate.org.uk/art/art-terms/p/post-impressionism" },
+    { name: "The Met: Post-Impressionism", url: "https://www.metmuseum.org/toah/hd/poim/hd_poim.htm" }
+  ],
+  quiz: [
+    { q: "Post-Impressionism is best described as...", opts: ["One single unified style", "Multiple approaches after Impressionism", "Only sculpture"], ans: 1 },
+    { q: "Cézanne is known for...", opts: ["Dots only", "Building form with color planes/geometry", "Gold mosaics"], ans: 1 },
+    { q: "Van Gogh used brushwork mainly to show...", opts: ["Political laws", "Emotion and psychology", "Architecture engineering"], ans: 1 },
+    { q: "Seurat’s technique involves...", opts: ["Optical dots of color", "Wet plaster fresco", "Carving stone"], ans: 0 },
+    { q: "A core shift is that color can be...", opts: ["Only realistic", "Expressive/symbolic", "Forbidden"], ans: 1 }
+  ]
+},
+
+{
+  id: 23,
+  title: "Symbolism: Dreams, Myths, and Inner Worlds",
+  era: "1880s - 1910s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Symbolism%20art%20movement%20history",
+  lecture: "<h3>When Reality Isn’t Enough</h3><p>Symbolists rejected modern industrial reality and turned toward <strong>dreams</strong>, <strong>myths</strong>, and the invisible world of desire, fear, and imagination. They believed art should suggest meanings rather than describe facts.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Inner psychology:</strong> art as a mirror of the mind.</li><li><strong>Myth & allegory:</strong> old stories become modern emotional metaphors.</li><li><strong>Atmosphere:</strong> hazy, mysterious spaces over clear realism.</li><li><strong>Bridge forward:</strong> opens the door to Surrealism later.</li></ul>",
+  criticalThinking: "Why do people keep returning to myth and fantasy exactly when society becomes more ‘modern’ and ‘rational’?",
+  mission: "<strong>Personal Symbol:</strong> Invent one symbol for a feeling (anxiety, hope, longing). Draw it three ways: simple icon, detailed illustration, abstract shape.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Moreau_-_The_Apparition.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Odilon_Redon_-_The_Cyclops.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Arnold_Bocklin_-_Isle_of_the_Dead.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Symbolism", url: "https://www.tate.org.uk/art/art-terms/s/symbolism" },
+    { name: "Smarthistory: Symbolism", url: "https://smarthistory.org/symbolism/" },
+    { name: "The Met: Symbolism", url: "https://www.metmuseum.org/toah/hd/symb/hd_symb.htm" }
+  ],
+  quiz: [
+    { q: "Symbolism often focuses on...", opts: ["Inner worlds and suggestion", "Engineering arches", "Strict legal codes"], ans: 0 },
+    { q: "Symbolists typically rejected...", opts: ["Dreams", "Modern industrial reality", "Myths"], ans: 1 },
+    { q: "Symbolist imagery often uses...", opts: ["Allegory and myth", "Only realistic portraits", "Only geometric grids"], ans: 0 },
+    { q: "Symbolism later influences...", opts: ["Surrealism", "Romanesque", "Ancient Egypt"], ans: 0 },
+    { q: "Symbolism is usually...", opts: ["Literal and documentary", "Mysterious and atmospheric", "Only political propaganda"], ans: 1 }
+  ]
+},
+
+{
+  id: 24,
+  title: "Fauvism: Color as a Wild Beast",
+  era: "1905 - 1908",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Fauvism%20art%20history",
+  lecture: "<h3>When Color Breaks Free</h3><p>Fauvism explodes polite painting. Colors become intense, unnatural, and emotionally direct. The goal is not faithful description, but <strong>visual impact</strong> and <strong>expressive force</strong>.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Non-natural color:</strong> a face can be green, a shadow can be pink.</li><li><strong>Flattened space:</strong> less modeling, more bold shape.</li><li><strong>Decorative rhythm:</strong> color patterns create energy.</li><li><strong>Bridge:</strong> opens the door to Expressionism.</li></ul>",
+  criticalThinking: "If color becomes emotional rather than descriptive, who decides what a ‘correct’ painting is?",
+  mission: "<strong>Fauve Portrait:</strong> Draw a simple portrait and recolor it using 3 shocking colors (no skin tones allowed). Then write one line about what mood your palette creates.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Henri_Matisse_-_Woman_with_a_Hat.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Andre_Derain_-_Charing_Cross_Bridge.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Henri_Matisse_-_The_Joy_of_Life.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Fauvism", url: "https://www.tate.org.uk/art/art-terms/f/fauvism" },
+    { name: "Smarthistory: Fauvism", url: "https://smarthistory.org/fauvism/" },
+    { name: "The Met: Fauvism", url: "https://www.metmuseum.org/toah/hd/fauv/hd_fauv.htm" }
+  ],
+  quiz: [
+    { q: "Fauvism is famous for...", opts: ["Wild non-natural color", "Perfect realism", "Gold icons"], ans: 0 },
+    { q: "Fauvist space tends to be...", opts: ["Deep and illusionistic", "Flattened and bold", "Only sculptural"], ans: 1 },
+    { q: "The name ‘Fauves’ suggests...", opts: ["Wild beasts", "Stone temples", "Legal codes"], ans: 0 },
+    { q: "Fauvism helps lead toward...", opts: ["Expressionism", "Romanesque", "Neoclassicism"], ans: 0 },
+    { q: "In Fauvism, color is mainly...", opts: ["Emotional/expressive", "Always realistic", "Forbidden"], ans: 0 }
+  ]
+},
+
+{
+  id: 25,
+  title: "Expressionism: Painting Feeling Under Pressure",
+  era: "1905 - 1914",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Expressionism%20art%20history",
+  lecture: "<h3>Distortion as Truth</h3><p>Expressionism uses distortion, harsh color, and aggressive mark-making to show internal states. Instead of describing the external world, it reveals fear, anxiety, and intensity inside the body and mind.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Distortion:</strong> exaggeration becomes emotional evidence.</li><li><strong>Psychological space:</strong> environments reflect inner tension.</li><li><strong>Groups:</strong> Die Brücke, Der Blaue Reiter (Germany).</li><li><strong>Bridge:</strong> prepares viewers for abstraction.</li></ul>",
+  criticalThinking: "Why might distortion feel more truthful than realism when describing modern anxiety?",
+  mission: "<strong>Stress Landscape:</strong> Draw a room from memory when you felt stressed. Change the proportions to match the feeling: tilt walls, stretch objects, compress space.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Edvard_Munch_-_The_Scream.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Ernst_Ludwig_Kirchner_-_Street,_Berlin.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Wassily_Kandinsky_-_Improvisation_28.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Expressionism", url: "https://www.tate.org.uk/art/art-terms/e/expressionism" },
+    { name: "Smarthistory: Expressionism", url: "https://smarthistory.org/expressionism/" },
+    { name: "The Met: German Expressionism", url: "https://www.metmuseum.org/toah/hd/gexp/hd_gexp.htm" }
+  ],
+  quiz: [
+    { q: "Expressionism prioritizes...", opts: ["Inner feeling", "Perfect proportion", "Historical propaganda"], ans: 0 },
+    { q: "Distortion in Expressionism is used to...", opts: ["Hide meaning", "Express tension/emotion", "Obey academic rules"], ans: 1 },
+    { q: "Expressionist environments often...", opts: ["Reflect psychology", "Disappear completely", "Become legal documents"], ans: 0 },
+    { q: "Expressionism helps lead toward...", opts: ["Abstraction", "Cave painting", "Roman arches"], ans: 0 },
+    { q: "A typical Expressionist mood is...", opts: ["Calm and neutral", "Intense/anxious", "Purely decorative"], ans: 1 }
+  ]
+},
+
+{
+  id: 26,
+  title: "Cubism: Shattering Reality into Angles",
+  era: "1907 - 1917",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Cubism%20art%20history",
+  lecture: "<h3>Seeing All Sides at Once</h3><p>Cubism breaks objects into geometric facets and shows multiple viewpoints simultaneously. It rejects Renaissance perspective and replaces it with a new logic: perception is complex, fragmented, and constructed.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Multiple viewpoints:</strong> time and movement collapse into one image.</li><li><strong>Analytic Cubism:</strong> broken planes, limited color.</li><li><strong>Synthetic Cubism:</strong> collage, newspaper, mixed materials.</li><li><strong>Bridge:</strong> opens the door to many abstractions and design languages.</li></ul>",
+  criticalThinking: "If Cubism shows multiple angles at once, is it closer to how the mind understands reality than a single ‘correct’ view?",
+  mission: "<strong>Paper Collage Portrait:</strong> Make a cubist face using 6–10 paper shapes. Rotate one eye, flip the nose, and overlap planes. Add one real-world texture (newspaper, receipt, packaging).",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Pablo_Picasso_-_Les_Demoiselles_d%27Avignon.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Georges_Braque_-_Violin_and_Candlestick.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Picasso_-_Still_Life_with_Chair_Caning.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Smarthistory: Cubism", url: "https://smarthistory.org/cubism/" },
+    { name: "Tate: Cubism", url: "https://www.tate.org.uk/art/art-terms/c/cubism" },
+    { name: "The Met: Cubism", url: "https://www.metmuseum.org/toah/hd/cube/hd_cube.htm" }
+  ],
+  quiz: [
+    { q: "Cubism rejects...", opts: ["Single-point Renaissance perspective", "All geometry", "All modern life"], ans: 0 },
+    { q: "Analytic Cubism is often...", opts: ["Bright and decorative", "Broken planes with limited color", "Only gold"], ans: 1 },
+    { q: "Synthetic Cubism commonly uses...", opts: ["Collage materials", "Wet plaster only", "Stone carving"], ans: 0 },
+    { q: "Cubism shows...", opts: ["Multiple viewpoints", "Only one view", "Only religious symbols"], ans: 0 },
+    { q: "Cubism influences later...", opts: ["Abstraction and design", "Only ancient temples", "Only Roman sculpture"], ans: 0 }
+  ]
+},
+
+{
+  id: 27,
+  title: "Futurism & Dada: Speed, Chaos, Anti-Art",
+  era: "1909 - 1924",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Futurism%20Dada%20art%20history",
+  lecture: "<h3>When the World Breaks, Art Breaks Too</h3><p>Early 20th century shocks. Futurism celebrates speed, machines, and modern energy. Dada responds to war and absurdity by attacking logic, taste, and the idea of “serious art.”</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Futurism:</strong> motion lines, noise, technology worship.</li><li><strong>Dada:</strong> chance, nonsense, collage, readymades.</li><li><strong>Readymade:</strong> selecting an object and declaring it art.</li><li><strong>Bridge:</strong> leads directly to Conceptual Art later.</li></ul>",
+  criticalThinking: "If choosing an object can be art, what is the role of skill… and why does that make people angry?",
+  mission: "<strong>Readymade Choice:</strong> Pick one everyday object. Photograph it like a museum product shot. Give it a title that changes its meaning completely (serious, funny, or critical).",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Umberto_Boccioni_-_Unique_Forms_of_Continuity_in_Space.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Hannah_Hoch_Cut_with_the_Kitchen_Knife.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Marcel_Duchamp_-_Fountain.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Futurism", url: "https://www.tate.org.uk/art/art-terms/f/futurism" },
+    { name: "Tate: Dada", url: "https://www.tate.org.uk/art/art-terms/d/dada" },
+    { name: "Smarthistory: Dada", url: "https://smarthistory.org/dada/" }
+  ],
+  quiz: [
+    { q: "Futurism often celebrates...", opts: ["Speed and machines", "Ancient rituals", "Quiet domestic still life"], ans: 0 },
+    { q: "Dada reacts strongly to...", opts: ["Perfect harmony", "War and absurdity", "Linear perspective"], ans: 1 },
+    { q: "A readymade is...", opts: ["A hand-carved statue", "An ordinary object declared art", "A gold mosaic"], ans: 1 },
+    { q: "Dada techniques often include...", opts: ["Chance and collage", "Only oil glazing", "Only fresco"], ans: 0 },
+    { q: "Readymades later influence...", opts: ["Conceptual Art", "Romanesque", "Ancient Egypt"], ans: 0 }
+  ]
+},
+
+{
+  id: 28,
+  title: "Surrealism: The Logic of Dreams",
+  era: "1920s - 1940s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Surrealism%20art%20history",
+  lecture: "<h3>Painting the Subconscious</h3><p>Surrealists explore dreams, unconscious desire, and psychological symbolism. Influenced by Freud, they treat the mind as a landscape where strange objects feel normal and logic dissolves.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Dream imagery:</strong> familiar things placed in impossible situations.</li><li><strong>Automatic methods:</strong> letting chance and free association guide making.</li><li><strong>Symbolic objects:</strong> meanings shift through context.</li><li><strong>Bridge:</strong> influences film, photography, contemporary imagination.</li></ul>",
+  criticalThinking: "If dreams are irrational, why do they still feel emotionally ‘true’ to us?",
+  mission: "<strong>Dream Object Swap:</strong> Choose two objects that don’t belong together (e.g., fish + teacup). Draw them merged into one believable object. Add one line explaining what it might symbolize.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Salvador_Dali_-_The_Persistence_of_Memory.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Rene_Magritte_-_The_Treachery_of_Images.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Max_Ernst_-_The_Elephant_Celebes.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Surrealism", url: "https://www.tate.org.uk/art/art-terms/s/surrealism" },
+    { name: "Smarthistory: Surrealism", url: "https://smarthistory.org/surrealism/" },
+    { name: "The Met: Surrealism", url: "https://www.metmuseum.org/toah/hd/surr/hd_surr.htm" }
+  ],
+  quiz: [
+    { q: "Surrealism is strongly linked to...", opts: ["The unconscious and dreams", "Roman law", "Ziggurat construction"], ans: 0 },
+    { q: "Surrealist images often...", opts: ["Follow strict realism only", "Mix familiar objects in impossible ways", "Avoid imagination"], ans: 1 },
+    { q: "Automatic methods aim to...", opts: ["Control every detail logically", "Reduce conscious control", "Copy museum labels"], ans: 1 },
+    { q: "Surrealism was influenced by...", opts: ["Freud", "Hammurabi", "Brunelleschi"], ans: 0 },
+    { q: "Surrealism strongly influences...", opts: ["Modern visual culture/film", "Only medieval churches", "Only cave rituals"], ans: 0 }
+  ]
+},
+
+{
+  id: 29,
+  title: "Abstract Expressionism: Painting as a Record of Being",
+  era: "1940s - 1950s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Abstract%20Expressionism%20art%20history",
+  lecture: "<h3>After War: Gesture, Scale, and Presence</h3><p>After WWII, New York becomes a major art center. Abstract Expressionism emphasizes scale, gesture, and the canvas as an arena of action. The painting becomes a physical record of presence, pressure, and decision.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Action painting:</strong> movement and gesture are visible (Pollock).</li><li><strong>Color field:</strong> vast fields of color as emotional space (Rothko).</li><li><strong>Monumental scale:</strong> the viewer is physically absorbed.</li><li><strong>Bridge:</strong> leads to Minimalism and Conceptual reactions.</li></ul>",
+  criticalThinking: "If a painting is ‘just’ marks and color, why can it still feel like a powerful emotional experience?",
+  mission: "<strong>Gesture Sheet:</strong> Set a 2-minute timer. Fill one page with continuous marks without lifting your pen. Then circle the area that feels most intense and explain why.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Jackson_Pollock_Number_1A_1948.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Mark_Rothko_Seagram_Murals.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Willem_de_Kooning_Woman_I.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Abstract Expressionism", url: "https://www.tate.org.uk/art/art-terms/a/abstract-expressionism" },
+    { name: "Smarthistory: Abstract Expressionism", url: "https://smarthistory.org/abstract-expressionism/" },
+    { name: "MoMA: Abstract Expressionism", url: "https://www.moma.org/learn/moma_learning/themes/abstract-expressionism/" }
+  ],
+  quiz: [
+    { q: "Abstract Expressionism becomes prominent in...", opts: ["New York after WWII", "Ancient Greece", "Medieval France"], ans: 0 },
+    { q: "Action painting emphasizes...", opts: ["Gesture and movement", "Perfect outlines", "Religious icons"], ans: 0 },
+    { q: "Color field painting often uses...", opts: ["Vast areas of color", "Only dots", "Only collage"], ans: 0 },
+    { q: "A key idea is that the painting records...", opts: ["Presence/decision", "Legal codes", "Temple engineering"], ans: 0 },
+    { q: "This movement helps lead to...", opts: ["Minimalism", "Romanesque", "Egyptian canon"], ans: 0 }
+  ]
+},
+
+{
+  id: 30,
+  title: "Pop Art: Images, Brands, Mass Media",
+  era: "1950s - 1970s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Pop%20Art%20history",
+  lecture: "<h3>When the Everyday Becomes the Icon</h3><p>Pop Art pulls imagery from advertising, comics, celebrities, and products. It blurs high art and popular culture. Sometimes it celebrates mass media, sometimes it critiques it, and often it does both at once.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Appropriation begins:</strong> reuse of mass images.</li><li><strong>Repetition:</strong> like factory production or media circulation.</li><li><strong>Cool surface:</strong> clean, graphic styles mimic commercial design.</li><li><strong>Question:</strong> is culture something we consume, or something consuming us?</li></ul>",
+  criticalThinking: "If Pop Art uses the same images as advertisements, how do you tell the difference between critique and promotion?",
+  mission: "<strong>Pop Poster Remix:</strong> Choose one everyday product at home. Redesign its label as a ‘Pop’ artwork using bold text and flat shapes. Change the slogan to reveal a hidden truth (funny or critical).",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Andy_Warhol_1975.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Roy_Lichtenstein_Whaam.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Pop_art_exhibition_view.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Pop Art", url: "https://www.tate.org.uk/art/art-terms/p/pop-art" },
+    { name: "Smarthistory: Pop Art", url: "https://smarthistory.org/pop-art/" },
+    { name: "MoMA: Pop Art", url: "https://www.moma.org/learn/moma_learning/themes/pop/" }
+  ],
+  quiz: [
+    { q: "Pop Art often uses imagery from...", opts: ["Mass media and consumer culture", "Only ancient myths", "Only religious icons"], ans: 0 },
+    { q: "A common Pop strategy is...", opts: ["Repetition like mass production", "Invisible brushwork only", "Gold mosaic tiles"], ans: 0 },
+    { q: "Pop Art blurs the boundary between...", opts: ["High art and popular culture", "Stone and clay", "Heaven and earth"], ans: 0 },
+    { q: "Pop style often looks...", opts: ["Graphic and commercial", "Only painterly and soft", "Only carved"], ans: 0 },
+    { q: "Pop Art can be both...", opts: ["Critique and celebration", "Only ancient ritual", "Only realism"], ans: 0 }
+  ]
+}, 
+
+      {
+  id: 31,
+  title: "Minimalism: Less, But Louder",
+  era: "1960s - 1970s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Minimalism%20art%20history",
+  lecture: "<h3>When the Artwork Refuses to Perform</h3><p>Minimalism takes a cold shower after Abstract Expressionism’s big emotions. Instead of dramatic gestures, it chooses <strong>simple forms</strong>, <strong>industrial materials</strong>, and <strong>clarity</strong>. The artwork becomes an object in real space, and the viewer’s movement becomes part of the experience.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Industrial materials:</strong> metal, plexiglass, fluorescent light, factory finishes.</li><li><strong>Objecthood:</strong> the artwork is not a “window” into a scene, it’s a thing in the room.</li><li><strong>Serial repetition:</strong> repeated units and grids reduce personal “handwriting.”</li><li><strong>Viewer awareness:</strong> your body, distance, and angle matter.</li></ul><p><strong>Bridge from Pop:</strong> Pop mirrors mass culture; Minimalism strips culture away and asks you to face pure form and space.</p>",
+  criticalThinking: "If Minimalism removes storytelling and emotion, what’s left for the viewer to ‘read’… and is that uncomfortable on purpose?",
+  mission: "<strong>3-Shape Installation:</strong> Cut three identical rectangles from cardboard. Place them in your room in three different arrangements. Photograph each setup. Which arrangement changes the space the most, and why?",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Donald_Judd_untitled_1969.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Dan_Flavin_installation.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Minimalist_sculpture_museum_installation.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Minimalism", url: "https://www.tate.org.uk/art/art-terms/m/minimalism" },
+    { name: "Smarthistory: Minimalism", url: "https://smarthistory.org/minimalism/" },
+    { name: "MoMA: Minimalism", url: "https://www.moma.org/learn/moma_learning/themes/minimalism/" }
+  ],
+  quiz: [
+    { q: "Minimalism often uses...", opts: ["Industrial materials and simple forms", "Gold backgrounds and halos", "Mythological battle scenes"], ans: 0 },
+    { q: "Minimalist art emphasizes...", opts: ["Illusionistic depth", "Objecthood in real space", "Hidden religious symbolism"], ans: 1 },
+    { q: "Serial repetition in Minimalism helps reduce...", opts: ["Viewer experience", "Personal handwriting/expressive gesture", "Geometry"], ans: 1 },
+    { q: "A key point is that the viewer’s...", opts: ["Movement and body matter", "Must be ignored", "Should only read text"], ans: 0 },
+    { q: "Minimalism reacts against the drama of...", opts: ["Abstract Expressionism", "Ancient Egypt", "Romanesque"], ans: 0 }
+  ]
+},
+
+{
+  id: 32,
+  title: "Conceptual Art: The Idea Is the Artwork",
+  era: "1960s - 1980s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Conceptual%20art%20history",
+  lecture: "<h3>Art Moves from Object to Thought</h3><p>Conceptual Art pushes a radical claim: the <strong>idea</strong> matters more than the object. Sometimes the object is secondary, temporary, or doesn’t exist at all. Language, instructions, documentation, and systems become artistic material.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Dematerialization:</strong> art can be a plan, a text, a rule, or a record.</li><li><strong>Language as medium:</strong> words can build an artwork in your mind.</li><li><strong>Institution critique begins:</strong> museums, labels, and authority become part of the artwork.</li><li><strong>Authorship questioned:</strong> if anyone can execute the idea, who is the artist?</li></ul>",
+  criticalThinking: "If the artwork is an instruction that anyone can follow, what exactly are you paying for: labor, the idea, or social permission?",
+  mission: "<strong>Instruction Artwork:</strong> Write a 5-step instruction that creates an artwork using only objects already in a home. Make it precise. Then test it yourself and photograph the result.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Joseph_Kosuth_One_and_Three_Chairs.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Conceptual_art_text_installation.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Museum_label_conceptual_display.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Conceptual Art", url: "https://www.tate.org.uk/art/art-terms/c/conceptual-art" },
+    { name: "Smarthistory: Conceptual Art", url: "https://smarthistory.org/conceptual-art/" },
+    { name: "MoMA: Conceptual Art", url: "https://www.moma.org/learn/moma_learning/themes/conceptual-art/" }
+  ],
+  quiz: [
+    { q: "Conceptual Art claims the most important part is...", opts: ["The frame", "The idea/concept", "The artist’s realistic skill"], ans: 1 },
+    { q: "‘Dematerialization’ means...", opts: ["Art becomes only stone", "Art may exist as text/instruction/documentation", "Art must be painted outdoors"], ans: 1 },
+    { q: "Conceptual Art often uses...", opts: ["Language and systems", "Only oil glazing", "Only marble carving"], ans: 0 },
+    { q: "If anyone can execute the work, it challenges...", opts: ["Authorship", "Gravity", "Perspective"], ans: 0 },
+    { q: "Conceptual Art often asks who controls...", opts: ["Meaning and authority", "Cave rituals", "Ziggurat engineering"], ans: 0 }
+  ]
+},
+
+{
+  id: 33,
+  title: "Performance & Body Art: Art as Action",
+  era: "1960s - 1990s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Performance%20art%20body%20art%20history",
+  lecture: "<h3>The Artist’s Body Becomes the Medium</h3><p>Performance and Body Art move the artwork from object to event. The body becomes material, and time becomes structure. Documentation (photos/video/text) often becomes the only trace left afterward.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Time-based art:</strong> meaning unfolds through duration and presence.</li><li><strong>Audience relationship:</strong> viewers are witnesses, participants, or part of the work’s ethics.</li><li><strong>Identity & politics:</strong> gender, race, power, and vulnerability become central themes.</li><li><strong>Documentation:</strong> the record becomes the archive and sometimes the ‘product’.</li></ul>",
+  criticalThinking: "If a performance only exists in the moment, is the ‘real artwork’ the action itself, or the documentation that survives?",
+  mission: "<strong>One-Minute Performance Score:</strong> Design a 60-second silent action that communicates one idea (pressure, joy, memory, resistance). Perform it once. Document with a single photo and a 3-sentence description.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Performance_art_documentation_photo.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Marina_Abramovic_The_Artist_Is_Present.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Performance_installation_audience.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Performance Art", url: "https://www.tate.org.uk/art/art-terms/p/performance-art" },
+    { name: "MoMA: Performance", url: "https://www.moma.org/learn/moma_learning/themes/performance/" },
+    { name: "Smarthistory: Performance Art", url: "https://smarthistory.org/performance-art/" }
+  ],
+  quiz: [
+    { q: "Performance art is primarily...", opts: ["An object to hang", "An action/event in time", "A carved monument"], ans: 1 },
+    { q: "Body Art often treats the body as...", opts: ["Only a model to copy", "A medium/material", "Something irrelevant"], ans: 1 },
+    { q: "Documentation matters because...", opts: ["It is often the only trace left", "It replaces the audience entirely", "It prevents meaning"], ans: 0 },
+    { q: "Performance often involves the audience as...", opts: ["Witness/participant", "Invisible", "Only buyers"], ans: 0 },
+    { q: "Common themes include identity and...", opts: ["Politics/power", "Only farming", "Only ancient myths"], ans: 0 }
+  ]
+},
+
+{
+  id: 34,
+  title: "Postmodernism: Remix, Critique, and Doubt",
+  era: "1970s - 1990s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Postmodernism%20art%20history",
+  lecture: "<h3>When the Grand Narratives Collapse</h3><p>Postmodernism is suspicious of claims like “progress,” “genius,” and “one true style.” It loves remix, quotation, parody, and critique. Artists question authorship, originality, and the power systems inside museums, media, and culture.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Appropriation:</strong> reusing existing images to expose meaning and power.</li><li><strong>Irony & parody:</strong> seriousness is not always trusted.</li><li><strong>Institution critique:</strong> who gets to define art?</li><li><strong>Pluralism:</strong> many styles coexist, no single ‘correct’ direction.</li></ul>",
+  criticalThinking: "If everything is a remix, can originality still exist… or is originality just smart selection plus strong context?",
+  mission: "<strong>Reframe an Image:</strong> Pick one famous artwork image (public domain) and rewrite its caption in two ways: (1) museum voice, (2) critical voice. Notice how language controls meaning.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Appropriation_art_exhibition_wall.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Barbara_Kruger_installation.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Postmodern_art_museum_gallery.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Postmodernism", url: "https://www.tate.org.uk/art/art-terms/p/postmodernism" },
+    { name: "Smarthistory: Postmodernism", url: "https://smarthistory.org/postmodernism/" },
+    { name: "MoMA: Appropriation", url: "https://www.moma.org/learn/moma_learning/themes/appropriation/" }
+  ],
+  quiz: [
+    { q: "Postmodernism is often suspicious of...", opts: ["Single grand narratives and ‘one truth’", "All images", "All materials"], ans: 0 },
+    { q: "Appropriation means...", opts: ["Reusing existing images with new context", "Never referencing anything", "Only painting outdoors"], ans: 0 },
+    { q: "Institution critique asks...", opts: ["Who defines art and why", "How to mix pigment", "How to carve stone"], ans: 0 },
+    { q: "Pluralism means...", opts: ["Only one style allowed", "Multiple styles coexist", "No viewers allowed"], ans: 1 },
+    { q: "A common Postmodern tone is...", opts: ["Irony/parody", "Pure religious devotion", "Perfect academic realism"], ans: 0 }
+  ]
+},
+
+{
+  id: 35,
+  title: "Global Contemporary: Identity, Power, Systems",
+  era: "1990s - 2010s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Contemporary%20art%20identity%20institutional%20critique",
+  lecture: "<h3>Contemporary Art as a Global Conversation</h3><p>From the 1990s onward, contemporary art becomes intensely global and politically aware. Artists address identity, migration, capitalism, ecology, technology, archives, and power. The work is often installation-based, research-driven, or socially engaged.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Identity & representation:</strong> who is seen, who is erased?</li><li><strong>Systems thinking:</strong> institutions, markets, media, and history as structures.</li><li><strong>Archive & memory:</strong> collecting evidence, rewriting narratives.</li><li><strong>Installation:</strong> immersive environments replace single objects.</li></ul>",
+  criticalThinking: "If an artwork is about a social issue, what makes it art instead of journalism or activism… and do we even need a hard boundary?",
+  mission: "<strong>Micro-Archive Project:</strong> Collect 12 small items or photos around one theme (home, language, childhood, migration, waste). Arrange them as an ‘archive display’ and write a 5-line wall label.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Contemporary_art_installation_museum.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Documenta_exhibition_view.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Venice_Biennale_exhibition_view.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: Contemporary Art", url: "https://www.tate.org.uk/art/art-terms/c/contemporary-art" },
+    { name: "Smarthistory: Contemporary Art", url: "https://smarthistory.org/contemporary-art/" },
+    { name: "MoMA: Contemporary Art", url: "https://www.moma.org/learn/moma_learning/themes/contemporary-art/" }
+  ],
+  quiz: [
+    { q: "Contemporary art after 1990s is often...", opts: ["Global and system-aware", "Only religious icons", "Only landscape realism"], ans: 0 },
+    { q: "An ‘archive’ approach in art often means...", opts: ["Collecting evidence/memory to shape meaning", "Destroying all records", "Only using gold"], ans: 0 },
+    { q: "Installation art emphasizes...", opts: ["Immersive space and viewer experience", "Only tiny canvases", "Only portraits"], ans: 0 },
+    { q: "A key contemporary theme is often...", opts: ["Identity and power", "Only mythology", "Only architecture techniques"], ans: 0 },
+    { q: "Contemporary works can blur boundaries between art and...", opts: ["Research/activism/journalism", "Stone carving only", "Cave rituals only"], ans: 0 }
+  ]
+},
+
+{
+  id: 36,
+  title: "New Media & AI: Images After the Machine",
+  era: "2000s - Present",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=New%20media%20art%20AI%20art%20history",
+  lecture: "<h3>When Tools Become Co-Authors</h3><p>New Media art uses video, code, networks, sensors, AR/VR, and now AI. The artwork may be interactive, generative, or distributed online. Questions shift from “what does it look like” to “how does it behave” and “who controls the system.”</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Code as material:</strong> rules can generate endless variations.</li><li><strong>Interactivity:</strong> the viewer becomes a user, sometimes a co-creator.</li><li><strong>Network culture:</strong> circulation, memes, and platforms shape meaning.</li><li><strong>AI & authorship:</strong> training data, bias, and attribution become artistic problems.</li></ul><p><strong>Bridge:</strong> Conceptual Art says the idea matters. New Media asks: what happens when the <strong>system</strong> is the idea?</p>",
+  criticalThinking: "If AI can generate images instantly, what becomes the artist’s unique value: taste, ethics, storytelling, or building the system itself?",
+  mission: "<strong>Prompt-as-Concept:</strong> Write 3 prompts for the same theme (e.g., ‘memory of home’). One prompt should control composition, one controls material/texture, one controls emotion/meaning. Compare results and write what changed and why.",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Interactive_media_art_installation.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Video_art_installation_museum.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Digital_art_exhibition_projection.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Tate: New Media Art", url: "https://www.tate.org.uk/art/art-terms/n/new-media-art" },
+    { name: "MoMA: Media and Performance (learning)", url: "https://www.moma.org/learn/moma_learning/themes/media-and-performance/" },
+    { name: "Smarthistory: Digital Art (overview)", url: "https://smarthistory.org/digital-art/" }
+  ],
+  quiz: [
+    { q: "New Media art often uses...", opts: ["Code, video, networks, sensors", "Only marble", "Only fresco"], ans: 0 },
+    { q: "Generative art means...", opts: ["A system can generate variations", "Copying one image forever", "Painting only outdoors"], ans: 0 },
+    { q: "Interactivity changes the viewer into a...", opts: ["User/participant", "Passive statue", "Only buyer"], ans: 0 },
+    { q: "AI raises questions about...", opts: ["Authorship and training data", "How to build ziggurats", "How to make mosaics"], ans: 0 },
+    { q: "A core shift is from 'what it looks like' to...", opts: ["How it behaves as a system", "How shiny gold is", "How ancient it is"], ans: 0 }
+  ]
+}    
   ] // ✅ 这里是 lessons 数组的结束
 },  
       
