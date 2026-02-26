@@ -4,7 +4,6 @@ window.FEI_ART_HISTORY_TRACKS = {
     label: "Western Art History",
     desc: "From Prehistoric to Contemporary (global influence track)",
     lessons: [
-      // 
       {
         id: 1, title: "The Dawn of Art (Prehistoric)", era: "30,000 BCE - 2,000 BCE",
         videoUrl: "https://www.youtube.com/embed/ZjejoT1gFOc",
@@ -461,7 +460,7 @@ window.FEI_ART_HISTORY_TRACKS = {
       { q: "Subject?", opts: ["Hercules", "Men breaking rocks", "Pirate ship"], ans: 1 }
     ]
   },
-{
+  {
   id: 20,
   title: "Barbizon & Early Modern Vision: From Realism to Impressionism",
   era: "1830s - 1870s",
@@ -487,7 +486,7 @@ window.FEI_ART_HISTORY_TRACKS = {
     { q: "This ‘bridge’ period mainly prepares the way for Impressionism by...", opts: ["Moving painting toward light, atmosphere, and modern seeing", "Bringing back strict Egyptian rules", "Making painting only religious again"], ans: 0 }
   ]
 },
-     {
+{
   id: 21,
   title: "Impressionism: Painting Light, Not Objects",
   era: "1860s - 1880s",
@@ -757,7 +756,7 @@ window.FEI_ART_HISTORY_TRACKS = {
   ]
 }, 
 
-      {
+ {
   id: 31,
   title: "Minimalism: Less, But Louder",
   era: "1960s - 1970s",
