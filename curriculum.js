@@ -1444,10 +1444,10 @@ window.FEI_ART_HISTORY_TRACKS = {
         { q: "Common global themes include...", opts: ["Ecology and technology", "Only dragons", "Only bronze casting"], ans: 0 },
         { q: "Audience shift means...", opts: ["Only one culture matters", "Multiple cultures interpret at once", "No viewers"], ans: 1 },
         { q: "Cross-cultural communication can...", opts: ["Lose some context but gain reach", "Always perfect", "Always impossible"], ans: 0 }
-      ]
-    }
-  }  
-};
+      }
+    ] // ✅ end china.lessons
+  }   // ✅ end china
+};    // ✅ end FEI_ART_HISTORY_TRACKS
 
 // （可选）兼容旧 app.js：如果你还在用“只读一个数组”的旧版本，才打开下面这行
  window.FEI_ART_HISTORY_CURRICULUM = window.FEI_ART_HISTORY_TRACKS.western.lessons;
