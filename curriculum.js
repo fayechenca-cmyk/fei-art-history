@@ -924,12 +924,6 @@ window.FEI_ART_HISTORY_TRACKS = {
     label: "Chinese Art History",
     desc: "From Prehistoric ritual to Contemporary ink & concept",
     lessons: [
-      // ✅ 先放 1–5 节也行，后面再加到 20+
-      // { // ====== China Track (20 Sessions, English) ======
-{
-  label: "Chinese Art History",
-  desc: "From Neolithic ritual objects to Contemporary ink & conceptual art",
-  lessons: [
     {
       id: 1,
       title: "Origins: Neolithic Art & Ritual Objects",
