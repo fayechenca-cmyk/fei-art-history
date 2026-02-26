@@ -329,7 +329,7 @@
 
     if (contentH <= 0) return;
 
-    const scale = Math.max(0.55, Math.min(1, availH / contentH)); // don't shrink to unreadable dot
+    const scale = Math.max(0.55, Math.min(1.12, availH / contentH)); // don't shrink to unreadable dot
     wrap.style.transform = `scale(${scale})`;
     wrap.dataset.scale = String(scale);
   }
