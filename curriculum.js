@@ -462,30 +462,32 @@ window.FEI_ART_HISTORY_TRACKS = {
       { q: "Subject?", opts: ["Hercules", "Men breaking rocks", "Pirate ship"], ans: 1 }
     ]
   },
-  {
-    id: 20, 
-    title: "Modern Era: Shattered", 
-    era: "1870 CE - Present",
-    videoUrl: "https://www.youtube.com/embed/jKxXwW_6G_8", 
-    lecture: "<h3>The Camera</h3><p>The invention of the camera freed artists from reality, leading to the birth of Modern Art.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Impressionism:</strong> Quick, messy dabs of paint to capture a fleeting impression of light.</li><li><strong>Post-Impressionism:</strong> Using thick paint (impasto) and breaking nature into geometry.</li><li><strong>Cubism:</strong> Shattering the world like a broken mirror to see all angles at once.</li><li><strong>Contemporary:</strong> Art becomes about the 'Idea' rather than the physical object.</li></ul>",
-    criticalThinking: "How will human artists adapt and evolve to survive the age of AI?",
-    mission: "<strong>The Cubist Portrait:</strong> Cut a face into geometric shards and glue them back together in a messed-up, abstract order.",
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/5/59/Monet_-_Impression%2C_Sunrise.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/b/b7/Georges_Seurat_-_A_Sunday_on_La_Grande_Jatte_--_1884_-_Google_Art_Project.jpg"
-    ],
-    resources: [
-      { name: "Smarthistory: Impressionism", url: "https://smarthistory.org/a-beginners-guide-to-impressionism/" }
-    ],
-    quiz: [
-      { q: "Invention?", opts: ["Press", "Camera", "Telescope"], ans: 1 },
-      { q: "En plein air?", opts: ["Outdoors", "Black/White", "Ceiling"], ans: 0 },
-      { q: "Brushstrokes?", opts: ["Smooth", "Splatter", "Quick dabs"], ans: 2 },
-      { q: "Cubism?", opts: ["Ideal", "Realist", "Shattered geometry"], ans: 2 },
-      { q: "What is important?", opts: ["Idea/Concept", "Price", "Politics"], ans: 0 }
-    ]
-   }，
+{
+  id: 20,
+  title: "Barbizon & Early Modern Vision: From Realism to Impressionism",
+  era: "1830s - 1870s",
+  videoUrl: "https://www.youtube.com/embed?listType=search&list=Barbizon%20School%20Impressionism%20Manet%20art%20history",
+  lecture: "<h3>The Bridge Between Truth and Light</h3><p>Before Impressionism fully exploded, artists were already changing how painting worked. The <strong>Barbizon School</strong> moved artists out of the studio and into forests and fields, painting nature with a new honesty and atmosphere. At the same time, <strong>photography</strong> and modern city life reshaped how people saw the world. Then artists like <strong>Édouard Manet</strong> shocked the Salon by painting modern subjects with bold, flattened paint and sharp contrasts.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Barbizon School:</strong> painters gathered near the Forest of Fontainebleau; they painted directly from nature and focused on mood, weather, and everyday rural life.</li><li><strong>Tonal Painting:</strong> earthy, limited palettes and value-based structure (light/dark) helped capture atmosphere before Impressionist color fireworks.</li><li><strong>Photography Impact:</strong> unexpected cropping, candid moments, and new ways of framing influenced composition.</li><li><strong>Manet & the Salon Shock:</strong> modern life as subject, flatter paint, strong edges. Not fully Impressionist, but he cracked the door open.</li><li><strong>From Earth to Light:</strong> Barbizon’s atmosphere + modern framing + Manet’s boldness becomes the runway for Impressionism.</li></ul>",
+  criticalThinking: "If Barbizon painters already worked outdoors and studied atmosphere, why did Impressionism still feel like a ‘scandal’ and a revolution?",
+  mission: "<strong>Barbizon-to-Impressionism Study (20 minutes):</strong> Go outside or use a window view. Make two quick sketches of the same scene: (1) a <em>tonal study</em> using only 3 values (dark/mid/light) like Barbizon, (2) a <em>light study</em> using 5 small color notes (no outlines) like early Impressionism. Compare which one feels more like ‘air.’",
+  images: [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Th%C3%A9odore_Rousseau_-_Forest_of_Fontainebleau.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Jean-Fran%C3%A7ois_Millet_-_The_Gleaners_-_Google_Art_Project_2.jpg?width=1400",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%89douard_Manet_-_Olympia_-_Google_Art_Project.jpg?width=1400"
+  ],
+  resources: [
+    { name: "Wikipedia: Barbizon school", url: "https://en.wikipedia.org/wiki/Barbizon_school" },
+    { name: "Wikipedia: Édouard Manet", url: "https://en.wikipedia.org/wiki/%C3%89douard_Manet" },
+    { name: "Smarthistory (browse): Manet / 19th-century France", url: "https://smarthistory.org/" }
+  ],
+  quiz: [
+    { q: "The Barbizon School is best known for...", opts: ["Painting myths for kings", "Painting nature directly with mood and atmosphere", "Only painting perfect academic nudes"], ans: 1 },
+    { q: "A key visual idea before Impressionism was...", opts: ["Tonal/value structure and atmosphere", "Only neon color", "Gold mosaic backgrounds"], ans: 0 },
+    { q: "Photography influenced painters by introducing...", opts: ["Rounded arches", "Unexpected cropping and new framing", "Hieroglyphic writing"], ans: 1 },
+    { q: "Manet matters in this transition because he...", opts: ["Returned to Byzantine icons", "Painted modern life with bold, flatter paint and shocked the Salon", "Invented Roman concrete"], ans: 1 },
+    { q: "This ‘bridge’ period mainly prepares the way for Impressionism by...", opts: ["Moving painting toward light, atmosphere, and modern seeing", "Bringing back strict Egyptian rules", "Making painting only religious again"], ans: 0 }
+  ]
+},
      {
   id: 21,
   title: "Impressionism: Painting Light, Not Objects",
