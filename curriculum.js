@@ -11,13 +11,14 @@ window.FEI_ART_HISTORY_TRACKS = {
         criticalThinking: "Imagine you are an early human living a harsh life where survival is a daily struggle. Why would you spend immense time, energy, and resources crawling into a dangerous, dark cave just to paint a bison on the ceiling?",
         mission: "<strong>The Cave Wall Texture Study:</strong> Find a brown paper bag and crumple it up tightly into a ball. Flatten it back out so it has deep wrinkles and a rocky texture. Using charcoal or a soft, dark pencil, draw a running animal. Notice how the texture of the paper forces your drawing to change, just like the bumpy cave walls.",
         images: [
-          "https://upload.wikimedia.org/wikipedia/commons/4/4c/Lascaux_painting.jpg",
-          "https://upload.wikimedia.org/wikipedia/commons/e/e3/Venus_of_Willendorf_frontview_retouched_2.jpg",
+          "https://commons.wikimedia.org/wiki/File:Lascaux_painting.jpg",
+          "https://commons.wikimedia.org/wiki/File:Venus_of_Willendorf,_20210730_1214_1255.jpg",
           "https://upload.wikimedia.org/wikipedia/commons/3/3c/Stonehenge2007_07_30.jpg"
         ],
         resources: [
           { name: "Smarthistory: Paleolithic Art Introduction", url: "https://smarthistory.org/paleolithic-art/" },
           { name: "The Met: Lascaux Cave Overview", url: "https://www.metmuseum.org/toah/hd/lasc/hd_lasc.htm" },
+          { name: "Musée d'achéologie nationale: Visit The Lascaux Cave", url: "https://archeologie.culture.gouv.fr/lascaux/en" },
           { name: "Google Arts & Culture: Explore Chauvet Cave", url: "https://artsandculture.google.com/project/chauvet-cave" }
         ],
         quiz: [
