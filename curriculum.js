@@ -545,7 +545,7 @@ window.FEI_ART_HISTORY_TRACKS = {
   id: 23,
   title: "Symbolism: Dreams, Myths, and Inner Worlds",
   era: "1880s - 1910s",
-  videoUrl: "https://www.youtube.com/embed?listType=search&list=Symbolism%20art%20movement%20history",
+  videoUrl: "https://youtu.be/hQQaVQhW1Is?si=vmkG_nTPthZQ7X7u",
   lecture: "<h3>When Reality Isn’t Enough</h3><p>Symbolists rejected modern industrial reality and turned toward <strong>dreams</strong>, <strong>myths</strong>, and the invisible world of desire, fear, and imagination. They believed art should suggest meanings rather than describe facts.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Inner psychology:</strong> art as a mirror of the mind.</li><li><strong>Myth & allegory:</strong> old stories become modern emotional metaphors.</li><li><strong>Atmosphere:</strong> hazy, mysterious spaces over clear realism.</li><li><strong>Bridge forward:</strong> opens the door to Surrealism later.</li></ul>",
   criticalThinking: "Why do people keep returning to myth and fantasy exactly when society becomes more ‘modern’ and ‘rational’?",
   mission: "<strong>Personal Symbol:</strong> Invent one symbol for a feeling (anxiety, hope, longing). Draw it three ways: simple icon, detailed illustration, abstract shape.",
