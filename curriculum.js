@@ -572,7 +572,7 @@ window.FEI_ART_HISTORY_TRACKS = {
   id: 24,
   title: "Fauvism: Color as a Wild Beast",
   era: "1905 - 1908",
-  videoUrl: "https://youtu.be/tcjJEOapNKY?si=piETv6UDsRypsCjC,
+  videoUrl: "https://youtu.be/tcjJEOapNKY?si=piETv6UDsRypsCjC",
   lecture: "<h3>When Color Breaks Free</h3><p>Fauvism explodes polite painting. Colors become intense, unnatural, and emotionally direct. The goal is not faithful description, but <strong>visual impact</strong> and <strong>expressive force</strong>.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Non-natural color:</strong> a face can be green, a shadow can be pink.</li><li><strong>Flattened space:</strong> less modeling, more bold shape.</li><li><strong>Decorative rhythm:</strong> color patterns create energy.</li><li><strong>Bridge:</strong> opens the door to Expressionism.</li></ul>",
   criticalThinking: "If color becomes emotional rather than descriptive, who decides what a ‘correct’ painting is?",
   mission: "<strong>Fauve Portrait:</strong> Draw a simple portrait and recolor it using 3 shocking colors (no skin tones allowed). Then write one line about what mood your palette creates.",
