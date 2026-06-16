@@ -626,7 +626,7 @@ window.FEI_ART_HISTORY_TRACKS = {
   id: 26,
   title: "Cubism: Shattering Reality into Angles",
   era: "1907 - 1917",
-  videoUrl: "https://www.youtube.com/embed?listType=search&list=Cubism%20art%20history",
+  videoUrl: "https://youtu.be/IF-nmwm7-Bg?si=-VMrhDkHZG_Veldx",
   lecture: "<h3>Seeing All Sides at Once</h3><p>Cubism breaks objects into geometric facets and shows multiple viewpoints simultaneously. It rejects Renaissance perspective and replaces it with a new logic: perception is complex, fragmented, and constructed.</p><p><strong>Key Concepts:</strong></p><ul><li><strong>Multiple viewpoints:</strong> time and movement collapse into one image.</li><li><strong>Analytic Cubism:</strong> broken planes, limited color.</li><li><strong>Synthetic Cubism:</strong> collage, newspaper, mixed materials.</li><li><strong>Bridge:</strong> opens the door to many abstractions and design languages.</li></ul>",
   criticalThinking: "If Cubism shows multiple angles at once, is it closer to how the mind understands reality than a single ‘correct’ view?",
   mission: "<strong>Paper Collage Portrait:</strong> Make a cubist face using 6–10 paper shapes. Rotate one eye, flip the nose, and overlap planes. Add one real-world texture (newspaper, receipt, packaging).",
